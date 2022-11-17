@@ -21,6 +21,8 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("EGGMONEY Swagger").description("Team YOUNGHYEON").version("v1").build();
+        return new ApiInfoBuilder().title("EGGMONEY Swagger")
+                .description("Team YOUNGHYEON\nProject EGGMONEY Swagger Page")
+                .version("v1").build();
     }
 }
