@@ -16,11 +16,11 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.ssafy.board.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.eggmoney.backend.controller"))
                 .paths(PathSelectors.ant("/api/**")).build().apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("SSAFY Swagger").description("SSAFY 게시판").version("v1").build();
+        return new ApiInfoBuilder().title("EGGMONEY Swagger").description("Team YOUNGHYEON").version("v1").build();
     }
 }
