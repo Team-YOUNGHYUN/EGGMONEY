@@ -7,12 +7,12 @@ public interface UserService {
     void registUser(User user);
 
     // 사용자 상세
-    User userDetail(String email);
+    User userDetail(int seq);
 
     // 사용자 수정
     void modifyUser(User user);
 
     // 사용자 삭제
-    void removeUser(String email);
+    void removeUser(int seq);
 
 }
