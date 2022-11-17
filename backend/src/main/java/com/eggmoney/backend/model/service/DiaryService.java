@@ -1,14 +1,12 @@
 package com.eggmoney.backend.model.service;
 
+import com.eggmoney.backend.model.dto.Comment;
 import com.eggmoney.backend.model.dto.Diary;
 import com.eggmoney.backend.model.dto.Record;
 
-import java.util.HashMap;
-import java.util.List;
-
-public interface RecordService {
+public interface DiaryService {
     // 다이어리 상세 (userSeq, regDate)
-    Diary selectDiary(HashMap<Integer, String> params);
+    Diary selectDiary(int userSeq, String regDate);
 
     // 운동 목록에 운동 추가
     void addRecord(Record record);
@@ -17,6 +15,6 @@ public interface RecordService {
     void removeRecord(int id);
 
     // 코멘트 수정
-    void modifyComment(HashMap<Integer, String> params);
+    void modifyComment(Comment comment);
 
 }
