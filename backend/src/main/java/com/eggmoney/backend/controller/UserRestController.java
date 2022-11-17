@@ -18,6 +18,7 @@ public class UserRestController {
     private UserService userService;
 
     // 사용자 로그인: POST, (email, password) 필요
+    // 어디선가 사용자 seq 반환할 방법이 필요
 
     // 사용자 로그아웃: POST
 
@@ -29,23 +30,23 @@ public class UserRestController {
     }
 
     // 사용자 상세
-    @GetMapping("/user/{seq}")
-    public ResponseEntity<String> detail(@PathVariable int seq){
-        userService.userDetail(seq);
+    @GetMapping("/user/{userSeq}")
+    public ResponseEntity<String> detail(@PathVariable int userSeq){
+        userService.userDetail(userSeq);
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
     // 사용자 수정
-    @PutMapping("/user/")
+    @PutMapping("/user")
     public ResponseEntity<String> update(User user){
         userService.modifyUser(user);
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
     // 사용자 삭제
-    @DeleteMapping("/user/{seq}")
-    public ResponseEntity<String> delete(@PathVariable int seq){
-        userService.removeUser(seq);
+    @DeleteMapping("/user/{userSeq}")
+    public ResponseEntity<String> delete(@PathVariable int userSeq){
+        userService.removeUser(userSeq);
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 

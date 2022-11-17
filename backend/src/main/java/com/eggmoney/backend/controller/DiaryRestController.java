@@ -20,9 +20,9 @@ public class DiaryRestController {
     private DiaryService diaryService;
 
     // 다이어리 상세
-    @GetMapping("/diary/{seq}/{regDate}")
-    public ResponseEntity<Diary> selectDiary(@PathVariable int seq, @PathVariable String regDate){
-        return new ResponseEntity<Diary>(diaryService.selectDiary(seq, regDate), HttpStatus.OK);
+    @GetMapping("/diary/{userSeq}/{regDate}")
+    public ResponseEntity<Diary> selectDiary(@PathVariable int userSeq, @PathVariable String regDate){
+        return new ResponseEntity<Diary>(diaryService.selectDiary(userSeq, regDate), HttpStatus.OK);
     }
 
     // 운동 기록 등록
