@@ -1,37 +1,36 @@
 package com.eggmoney.backend.model.service;
 
-import com.eggmoney.backend.model.dao.RecordDao;
+import com.eggmoney.backend.model.dao.DiaryDao;
+import com.eggmoney.backend.model.dto.Diary;
 import com.eggmoney.backend.model.dto.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 
 @Service
 public class RecordServiceImpl implements RecordService {
 
     @Autowired
-    private RecordDao recordDao;
-
+    private DiaryDao diaryDao;
 
     @Override
-    public List<Record> selectRecordList(HashMap<String, String> params) {
-        return recordDao.selectRecordList(params);
+    public Diary selectDiary(HashMap<Integer, String> params) {
+        return diaryDao.selectDiary(params);
     }
 
     @Override
-    public String selectComment(HashMap<String, String> params) {
-        return recordDao.selectComment(params);
+    public void addRecord(Record record) {
+        diaryDao.insertRecord(record);
     }
 
     @Override
-    public void addDiary(Record record) {
-        recordDao.insertDiary(record);
+    public void removeRecord(int id) {
+        diaryDao.deleteRecord(id);
     }
 
     @Override
-    public void removeDiary(int id) {
-        recordDao.deleteDiary(id);
+    public void modifyComment(HashMap<Integer, String> params) {
+        diaryDao.updateComment(params);
     }
 }
