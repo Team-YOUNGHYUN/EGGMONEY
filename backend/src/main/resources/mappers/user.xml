@@ -4,5 +4,47 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.eggmoney.backend.model.dao.UserDao">
 
+    <resultMap id="userMap" type="user">
+        <id column="seq" property="userSeq"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="nickname" property="nickname"/>
+        <result column="pw_find_question_id" property="pwFindQuestionId"/>
+        <result column="pw_find_question_answer" property="pwFindQuestionAnswer"/>
+        <result column="gender" property="gender"/>
+        <result column="height" property="height"/>
+        <result column="weight" property="weight"/>
+        <result column="body_fat" property="bodyFat"/>
+        <result column="muscle_mass" property="muscleMass"/>
+        <result column="money" property="money"/>
+        <result column="quest_due_date" property="questDueDate"/>
+        <result column="quest_type" property="questType"/>
+        <result column="quest_modify_cnt" property="questModifyCnt"/>
+    </resultMap>
+
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO user VALUES
+        (#{email}, #{password}, #{name}, #{nickname}, #{pwFindQuestionId}, #{pwFindQuestionAnswer},
+        #{gender}, #{height}, #{weight}, #{bodyFat}, #{muscleMass}, #{questDueDate}, #{questType})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE user
+        SET
+        password = #{password},
+        nickname = #{nickname},
+        pw_find_question_id = #{pwFindQuestionId},
+        pw_find_question_answer = #{pwFindQuestionAnswer},
+        height = #{height},
+        weight = #{weight},
+        body_fat = #{bodyFat},
+        muscle_mass = #{muscleMass},
+        quest_due_date = #{questDueDate},
+        quest_type = #{questType},
+        quest_modify_cnt = #{questModifyCnt}
+    </update>
+
+
 
 </mapper>
