@@ -13,6 +13,6 @@ public interface UserService {
     void modifyUser(User user);
 
     // 사용자 삭제
-    void deleteUser(String id);
+    void removeUser(String id);
 
 }
