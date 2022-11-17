@@ -3,16 +3,14 @@ package com.eggmoney.backend.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.eggmoney.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.ssafy.board.util.JwtUtil;
-
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
     private static final String HEADER_AUTH = "access-token";
-
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -31,7 +29,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        throw new Exception("유효하지 않은 접근이다.");
+        throw new Exception("유효하지 않은 접근입니다.");
     }
 
 }
