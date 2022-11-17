@@ -10,9 +10,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JWTTest {
     public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException {
         String token = Jwts.builder().setHeaderParam("alg", "HS256").setHeaderParam("typ", "JWT")
-                .claim("userId", "ssafy")
+                .claim("userId", "young")
                 .setExpiration(new Date(System.currentTimeMillis()+3000))
-                .signWith(SignatureAlgorithm.HS256, "SSAFIT".getBytes("UTF-8"))
+                .signWith(SignatureAlgorithm.HS256, "EGGMONEY".getBytes("UTF-8"))
                 .compact();
 
         System.out.println(token);
@@ -24,7 +24,7 @@ public class JWTTest {
         // 유효하지 않은 키로 인식돼서 error 발생
 
         // 유효성 검사
-        Jws<Claims> claims = Jwts.parser().setSigningKey("SSAFIT".getBytes("UTF-8")).parseClaimsJws(token);
+        Jws<Claims> claims = Jwts.parser().setSigningKey("EGGMONEY".getBytes("UTF-8")).parseClaimsJws(token);
 
         System.out.println(claims);
     }
