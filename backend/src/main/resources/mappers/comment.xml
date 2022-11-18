@@ -17,7 +17,7 @@
     </insert>
 
     <select id="commentDetail" resultType="Comment" parameterType="java.util.HashMap">
-        SELECT *
+        SELECT C.id, C.content, C.reg_date, C.user_seq
         FROM comment C,
         (SELECT * FROM user WHERE user.email = #{email}) U
         WHERE C.reg_date = #{date}
