@@ -45,5 +45,4 @@ public class DiaryRestController {
         diaryService.modifyComment(comment);
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
-
 }
