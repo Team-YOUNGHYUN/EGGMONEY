@@ -45,7 +45,7 @@
         quest_due_date = #{questDueDate},
         quest_type = #{questType},
         quest_modify_cnt = #{questModifyCnt}
-        WHERE email = #{email}
+        WHERE seq = #{userSeq}
     </update>
 
     <select id="userDetail" resultType="User" parameterType="int">
