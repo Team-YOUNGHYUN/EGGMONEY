@@ -5,7 +5,7 @@
 <mapper namespace="com.eggmoney.backend.model.dao.UserDao">
 
     <resultMap id="userMap" type="user">
-        <id column="seq" property="userSeq"/>
+        <id column="seq" property="seq"/>
         <result column="email" property="email"/>
         <result column="password" property="password"/>
         <result column="name" property="name"/>
@@ -50,15 +50,15 @@
     </update>
 
     <select id="userDetail" resultType="User" parameterType="int">
-        SELECT U.email, U.password, U.name, U.nickname, P.question, U.pw_find_answer,
+        SELECT U.seq, U.email, U.password, U.name, U.nickname, P.question, U.pw_find_answer,
         U.height, U.weight, U.body_fat, U.muscle_mass,
         U.quest_due_date, U.quest_type, U.quest_modify_cnt
         FROM user U, pw_find_question_list P
-        WHERE U.pw_find_question_id = P.id and U.seq = #{userSeq}
+        WHERE U.pw_find_question_id = P.id and U.seq = #{seq}
     </select>
 
     <delete id="deleteUser" parameterType="int">
-        DELETE FROM user WHERE seq = #{userSeq}
+        DELETE FROM user WHERE seq = #{seq}
     </delete>
 
 </mapper>
