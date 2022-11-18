@@ -6,6 +6,13 @@ public class Comment {
     private String regDate;
     private String content;
 
+    public Comment(int id, int userSeq, String regDate, String content) {
+        this.id = id;
+        this.userSeq = userSeq;
+        this.regDate = regDate;
+        this.content = content;
+    }
+
     public int getId() {
         return id;
     }
