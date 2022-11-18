@@ -17,11 +17,12 @@
     <select id="selectRecord" resultMap="recordMap" parameterType="HashMap">
         SELECT id, user_seq, reg_date, exercise_part, exercise_name, set_cnt, time_cnt
         FROM record
-        WHERE email = #{email}
+        WHERE  <!-- email 가져오기 -->
     </select>
 
     <insert id="insertRecord" parameterType="Record">
         INSERT INTO record
+        <!-- -->
         VALUES (#{id}, #{user_seq}, #{reg_date}, #{exercise_part}, #{exercise_name}, #{set_cnt}, #{time_cnt})
     </insert>
 
