@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.eggmoney.backend.model.dao.DiaryDao">
+<mapper namespace="com.eggmoney.backend.model.dao.CommentDao">
     
     <resultMap id="commentMap" type="comment">
         <id column="id" property="id"/>
@@ -13,9 +13,8 @@
 
     <insert id="insertComment" parameterType="Comment">
         INSERT INTO comment
-        (user_seq, reg_date, content)
-        VALUES
-        (#{userSeq}, #{regDate}, #{content})
+        (id, user_seq, reg_date, content)
+        VALUES (0, #{userSeq}, #{regDate}, #{content})
     </insert>
 
     <select id="commentDetail" resultType="Comment" parameterType="java.util.HashMap">
@@ -32,9 +31,5 @@
         content = #{content}
         WHERE user_seq = #{userSeq} and reg_date = #{regDate}
     </update>
-
-
-
-
 
 </mapper>
