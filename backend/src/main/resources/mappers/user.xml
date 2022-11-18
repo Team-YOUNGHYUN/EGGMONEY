@@ -24,7 +24,10 @@
     </resultMap>
 
     <insert id="insertUser" parameterType="User">
-        INSERT INTO user VALUES
+        INSERT INTO user
+        (email, password, name, nickname, pw_find_question_id, pw_find_answer,
+        gender, height, weight, body_fat, muscle_mass, quest_due_date, quest_type)
+        VALUES
         (#{email}, #{password}, #{name}, #{nickname}, #{pwFindQuestionId}, #{pwFindQuestionAnswer},
         #{gender}, #{height}, #{weight}, #{bodyFat}, #{muscleMass}, #{questDueDate}, #{questType})
     </insert>

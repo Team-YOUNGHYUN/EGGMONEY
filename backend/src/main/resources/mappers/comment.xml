@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eggmoney.backend.model.dao.DiaryDao">
+    
+    <resultMap id="commentMap" type="comment">
+        <id column="id" property="id"/>
+        <result column="user_seq" property="userSeq" />
+        <result column="reg_date" property="regDate" />
+        <result column="content" property="content" />
+    </resultMap>
+
+    <insert id="insertComment" parameterType="Comment">
+        INSERT INTO comment
+        (user_seq, reg_date, content)
+        VALUES
+        (#{userSeq}, #{regDate}, #{content})
+    </insert>
+
+    <select id="commentDetail" resultType="Comment" parameterType="java.util.HashMap">
+        SELECT C.user_seq, C.reg_date, C.content
+        FROM comment C,
+        (SELECT * FROM user WHERE user.email = #{email}) U
+        WHERE C.reg_date = #{date}
+        and C.user_seq = U.seq;
+    </select>
+
+    <update id="updateComment" parameterType="Comment">
+        UPDATE comment
+        SET
+        content = #{content}
+        WHERE user_seq = #{userSeq} and reg_date = #{regDate}
+    </update>
+
+
+
+
+
+</mapper>
