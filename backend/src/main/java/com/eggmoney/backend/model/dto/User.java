@@ -6,7 +6,7 @@ public class User {
     private String password;
     private String name;
     private String nickname;
-    private String pwFindQuestion;
+    private int pwFindQuestionId;
     private String pwFindAnswer;
     private String gender;
     private int height;
@@ -58,12 +58,12 @@ public class User {
         this.nickname = nickname;
     }
 
-    public String getPwFindQuestion() {
-        return pwFindQuestion;
+    public int getPwFindQuestionId() {
+        return pwFindQuestionId;
     }
 
-    public void setPwFindQuestion(String pwFindQuestion) {
-        this.pwFindQuestion = pwFindQuestion;
+    public void setPwFindQuestionId(String pwFindQuestion) {
+        this.pwFindQuestionId = pwFindQuestionId;
     }
 
     public String getPwFindAnswer() {

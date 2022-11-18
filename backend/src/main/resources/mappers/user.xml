@@ -11,7 +11,7 @@
         <result column="name" property="name"/>
         <result column="nickname" property="nickname"/>
         <result column="pw_find_question_id" property="pwFindQuestionId"/>
-        <result column="pw_find_question_answer" property="pwFindQuestionAnswer"/>
+        <result column="pw_find_answer" property="pwFindAnswer"/>
         <result column="gender" property="gender"/>
         <result column="height" property="height"/>
         <result column="weight" property="weight"/>
@@ -28,7 +28,7 @@
         (email, password, name, nickname, pw_find_question_id, pw_find_answer,
         gender, height, weight, body_fat, muscle_mass, quest_due_date, quest_type)
         VALUES
-        (#{email}, #{password}, #{name}, #{nickname}, #{pwFindQuestionId}, #{pwFindQuestionAnswer},
+        (#{email}, #{password}, #{name}, #{nickname}, #{pwFindQuestionId}, #{pwFindAnswer},
         #{gender}, #{height}, #{weight}, #{bodyFat}, #{muscleMass}, #{questDueDate}, #{questType})
     </insert>
 
@@ -38,7 +38,7 @@
         password = #{password},
         nickname = #{nickname},
         pw_find_question_id = #{pwFindQuestionId},
-        pw_find_question_answer = #{pwFindQuestionAnswer},
+        pw_find_answer = #{pwFindAnswer},
         height = #{height},
         weight = #{weight},
         body_fat = #{bodyFat},

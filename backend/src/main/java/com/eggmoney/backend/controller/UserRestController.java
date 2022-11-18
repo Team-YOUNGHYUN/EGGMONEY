@@ -26,6 +26,7 @@ public class UserRestController {
     @PostMapping("/user")
     public ResponseEntity<String> regist(User user){
         userService.registUser(user);
+        System.out.println(11111);
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
