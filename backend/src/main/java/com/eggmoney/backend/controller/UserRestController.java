@@ -26,15 +26,13 @@ public class UserRestController {
     @PostMapping("/user")
     public ResponseEntity<String> regist(User user){
         userService.registUser(user);
-        System.out.println(11111);
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
     // 사용자 상세
     @GetMapping("/user/{userSeq}")
-    public ResponseEntity<String> detail(@PathVariable int userSeq){
-        userService.userDetail(userSeq);
-        return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+    public ResponseEntity<User> detail(@PathVariable int userSeq){
+        return new ResponseEntity<User>(userService.userDetail(userSeq), HttpStatus.OK);
     }
 
     // 사용자 수정
