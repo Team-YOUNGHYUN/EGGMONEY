@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registUser(User user) {
         userDao.insertUser(user);
-        System.out.println(2222);
     }
 
     // 사용자 상세
