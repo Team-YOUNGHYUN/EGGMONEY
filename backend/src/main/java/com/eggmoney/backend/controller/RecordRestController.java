@@ -21,8 +21,8 @@ public class RecordRestController {
     private RecordService recordService;
 
     // 운동 목록 반환
-    @GetMapping("/record/{userSeq}/{regDate}")
-    public ResponseEntity<List<Record>> selectRecord(@PathVariable String email, @PathVariable String date){
+    @GetMapping("/record")
+    public ResponseEntity<List<Record>> selectRecord(String email, String date){
         HashMap<String, String> params = new HashMap<>();
         params.put("email", email);
         params.put("date", date);
