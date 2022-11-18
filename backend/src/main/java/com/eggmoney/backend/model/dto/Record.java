@@ -1,12 +1,21 @@
 package com.eggmoney.backend.model.dto;
 
 public class Record {
+    private int id;
     private int userSeq;
     private String regDate;
     private String exercisePart;
     private String exerciseName;
     private int setCnt;
     private int timeCnt;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getUserSeq() {
         return userSeq;

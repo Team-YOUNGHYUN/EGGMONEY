@@ -1,9 +1,18 @@
 package com.eggmoney.backend.model.dto;
 
 public class Comment {
+    private int id;
     private int userSeq;
     private String regDate;
     private String content;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getUserSeq() {
         return userSeq;
