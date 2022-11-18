@@ -18,6 +18,25 @@ public class User {
     private String questType;
     private String questModifyCnt;
 
+    public User(int userSeq, String email, String password, String name, String nickname, int pwFindQuestionId, String pwFindAnswer, String gender, int height, double weight, double bodyFat, double muscleMass, int money, String questDueDate, String questType, String questModifyCnt) {
+        this.userSeq = userSeq;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.nickname = nickname;
+        this.pwFindQuestionId = pwFindQuestionId;
+        this.pwFindAnswer = pwFindAnswer;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
+        this.bodyFat = bodyFat;
+        this.muscleMass = muscleMass;
+        this.money = money;
+        this.questDueDate = questDueDate;
+        this.questType = questType;
+        this.questModifyCnt = questModifyCnt;
+    }
+
     public int getUserSeq() {
         return userSeq;
     }
