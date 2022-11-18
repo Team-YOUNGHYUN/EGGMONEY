@@ -1,6 +1,7 @@
 package com.eggmoney.backend.model.dto;
 
 public class User {
+    private int seq;
     private String email;
     private String password;
     private String name;
@@ -16,6 +17,14 @@ public class User {
     private String questDueDate;
     private String questType;
     private String questModifyCnt;
+
+    public int getSeq() {
+        return seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
+    }
 
     public String getEmail() {
         return email;

@@ -15,15 +15,17 @@
     </resultMap>
 
     <select id="selectRecord" resultMap="recordMap" parameterType="HashMap">
-        SELECT id, user_seq, reg_date, exercise_part, exercise_name, set_cnt, time_cnt
-        FROM record
-        WHERE  <!-- email 가져오기 -->
+        SELECT *
+        FROM record R,
+        (SELECT * FROM user WHERE user.email = #{email}) U
+        WHERE R.reg_date = #{date}
+        AND R.user_seq = U.seq;
     </select>
 
     <insert id="insertRecord" parameterType="Record">
         INSERT INTO record
-        <!-- -->
-        VALUES (#{id}, #{user_seq}, #{reg_date}, #{exercise_part}, #{exercise_name}, #{set_cnt}, #{time_cnt})
+        (id, user_seq, reg_date, exercise_part, exercise_name, set_cnt, time_cnt)
+        VALUES (0, #{userSeq}, #{regDate}, #{exercisePart}, #{exerciseName}, #{setCnt}, #{timeCnt})
     </insert>
 
     <delete id="deleteRecord" parameterType="int">
