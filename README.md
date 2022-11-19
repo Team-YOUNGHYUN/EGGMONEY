@@ -1,9 +1,8 @@
 # 👍 나의 운동 메이트... *EGGMONEY*
-***
-## 🧑‍🤝‍🧑Team YOUNGHYEON
 
+## 🧑‍🤝‍🧑Team YOUNGHYEON
 ##### 김동현 (Dong Hyeon Kim)
-- **ERD 설계, 백엔드 Spring Boot 개발, 프론트 엔드 Vue.js 개발**
+- **프로젝트 관리, ERD 설계, 백엔드 Spring Boot 개발, 프론트 엔드 Vue.js 개발**
 - 🍕 [https://github.com/xswaqz](https://github.com/xswaqz)
 
 ##### 정소영 (So Young Jeong)
