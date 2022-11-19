@@ -14,15 +14,17 @@
     </resultMap>
 
     <!-- 사용자가 달성한 업적 리스트 조회-->
-    <select id="selectAchvm" resultMap="achvmMap" parameterType="int">
-        SELECT * FROM achievement
-        WHERE user_seq = #{userSeq}
+    <select id="selectTrueAchvm" resultMap="achvmMap" parameterType="int">
+        SELECT * FROM achvm
+        WHERE id IN (SELECT achvm_id FROM user_achvm_list
+                        WHERE user_seq = #{userSeq})
     </select>
 
-    <!-- 사용자가 달성한 업적의 id 리스트 조회-->
-    <select id="selectAchvmId" resultType="list" parameterType="int">
-        SELECT achvm_id FROM user_achvm_list
-        WHERE user_seq = #{userSeq}
+    <!-- 사용자가 달성하지 못한 업적 리스트 조회-->
+    <select id="selectFalseAchvm" resultMap="achvmMap" parameterType="int">
+        SELECT * FROM achvm
+        WHERE id NOT IN (SELECT achvm_id FROM user_achvm_list
+                           WHERE user_seq = #{userSeq})
     </select>
 
     <!-- 사용자가 달성한 업적 등록 -->
