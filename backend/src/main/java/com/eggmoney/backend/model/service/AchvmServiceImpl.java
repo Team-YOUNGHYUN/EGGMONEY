@@ -30,4 +30,11 @@ public class AchvmServiceImpl implements AchvmService{
     public void addAchvmId(HashMap<String, Integer> params) {
         achvmDao.insertAchvmId(params);
     }
+
+    @Override
+    public void removeAchvmId(int userSeq) {
+        achvmDao.deleteAchvmId(userSeq);
+    }
+
+
 }
