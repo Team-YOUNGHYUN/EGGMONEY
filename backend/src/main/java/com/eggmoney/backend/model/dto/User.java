@@ -13,12 +13,10 @@ public class User {
     private double weight;
     private double bodyFat;
     private double muscleMass;
-    private int money;
-    private String questDueDate;
-    private String questType;
-    private String questModifyCnt;
+    private int point;
+    private int rprsnAchvmId;
 
-    public User(int userSeq, String email, String password, String name, String nickname, int pwFindQuestionId, String pwFindAnswer, String gender, int height, double weight, double bodyFat, double muscleMass, int money, String questDueDate, String questType, String questModifyCnt) {
+    public User(int userSeq, String email, String password, String name, String nickname, int pwFindQuestionId, String pwFindAnswer, String gender, int height, double weight, double bodyFat, double muscleMass, int point, int rprsnAchvmId) {
         this.userSeq = userSeq;
         this.email = email;
         this.password = password;
@@ -31,10 +29,8 @@ public class User {
         this.weight = weight;
         this.bodyFat = bodyFat;
         this.muscleMass = muscleMass;
-        this.money = money;
-        this.questDueDate = questDueDate;
-        this.questType = questType;
-        this.questModifyCnt = questModifyCnt;
+        this.point = point;
+        this.rprsnAchvmId = rprsnAchvmId;
     }
 
     public int getUserSeq() {
@@ -81,7 +77,7 @@ public class User {
         return pwFindQuestionId;
     }
 
-    public void setPwFindQuestionId(String pwFindQuestion) {
+    public void setPwFindQuestionId(int pwFindQuestionId) {
         this.pwFindQuestionId = pwFindQuestionId;
     }
 
@@ -133,35 +129,39 @@ public class User {
         this.muscleMass = muscleMass;
     }
 
-    public int getMoney() {
-        return money;
+    public int getPoint() {
+        return point;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setPoint(int point) {
+        this.point = point;
     }
 
-    public String getQuestDueDate() {
-        return questDueDate;
+    public int getRprsnAchvmId() {
+        return rprsnAchvmId;
     }
 
-    public void setQuestDueDate(String questDueDate) {
-        this.questDueDate = questDueDate;
+    public void setRprsnAchvmId(int rprsnAchvmId) {
+        this.rprsnAchvmId = rprsnAchvmId;
     }
 
-    public String getQuestType() {
-        return questType;
-    }
-
-    public void setQuestType(String questType) {
-        this.questType = questType;
-    }
-
-    public String getQuestModifyCnt() {
-        return questModifyCnt;
-    }
-
-    public void setQuestModifyCnt(String questModifyCnt) {
-        this.questModifyCnt = questModifyCnt;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userSeq=" + userSeq +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", pwFindQuestionId=" + pwFindQuestionId +
+                ", pwFindAnswer='" + pwFindAnswer + '\'' +
+                ", gender='" + gender + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", bodyFat=" + bodyFat +
+                ", muscleMass=" + muscleMass +
+                ", point=" + point +
+                ", rprsnAchvmId=" + rprsnAchvmId +
+                '}';
     }
 }
