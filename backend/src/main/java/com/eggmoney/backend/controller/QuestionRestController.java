@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api", produces = "application/text;charset=utf8")
+@RequestMapping("/api")
 public class QuestionRestController {
 
     @Autowired
