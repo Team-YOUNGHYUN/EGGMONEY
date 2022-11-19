@@ -16,26 +16,13 @@ public class AchvmServiceImpl implements AchvmService{
     // 사용자가 달성한 업적 리스트 조회
     @Override
     public List<Achvm> selectTrueAchvm(int userSeq) {
-        List<Achvm> achvmList = achvmDao.selectAchvm(userSeq);
-        List<Integer> achvmIdList = achvmDao.selectAchvmId(userSeq);
-        List<Achvm> list = new ArrayList<>();
-        for(int id : achvmIdList){
-            list.add(achvmList.get(id-1));
-        }
-        return list;
+        return achvmDao.selectTrueAchvm(userSeq);
     }
 
     // 사용자가 달성하지 못한 업적 리스트 조회
     @Override
     public List<Achvm> selectFalseAchvm(int userSeq) {
-        List<Achvm> achvmList = achvmDao.selectAchvm(userSeq);
-        List<Integer> achvmIdList = achvmDao.selectAchvmId(userSeq);
-        Collections.sort(achvmIdList);
-        int size = achvmIdList.size();
-        for(int idx = size-1; idx>=0; idx--){
-            achvmList.remove(achvmIdList.get(idx)-1);
-        }
-        return achvmList;
+        return achvmDao.selectFalseAchvm(userSeq);
     }
 
     // 사용자가 달성한 업적의 id 등록
