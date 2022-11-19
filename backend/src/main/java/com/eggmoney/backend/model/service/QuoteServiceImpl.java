@@ -9,9 +9,8 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Autowired
     private QuoteDao quoteDao;
-
     @Override
-    public String selectQuote(int id) {
-        return quoteDao.selectQuote(id);
+    public String selectQuote() {
+        return quoteDao.selectQuote();
     }
 }
