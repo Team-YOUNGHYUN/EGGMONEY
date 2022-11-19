@@ -33,5 +33,10 @@
         (0, #{userSeq}, #{achvmId})
     </insert>
 
+    <!-- 사용자의 업적 획득 정보 삭제 (탈퇴 시) -->
+    <delete id="deleteAchvmId" parameterType="int">
+        DELETE FROM user_achvm_list
+        WHERE user_seq = #{userSeq}
+    </delete>
 
 </mapper>

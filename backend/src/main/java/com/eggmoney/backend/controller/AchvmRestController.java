@@ -42,5 +42,12 @@ public class AchvmRestController {
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
+    // 사용자의 업적 획득 정보 삭제 (탈퇴 시)
+//    void deleteAchvmId(int userSeq);
+    @DeleteMapping("/achvm/{userSeq}")
+    public ResponseEntity<String> deleteAchvmId(@PathVariable int userSeq){
+        achvmService.removeAchvmId(userSeq);
+        return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+    }
 
 }
