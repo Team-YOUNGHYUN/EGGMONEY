@@ -17,10 +17,8 @@
         <result column="weight" property="weight"/>
         <result column="body_fat" property="bodyFat"/>
         <result column="muscle_mass" property="muscleMass"/>
-        <result column="money" property="money"/>
-        <result column="quest_due_date" property="questDueDate"/>
-        <result column="quest_type" property="questType"/>
-        <result column="quest_modify_cnt" property="questModifyCnt"/>
+        <result column="point" property="point"/>
+        <result column="rprsn_achvm_id" property="rprsnAchvmId"/>
     </resultMap>
 
     <!-- (seq, email, password, name, nickname, pw_find_question_id, pw_find_answer,
@@ -28,7 +26,7 @@
     <insert id="insertUser" parameterType="User">
         INSERT INTO user VALUES
         (0, #{email}, #{password}, #{name}, #{nickname}, #{pwFindQuestionId}, #{pwFindAnswer},
-        #{gender}, #{height}, #{weight}, #{bodyFat}, #{muscleMass}, 0, #{questDueDate}, #{questType}, 0)
+        #{gender}, #{height}, #{weight}, #{bodyFat}, #{muscleMass}, 0, 0)
     </insert>
 
     <update id="updateUser" parameterType="User">
@@ -41,19 +39,19 @@
         height = #{height},
         weight = #{weight},
         body_fat = #{bodyFat},
-        muscle_mass = #{muscleMass},
-        quest_due_date = #{questDueDate},
-        quest_type = #{questType},
-        quest_modify_cnt = #{questModifyCnt}
+        muscle_mass = #{muscleMass}
+        rprsn_achvm_id = #{rprsnAchvmId}
         WHERE seq = #{userSeq}
     </update>
 
     <select id="userDetail" resultType="User" parameterType="int">
-        SELECT * FROM user WHERE seq = #{userSeq}
+        SELECT * FROM user
+        WHERE seq = #{userSeq}
     </select>
 
     <delete id="deleteUser" parameterType="int">
-        DELETE FROM user WHERE seq = #{userSeq}
+        DELETE FROM user
+        WHERE seq = #{userSeq}
     </delete>
 
 </mapper>
