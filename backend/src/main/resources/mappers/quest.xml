@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eggmoney.backend.model.dao.QuestDao">
+
+    <!-- 퀘스트 등록 (회원가입 시)-->
+    <insert id="insertQuest" parameterType="int">
+        INSERT INTO quest VALUES
+        (0, date_format(now(), '%Y-%m-%d'), 0, 0, 0, #{userSeq});
+    </insert>
+
+    <!-- 퀘스트 상세 -->
+    <select id="selectQuest" resultType="Quest" parameterType="int">
+        SELECT * FROM quest
+        WHERE user_seq = #{userSeq}
+    </select>
+
+    <!-- 퀘스트 수정 -->
+    <update id="updateQuest" parameterType="Quest">
+        UPDATE quest
+        SET
+        due_date = #{dueDate},
+        type = #{type},
+        goal = #{goal},
+        modify_cnt = #{modifyCnt}
+        WHERE user_seq = #{userSeq}
+    </update>
+
+    <!-- 퀘스트 삭제 (탈퇴 시) -->
+    <delete id="deleteQuest" parameterType="int">
+        DELETE FROM quest
+        WHERE user_seq = #{userSeq}
+    </delete>
+
+</mapper>
