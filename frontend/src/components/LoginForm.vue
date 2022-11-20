@@ -14,7 +14,8 @@
         /><br />
     </fieldset>
     <div id="button">
-        <button class="btn btn-success" @click="login">로그인</button>
+        <!-- <button class="btn btn-success" @click="login">로그인</button> -->
+        <router-link to="/user/regist">회원가입</router-link>
     </div>
   </div>
 </template>
@@ -22,9 +23,7 @@
 <script>
 export default {
   name: 'LoginForm',
-  props: {
-    msg: String
-  }
+  
 }
 </script>
 
@@ -38,9 +37,4 @@ export default {
     background: gray;
     color: white;
   }
-.text-center{
-    /* margin-left: 100px;
-    margin-right: 200px; */
-  }
-
 </style>
