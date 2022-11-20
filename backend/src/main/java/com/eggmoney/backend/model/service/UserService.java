@@ -15,4 +15,10 @@ public interface UserService {
     // 사용자 삭제
     void removeUser(int userSeq);
 
+    // 이메일 중복 체크
+    int checkEmail(String email);
+
+    // 닉네임 중복 체크
+    int checkNickName(String nickname);
+
 }
