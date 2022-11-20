@@ -15,4 +15,10 @@ public interface UserDao {
     // 사용자 삭제
     void deleteUser(int userSeq);
 
+    // 이메일 중복 체크
+    int checkEmail(String email);
+
+    // 닉네임 중복 체크
+    int checkNickname(String nickname);
+
 }
