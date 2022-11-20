@@ -34,4 +34,14 @@ public class UserServiceImpl implements UserService {
     public void removeUser(int userSeq) {
         userDao.deleteUser(userSeq);
     }
+
+    @Override
+    public int checkEmail(String email) {
+        return userDao.checkEmail(email);
+    }
+
+    @Override
+    public int checkNickName(String nickname) {
+        return userDao.checkNickname(nickname);
+    }
 }

@@ -49,4 +49,16 @@ public class UserRestController {
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
+    // 이메일 중복 체크
+    @GetMapping("/check/email={email}")
+    public ResponseEntity<Integer> checkEmail(@PathVariable String email){
+        return new ResponseEntity<Integer>(userService.checkEmail(email), HttpStatus.OK);
+    }
+
+    // 닉네임 중복 체크
+    @GetMapping("/check/nickname={nickname}")
+    public ResponseEntity<Integer> checkNickname(@PathVariable String nickname){
+        return new ResponseEntity<Integer>(userService.checkNickName(nickname), HttpStatus.OK);
+    }
+
 }
