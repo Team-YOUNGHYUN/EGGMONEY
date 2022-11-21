@@ -18,7 +18,7 @@
     /><br /><br /><br />
 
     <!-- actual quest updates are made here -->
-    <h2 class="title">목표 설정</h2>
+    <h2 class="title">운동 목표</h2>
     <fieldset class="text-center">
       <label form="dueDate">목표 날짜</label>
       <input type="date" id="dueDate" v-model="dueDate" class="view" />
@@ -45,39 +45,13 @@
       </b-form-group>
     </fieldset>
     <br />
-
-    <!-- checkbox for modification cnt -->
-    <b-form-checkbox
-      id="check-update"
-      v-model="modifyCnt"
-      name="check-update"
-      value="agree"
-      unchecked-value="disagree"
-    >
-      목표 변경 가능 횟수 : {{ modifyCnt }}회
-    </b-form-checkbox>
-    <br />
     <b-button>수정</b-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "QuestRegist",
-  data() {
-    return {
-      height: 0,
-      weight: 0,
-      bodyFat: 0,
-      muscleMass: 0,
-      modifyCnt: 3,
-      dueDate: "",
-      goalWeight: 0,
-      goalBodyFat: 0,
-      goalMuscleMass: 0,
-      selected: "",
-    };
-  },
+  name: "QuestDetail",
 };
 </script>
 
