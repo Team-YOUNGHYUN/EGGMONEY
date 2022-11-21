@@ -42,7 +42,7 @@
       <!-- 첫 번째: 체중 -->
       <div v-if="(getQuest.type = 1)">
         <br />
-        <b-form-radio v-model="selected" value="goalWeight" checked>
+        <b-form-radio v-model="selected" value="goalWeight" checked="checked">
           <label for="goalWeight">체중(kg)</label>
           <input
             type="number"
@@ -131,8 +131,8 @@ export default {
     ...mapGetters(["getLoginUser", "getQuest"]),
   },
   created() {
-    this.$store.dispatch("getUserInfo", 9);
-    this.$store.dispatch("getQuest", 9);
+    this.$store.dispatch("getUserInfo", 1);
+    this.$store.dispatch("getQuest", 1);
   },
   methods: {
     test() {
