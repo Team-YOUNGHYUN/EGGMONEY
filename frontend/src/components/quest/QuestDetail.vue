@@ -51,50 +51,13 @@
       />
       <br />
 
-      <!--
-      <div id="gender" v-if="(getLoginUser.gender = 'male')">
-        <input
-          type="radio"
-          id="male"
-          value="male"
-          class="view"
-          disabled
-          checked
-        />
-        <label for="male">남성</label>
-        <input
-          type="radio"
-          id="female"
-          value="female"
-          class="view"
-          style="margin-left: 7px"
-          disabled
-        />
-        <label for="female">여성</label>
-      </div>
-      <div id="gender" v-else>
-        <input type="radio" id="male" value="male" class="view" disabled />
-        <label for="male">남성</label>
-        <input
-          type="radio"
-          id="female"
-          value="female"
-          class="view"
-          style="margin-left: 7px"
-          disabled
-          checked
-        />
-        <label for="female">여성</label>
-      </div>
-      -->
-
       <!-- 첫 번째: 체중 -->
       <div id="quest-type" v-if="(getQuest.type = 1)">
         <label for="goalWeight">체중(kg)</label>
         <input
           type="number"
           id="goalWeight"
-          v-model="getQuest.weight"
+          v-model="getQuest.goal"
           class="view"
           disabled
           checked
@@ -107,7 +70,7 @@
         <input
           type="number"
           id="goalBodyFat"
-          v-model="getQuest.bodyFat"
+          v-model="getQuest.goal"
           class="view"
           disabled
           checked
@@ -120,7 +83,7 @@
         <input
           type="number"
           id="goalMuscleMass"
-          v-model="getQuest.muscleMass"
+          v-model="getQuest.goal"
           class="view"
           disabled
           checked
@@ -155,8 +118,8 @@ export default {
     ...mapGetters(["getLoginUser", "getQuest"]),
   },
   created() {
-    this.$store.dispatch("getUserInfo", 9);
-    this.$store.dispatch("getQuest", 9);
+    this.$store.dispatch("getUserInfo", 1);
+    this.$store.dispatch("getQuest", 1);
   },
   methods: {
     test() {
