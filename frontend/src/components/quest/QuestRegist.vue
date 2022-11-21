@@ -1,10 +1,81 @@
 <template>
-  <div class="quest-regist"></div>
+  <div class="container">
+    <h1 class="quest-title">목표 관리</h1>
+    <br />
+    <h2 class="title">현재 신체 정보</h2>
+    <label for="height">키</label>
+    <input type="number" id="height" v-model="height" class="view" /><br />
+    <label for="weight">몸무게</label>
+    <input type="number" id="weight" v-model="weight" class="view" /><br />
+    <label for="bodyFat">체지방률</label>
+    <input type="number" id="bodyFat" v-model="bodyFat" class="view" /><br />
+    <label for="muscleMass">골격근량</label>
+    <input
+      type="number"
+      id="muscleMass"
+      v-model="muscleMass"
+      class="view"
+    /><br />
+
+    <!-- actual quest updates are made here -->
+    <h2 class="title">목표 설정</h2>
+    <fieldset class="text-center">
+      <label form="dueDate">목표 날짜</label>
+      <input type="date" id="dueDate" v-model="dueDate" class="view" />
+      <br />
+      <b-form-group label="goal radios">
+        <b-form-radio v-model="selected" value="weight">
+          <label for="weight">체중(kg)</label>
+          <input type="number" id="weigth" v-model="weight" class="view" />
+        </b-form-radio>
+        <b-form-radio v-model="selected" value="bodyFat">
+          <label for="bodyFat">체지방률(%)</label>
+          <input type="number" id="bodyFat" v-model="bodyFat" class="view" />
+        </b-form-radio>
+        <b-form-radio v-model="selected" value="muscleMass">
+          <label for="muscleMass">골격근량(kg)</label>
+          <input
+            type="number"
+            id="muscleMass"
+            v-model="muscleMass"
+            class="view"
+          />
+        </b-form-radio>
+      </b-form-group>
+    </fieldset>
+    <br />
+
+    <!-- checkbox for modification cnt -->
+    <b-form-checkbox
+      id="check-update"
+      v-model="modifyCnt"
+      name="check-update"
+      value="agree"
+      unchecked-value="disagree"
+    >
+      목표 변경 가능 횟수 :
+    </b-form-checkbox>
+    <div>{{ modifyCnt }}회</div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "QuestRegist",
+  data() {
+    return {
+      height: 0,
+      weight: 0,
+      bodyFat: 0,
+      muscleMass: 0,
+      modifyCnt: 3,
+      dueDate: "",
+      goalWeight: 0,
+      goalBodyFat: 0,
+      goalMuscleMass: 0,
+      selected: "",
+    };
+  },
 };
 </script>
 
