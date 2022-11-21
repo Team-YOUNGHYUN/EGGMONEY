@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import UserView from "../views/UserView.vue";
-import QuestView from "../views/QuestView.vue";
 import LoginForm from "../components/LoginForm.vue";
 import UserRegist from "../components/user/UserRegist.vue";
 import UserDetail from "../components/user/UserDetail.vue";
@@ -36,13 +35,8 @@ const routes = [
   },
   {
     path: "/quest",
-    component: QuestView,
+    component: QuestRegist,
     children: [
-      {
-        path: "regist",
-        name: "QuestRegist",
-        component: QuestRegist,
-      },
       {
         path: "detail",
         name: "QuestDetail",
