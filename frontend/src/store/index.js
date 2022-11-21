@@ -145,6 +145,42 @@ export default new Vuex.Store({
     modifyCnt({ commit }) {
       commit("MODIFY_CNT");
     },
+    updateQuest({ commit }, quest) {
+      const API_URL = `${REST_API}/quest`;
+      let params = null;
+      if (quest) params = quest;
+      axios({
+        url: API_URL,
+        method: "POST",
+        params: params,
+      })
+        .then(() => {
+          alert("목표 수정이 완료되었습니다.");
+          commit("UPDATE_QUEST", params);
+          router.push("/quest");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    registQuest({ commit }, quest) {
+      const API_URL = `${REST_API}/quest`;
+      let params = null;
+      if (quest) params = quest;
+      axios({
+        url: API_URL,
+        method: "POST",
+        params: params,
+      })
+        .then(() => {
+          alert("목표 등록이 완료되었습니다.");
+          commit("REGIST_QUEST", params);
+          router.push("/quest");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   modules: {},
 });
