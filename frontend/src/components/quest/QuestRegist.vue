@@ -37,27 +37,76 @@
     <h2 class="title">목표 설정</h2>
     <fieldset class="text-center">
       <label form="dueDate">목표 날짜</label>
-      <input type="date" id="dueDate" v-model="dueDate" class="view" />
+      <input type="date" id="dueDate" v-model="getQuest.dueDate" class="view" />
       <br />
-      <b-form-group>
+      <!-- 첫 번째: 체중 -->
+      <div v-if="(getQuest.type = 1)">
         <br />
-        <b-form-radio v-model="selected" value="goalWeight">
+        <b-form-radio v-model="selected" value="goalWeight" checked>
           <label for="goalWeight">체중(kg)</label>
-          <input type="number" id="goalWeigth" class="view" />
+          <input
+            type="number"
+            id="goalWeigth"
+            v-model="getQuest.goal"
+            class="view"
+          />
         </b-form-radio>
         <b-form-radio v-model="selected" value="goalBodyFat">
           <label for="goalBodyFat">체지방률(%)</label>
-          <input type="number" id="goalBodyFat" class="view" />
+          <input type="number" id="goalBodyFat" class="view" disabled />
         </b-form-radio>
         <b-form-radio v-model="selected" value="goalMuscleMass">
+          <label for="goalMuscleMass">골격근량(kg)</label>
+          <input type="number" id="goalMuscleMass" class="view" disabled />
+        </b-form-radio>
+      </div>
+      <!-- 두 번째: 체지방률 -->
+      <b-form-group v-else-if="(getQuest.type = 2)">
+        <br />
+        <b-form-radio v-model="selected" value="goalWeight" disabled>
+          <label for="goalWeight">체중(kg)</label>
+          <input type="number" id="goalWeigth" class="view" />
+        </b-form-radio>
+        <b-form-radio v-model="selected" value="goalBodyFat" checked>
+          <label for="goalBodyFat">체지방률(%)</label>
+          <input
+            type="number"
+            id="goalBodyFat"
+            v-model="getQuest.goal"
+            class="view"
+          />
+        </b-form-radio>
+        <b-form-radio v-model="selected" value="goalMuscleMass" disabled>
           <label for="goalMuscleMass">골격근량(kg)</label>
           <input type="number" id="goalMuscleMass" class="view" />
         </b-form-radio>
       </b-form-group>
+      <!-- 세 번째: 골격근량 -->
+      <b-form-group v-else-if="(getQuest.type = 3)">
+        <br />
+        <b-form-radio v-model="selected" value="goalWeight" disabled>
+          <label for="goalWeight">체중(kg)</label>
+          <input type="number" id="goalWeigth" class="view" />
+        </b-form-radio>
+        <b-form-radio v-model="selected" value="goalBodyFat" disabled>
+          <label for="goalBodyFat">체지방률(%)</label>
+          <input type="number" id="goalBodyFat" class="view" />
+        </b-form-radio>
+        <b-form-radio v-model="selected" value="goalMuscleMass" checked>
+          <label for="goalMuscleMass">골격근량(kg)</label>
+          <input
+            type="number"
+            id="goalMuscleMass"
+            v-model="getQuest.goal"
+            class="view"
+          />
+        </b-form-radio>
+      </b-form-group>
     </fieldset>
+    <button @click="test">테스트</button>
     <br />
 
-    <b-button @click="registQuest">등록</b-button>
+    <b-button @click="getQuest">등록</b-button>
   </div>
 </template>
 
@@ -79,23 +128,28 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getLoginUser"]),
+    ...mapGetters(["getLoginUser", "getQuest"]),
   },
   created() {
     this.$store.dispatch("getUserInfo", 9);
+    this.$store.dispatch("getQuest", 9);
   },
   methods: {
-    registQuest() {
-      let quest = {
-        id: this.getLoginUser.id,
-        dueDate: this.dueDate,
-        type: this.selected, // select된 radio의 value를 저장
-        goal: this.goal,
-        modifyCnt: this.getModifyCnt,
-        userSeq: this.getLoginUser.userSeq,
-      };
-      this.$store.dispatch("registQuest", quest);
+    test() {
+      console.log(this.getLoginUser);
+      console.log(this.getQuest);
     },
+    // getQuest() {
+    // let quest = {
+    //   id: this.getQuest.id,
+    //   dueDate: this.dueDate,
+    //   type: this.selected,
+    //   goal: this.goal,
+    //   modifyCnt: this.getModifyCnt,
+    //   userSeq: this.getLoginUser.userSeq,
+    // };
+    // this.$store.dispatch("getQuest", this.getLoginUser.userSeq);
+    // },
   },
 };
 </script>

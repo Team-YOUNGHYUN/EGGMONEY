@@ -7,7 +7,6 @@ import UserRegist from "../components/user/UserRegist.vue";
 import UserDetail from "../components/user/UserDetail.vue";
 import QuestDetail from "../components/quest/QuestDetail.vue";
 import QuestRegist from "../components/quest/QuestRegist.vue";
-import QuestUpdate from "../components/quest/QuestUpdate.vue";
 
 Vue.use(VueRouter);
 
@@ -43,11 +42,6 @@ const routes = [
     path: "/quest/regist",
     name: "QuestRegist",
     component: QuestRegist,
-  },
-  {
-    path: "/quest/update",
-    name: "QuestUpdate",
-    component: QuestUpdate,
   },
 ];
 

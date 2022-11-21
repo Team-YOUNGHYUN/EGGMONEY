@@ -2,7 +2,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "@/router";
-// import router from "../router";
 
 Vue.use(Vuex);
 
@@ -11,6 +10,7 @@ const REST_API = `http://localhost:9999/api`;
 export default new Vuex.Store({
   state: {
     loginUser: {},
+    quest: {},
     isUnqEmail: "",
     isUnqNickname: "",
     questionList: [],
@@ -31,6 +31,9 @@ export default new Vuex.Store({
     },
     getModifyCnt(state) {
       return state.ableModifyCnt;
+    },
+    getQuest(state) {
+      return state.quest;
     },
   },
   mutations: {
@@ -62,6 +65,9 @@ export default new Vuex.Store({
     },
     MODIFY_CNT(state) {
       state.ableModifyCnt -= 1;
+    },
+    GET_QUEST(state, payload) {
+      state.quest = payload;
     },
   },
   actions: {
@@ -138,6 +144,19 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    getQuest({ commit }, userSeq) {
+      const API_URL = `${REST_API}/quest/${userSeq}`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          commit("GET_QUEST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     modifyCnt({ commit }) {
       commit("MODIFY_CNT");
     },
@@ -153,24 +172,6 @@ export default new Vuex.Store({
         .then(() => {
           alert("목표 수정이 완료되었습니다.");
           commit("UPDATE_QUEST", params);
-          router.push("/quest");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    registQuest({ commit }, quest) {
-      const API_URL = `${REST_API}/quest`;
-      let params = null;
-      if (quest) params = quest;
-      axios({
-        url: API_URL,
-        method: "POST",
-        params: params,
-      })
-        .then(() => {
-          alert("목표 등록이 완료되었습니다.");
-          commit("REGIST_QUEST", params);
           router.push("/quest");
         })
         .catch((err) => {
