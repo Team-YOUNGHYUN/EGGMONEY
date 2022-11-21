@@ -8,16 +8,14 @@
       <input
         type="number"
         id="height"
-        v-model="height"
-        class="view"
+        v-model="getLoginUser.height"
         disabled
       /><br />
       <label for="weight">몸무게(kg)</label>
       <input
         type="number"
         id="weight"
-        v-model="weight"
-        class="view"
+        v-model="getLoginUser.weight"
         disabled
       /><br />
       <label for="bodyFat">체지방률(%)</label>
