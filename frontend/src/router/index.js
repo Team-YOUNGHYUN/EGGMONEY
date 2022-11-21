@@ -35,12 +35,12 @@ const routes = [
   },
   {
     path: "/quest",
-    component: QuestDetail,
+    component: QuestRegist,
     children: [
       {
         path: "regist",
-        name: "QuestRegist",
-        component: QuestRegist,
+        name: "QuestDetail",
+        component: QuestDetail,
       },
     ],
   },
