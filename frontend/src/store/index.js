@@ -37,21 +37,17 @@ export default new Vuex.Store({
     CHECK_EMAIL(state, payload) {
       if (payload === 0) {
         state.isUnqEmail = true;
-        alert("사용 가능한 이메일입니다.");
         return;
       }
       state.isUnqEmail = false;
-      alert("이미 존재하는 이메일입니다.");
       return;
     },
     CHECK_NICKNAME(state, payload) {
       if (payload === 0) {
         state.isUnqNickname = true;
-        alert("사용 가능한 닉네임입니다.");
         return;
       }
       state.isUnqNickname = false;
-      alert("이미 존재하는 닉네임입니다.");
       return;
     },
     QUESTION_LIST(state, payload) {
@@ -69,7 +65,7 @@ export default new Vuex.Store({
       const API_URL = `${REST_API}/user`;
       let params = null;
       if (user) params = user;
-      axios({
+      return axios({
         url: API_URL,
         method: "POST",
         params: params,
@@ -85,7 +81,7 @@ export default new Vuex.Store({
     },
     checkEmail({ commit }, email) {
       const API_URL = `${REST_API}/check/email=${email}`;
-      axios({
+      return axios({
         url: API_URL,
         method: "GET",
       })
@@ -98,7 +94,7 @@ export default new Vuex.Store({
     },
     checkNickname({ commit }, nickname) {
       const API_URL = `${REST_API}/check/nickname=${nickname}`;
-      axios({
+      return axios({
         url: API_URL,
         method: "GET",
       })
@@ -111,7 +107,7 @@ export default new Vuex.Store({
     },
     questionList({ commit }) {
       const API_URL = `${REST_API}/question`;
-      axios({
+      return axios({
         url: API_URL,
         method: "GET",
       })
@@ -124,7 +120,7 @@ export default new Vuex.Store({
     },
     getUserInfo({commit}, loginUserSeq){
       const API_URL = `${REST_API}/user/${loginUserSeq}`
-      axios({
+      return axios({
         url: API_URL,
         method: "GET",
       })
@@ -135,6 +131,23 @@ export default new Vuex.Store({
         console.log(err);
       })
     },
+    updateUser({commit}, user){
+      const API_URL = `${REST_API}/user`
+      console.log(user);
+      return axios({
+        url: API_URL,
+        method: "PUT",
+        params: user,
+      })
+      .then(()=>{
+        commit();
+        alert("회원 정보가 수정되었습니다.")
+      })
+      .catch((err)=>{
+        alert("오류가 발생했습니다.")
+        console.log(err);
+      })
+    }
   },
   modules: {},
 });
