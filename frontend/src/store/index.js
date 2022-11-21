@@ -10,13 +10,15 @@ const REST_API = `http://localhost:9999/api`;
 
 export default new Vuex.Store({
   state: {
-    user: {},
-    loginUser: null,
+    loginUser: {},
     isUnqEmail: "",
     isUnqNickname: "",
     questionList: [],
   },
   getters: {
+    getLoginUser(state){
+      return state.loginUser;
+    },
     getIsUnqEmail(state) {
       return state.isUnqEmail;
     },
@@ -54,6 +56,9 @@ export default new Vuex.Store({
     },
     QUESTION_LIST(state, payload) {
       state.questionList = payload;
+    },
+    GET_USER_INFO(state, payload){
+      state.loginUser = payload;
     },
   },
   actions: {
@@ -116,6 +121,19 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
+    },
+    getUserInfo({commit}, loginUserSeq){
+      const API_URL = `${REST_API}/user/${loginUserSeq}`
+      axios({
+        url: API_URL,
+        method: "GET",
+      })
+      .then((res)=>{
+        commit("GET_USER_INFO", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
     },
   },
   modules: {},
