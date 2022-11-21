@@ -39,7 +39,7 @@
         height = #{height},
         weight = #{weight},
         body_fat = #{bodyFat},
-        muscle_mass = #{muscleMass}
+        muscle_mass = #{muscleMass},
         rprsn_achvm_id = #{rprsnAchvmId}
         WHERE seq = #{userSeq}
     </update>
