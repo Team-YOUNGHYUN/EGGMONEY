@@ -17,7 +17,7 @@ export default new Vuex.Store({
     ableModifyCnt: 3,
     records: [],
     exerciseParts: [],
-    exerciseNames: [],
+    exercises: [],
   },
   getters: {
     getLoginUser(state) {
@@ -44,8 +44,8 @@ export default new Vuex.Store({
     getExerciseParts(state){
       return state.exerciseParts;
     },
-    getExerciseNames(state){
-      return state.exerciseNames;
+    getExercises(state){
+      return state.exercises;
     },
   },
   mutations: {
@@ -83,7 +83,13 @@ export default new Vuex.Store({
     },
     GET_RECORD_LIST(state, payload){
       state.records = payload;
-    }
+    },
+    GET_EXERCISE_PART_LIST(state, payload){
+      state.exerciseParts = payload;
+    },
+    GET_EXERCISE_LIST(state, payload){
+      state.exercises = payload;
+    },
   },
   actions: {
     initIsUnq({ commit }) {
@@ -217,13 +223,37 @@ export default new Vuex.Store({
       })
       .then((res)=>{
         context.commit("GET_RECORD_LIST", res.data);
-        console.log(res.data);
       })
       .catch((err)=>{
         console.log(err);
       })
     },
-    
+    getExercisePartList(context){
+      const API_URL = `${REST_API}/exercise/part`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+      .then((res)=>{
+        context.commit("GET_EXERCISE_PART_LIST", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
+    getExerciseList(context){
+      const API_URL = `${REST_API}/exercise`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+      .then((res)=>{
+        context.commit("GET_EXERCISE_LIST", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
   },
   modules: {},
 });
