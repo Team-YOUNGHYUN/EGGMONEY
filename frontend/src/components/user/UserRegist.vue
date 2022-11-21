@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <h1>회원가입 페이지이다.</h1>
-    <h2 class="title">회원 가입</h2>
-    <fieldset class="text-center">
+    <fieldset class="required-input">
+      <legend>필수 입력사항</legend>
+
       <label for="email">이메일</label>
       <input type="email" id="email" v-model="email" class="view" />
       <button @click="checkEmail">중복확인</button><br />
@@ -80,8 +81,10 @@
         <label for="female">여성</label>
       </div>
       <br />
-
-      <br />
+    </fieldset>
+    <br/>
+    <fieldset class="optional">
+      <legend>선택 입력사항</legend>
       <label for="height">키</label>
       <input type="number" id="height" v-model="height" class="view" /><br />
       <label for="weight">몸무게</label>
