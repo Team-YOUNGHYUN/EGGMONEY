@@ -2,18 +2,34 @@
   <div class="container">
     <h1 class="quest-title">목표 관리</h1>
     <br />
+    <!-- get data from loginUser data -->
     <h2 class="title">현재 신체 정보</h2>
     <label for="height">키</label>
-    <input type="number" id="height" v-model="height" class="view" /><br />
+    <input
+      type="number"
+      id="height"
+      v-model="getLoginUser.height"
+      class="view"
+    /><br />
     <label for="weight">몸무게</label>
-    <input type="number" id="weight" v-model="weight" class="view" /><br />
+    <input
+      type="number"
+      id="weight"
+      v-model="getLoginUser.weight"
+      class="view"
+    /><br />
     <label for="bodyFat">체지방률</label>
-    <input type="number" id="bodyFat" v-model="bodyFat" class="view" /><br />
+    <input
+      type="number"
+      id="bodyFat"
+      v-model="getLoginUser.bodyFat"
+      class="view"
+    /><br />
     <label for="muscleMass">골격근량</label>
     <input
       type="number"
       id="muscleMass"
-      v-model="muscleMass"
+      v-model="getLoginUser.muscleMass"
       class="view"
     /><br /><br /><br />
 
@@ -25,15 +41,15 @@
       <br />
       <b-form-group>
         <br />
-        <b-form-radio v-model="selected" value="weight">
+        <b-form-radio v-model="selected" value="goalWeight">
           <label for="weight">체중(kg)</label>
           <input type="number" id="weigth" v-model="weight" class="view" />
         </b-form-radio>
-        <b-form-radio v-model="selected" value="bodyFat">
+        <b-form-radio v-model="selected" value="goalBodyFat">
           <label for="bodyFat">체지방률(%)</label>
           <input type="number" id="bodyFat" v-model="bodyFat" class="view" />
         </b-form-radio>
-        <b-form-radio v-model="selected" value="muscleMass">
+        <b-form-radio v-model="selected" value="goalMuscleMass">
           <label for="muscleMass">골격근량(kg)</label>
           <input
             type="number"
@@ -46,22 +62,23 @@
     </fieldset>
     <br />
 
-    <!-- checkbox for modification cnt -->
+    <!-- checkbox for modification confirmation -->
     <b-form-checkbox
       id="check-update"
-      v-model="modifyCnt"
       name="check-update"
       value="agree"
       unchecked-value="disagree"
     >
-      목표 변경 가능 횟수 : {{ modifyCnt }}회
+      목표 변경 가능 횟수 : {{ getModifyCnt }}회
     </b-form-checkbox>
     <br />
-    <b-button>수정</b-button>
+    <b-button @click="modifyCnt">수정</b-button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "QuestRegist",
   data() {
@@ -70,7 +87,6 @@ export default {
       weight: 0,
       bodyFat: 0,
       muscleMass: 0,
-      modifyCnt: 3,
       dueDate: "",
       goalWeight: 0,
       goalBodyFat: 0,
@@ -78,7 +94,28 @@ export default {
       selected: "",
     };
   },
+  computed: {
+    ...mapGetters(["getLoginUser", "getModifyCnt"]),
+  },
+  created() {
+    this.$store.dispatch("getUserInfo", 9);
+  },
+  methods: {
+    modifyCnt() {
+      this.$store.dispatch("modifyCnt");
+    },
+  },
 };
 </script>
 
-<style></style>
+<style>
+.container {
+  /* margin-top: 70px;
+    padding-top: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px; */
+  background: gray;
+  color: white;
+}
+</style>

@@ -14,9 +14,10 @@ export default new Vuex.Store({
     isUnqEmail: "",
     isUnqNickname: "",
     questionList: [],
+    ableModifyCnt: 3,
   },
   getters: {
-    getLoginUser(state){
+    getLoginUser(state) {
       return state.loginUser;
     },
     getIsUnqEmail(state) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     getQuestionList(state) {
       return state.questionList;
+    },
+    getModifyCnt(state) {
+      return state.ableModifyCnt;
     },
   },
   mutations: {
@@ -57,8 +61,11 @@ export default new Vuex.Store({
     QUESTION_LIST(state, payload) {
       state.questionList = payload;
     },
-    GET_USER_INFO(state, payload){
+    GET_USER_INFO(state, payload) {
       state.loginUser = payload;
+    },
+    MODIFY_CNT(state) {
+      state.ableModifyCnt -= 1;
     },
   },
   actions: {
@@ -122,18 +129,21 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    getUserInfo({commit}, loginUserSeq){
-      const API_URL = `${REST_API}/user/${loginUserSeq}`
+    getUserInfo({ commit }, loginUserSeq) {
+      const API_URL = `${REST_API}/user/${loginUserSeq}`;
       axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        commit("GET_USER_INFO", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          commit("GET_USER_INFO", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    modifyCnt({ commit }) {
+      commit("MODIFY_CNT");
     },
   },
   modules: {},
