@@ -4,7 +4,8 @@
       <div><router-link to="/">EGGM🍳NEY</router-link></div>
       <div>
         <router-link to="/login">Login</router-link> |
-        <router-link to="/quest">Quest</router-link>
+        <router-link to="/quest">Quest</router-link> |
+        <router-link to="/diary">Diary</router-link>
       </div>
     </nav>
   </header>

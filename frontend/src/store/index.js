@@ -15,6 +15,9 @@ export default new Vuex.Store({
     isUnqNickname: "",
     questionList: [],
     ableModifyCnt: 3,
+    records: [],
+    exerciseParts: [],
+    exerciseNames: [],
   },
   getters: {
     getLoginUser(state) {
@@ -34,6 +37,15 @@ export default new Vuex.Store({
     },
     getQuest(state) {
       return state.quest;
+    },
+    getRecords(state){
+      return state.records;
+    },
+    getExerciseParts(state){
+      return state.exerciseParts;
+    },
+    getExerciseNames(state){
+      return state.exerciseNames;
     },
   },
   mutations: {
@@ -69,6 +81,9 @@ export default new Vuex.Store({
     GET_QUEST(state, payload) {
       state.quest = payload;
     },
+    GET_RECORD_LIST(state, payload){
+      state.records = payload;
+    }
   },
   actions: {
     initIsUnq({ commit }) {
@@ -180,7 +195,6 @@ export default new Vuex.Store({
     },
     updateUser(context, user) {
       const API_URL = `${REST_API}/user`;
-      console.log(user);
       return axios({
         url: API_URL,
         method: "PUT",
@@ -194,6 +208,22 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    getRecordList(context, params){
+      const API_URL = `${REST_API}/record`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+        params: params,
+      })
+      .then((res)=>{
+        context.commit("GET_RECORD_LIST", res.data);
+        console.log(res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
+    
   },
   modules: {},
 });
