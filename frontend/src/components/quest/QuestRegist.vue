@@ -15,7 +15,7 @@
       id="muscleMass"
       v-model="muscleMass"
       class="view"
-    /><br />
+    /><br /><br /><br />
 
     <!-- actual quest updates are made here -->
     <h2 class="title">목표 설정</h2>
@@ -23,7 +23,8 @@
       <label form="dueDate">목표 날짜</label>
       <input type="date" id="dueDate" v-model="dueDate" class="view" />
       <br />
-      <b-form-group label="goal radios">
+      <b-form-group>
+        <br />
         <b-form-radio v-model="selected" value="weight">
           <label for="weight">체중(kg)</label>
           <input type="number" id="weigth" v-model="weight" class="view" />
@@ -53,9 +54,10 @@
       value="agree"
       unchecked-value="disagree"
     >
-      목표 변경 가능 횟수 :
+      목표 변경 가능 횟수 : {{ modifyCnt }}회
     </b-form-checkbox>
-    <div>{{ modifyCnt }}회</div>
+    <br />
+    <b-button>수정</b-button>
   </div>
 </template>
 
