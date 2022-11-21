@@ -125,8 +125,8 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    getUserInfo({commit}, loginUserSeq){
-      const API_URL = `${REST_API}/user/${loginUserSeq}`
+    getUserInfo({ commit }, loginUserSeq) {
+      const API_URL = `${REST_API}/user/${loginUserSeq}`;
       return axios({
         url: API_URL,
         method: "GET",
@@ -177,22 +177,22 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    updateUser(context, user){
-      const API_URL = `${REST_API}/user`
+    updateUser(context, user) {
+      const API_URL = `${REST_API}/user`;
       console.log(user);
       return axios({
         url: API_URL,
         method: "PUT",
         params: user,
       })
-      .then(()=>{
-        alert("회원 정보가 수정되었습니다.")
-      })
-      .catch((err)=>{
-        alert("오류가 발생했습니다.")
-        console.log(err);
-      })
-    }
+        .then(() => {
+          alert("회원 정보가 수정되었습니다.");
+        })
+        .catch((err) => {
+          alert("오류가 발생했습니다.");
+          console.log(err);
+        });
+    },
   },
   modules: {},
 });
