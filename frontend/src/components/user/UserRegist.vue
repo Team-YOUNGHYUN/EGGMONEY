@@ -39,7 +39,7 @@
       <select v-model="pwFindQuestionId" id="pwFindQuestionId">
       <option value="" disabled>질문을 선택하세요.</option>
       <option
-        v-for="item in this.$store.getters.getQuestionList"
+        v-for="item in this.getQuestionList"
         :key="item.question"
         :value="item.id"
         >{{ item.question }}
@@ -92,17 +92,11 @@ export default {
             point: 0,
             rprsnAchvmId: 0,
             confirmPassword: "",
-
-            // questionList: [
-            //     { name: "질문을 선택하세요.", value: ""  },
-            //     { name: "가장 기억에 남는 날은 언제인가요?", value: 1},
-            // ],
-            // questionList = this.$store.questionList,
   
         }
     },
     computed:{
-        ...mapGetters(["getIsUnqEmail"]),
+        ...mapGetters(["getIsUnqEmail", "getIsUnqNickname", "getQuestionList"]),
     },
     methods:{
         regist(){
@@ -122,7 +116,7 @@ export default {
             }
 
             // 이메일 중복확인 완료여부 확인
-            if(!this.$store.state.isUnqEmail) {
+            if(!this.getIsUnqEmail) {
                 alert("이메일 중복확인 여부를 확인해주세요.");
                 return;
             }
@@ -134,7 +128,7 @@ export default {
             }
 
             // 닉네임 중복확인 완료여부 확인
-            if(!this.$store.state.isUnqNickname) {
+            if(!this.getIsUnqNickname) {
                 alert("닉네임 중복확인 여부를 확인해주세요.");
                 return;
             }
@@ -166,13 +160,6 @@ export default {
             }
             this.$store.dispatch("checkEmail", this.email);
             
-// 이렇게 사용하면 state가 바뀐 내용이 한박자씩 늦게 적용이 된다.(질문예정)
-            // if(this.getIsUnqEmail){
-            //     alert("사용 가능한 이메일입니다.");
-            //     return;
-            // }
-            // alert("이미 존재하는 이메일입니다.");
-            // return;
         },
         checkNickname(){
             // 닉네임 중복 검사
@@ -188,7 +175,7 @@ export default {
     },
     created(){
         this.$store.dispatch("initIsUnq");
-        this.getQuestionList();
+        this.$store.dispatch("questionList");
     },
 }
 </script>
