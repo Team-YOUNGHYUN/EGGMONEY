@@ -42,21 +42,16 @@
       <b-form-group>
         <br />
         <b-form-radio v-model="selected" value="goalWeight">
-          <label for="weight">체중(kg)</label>
-          <input type="number" id="weigth" v-model="weight" class="view" />
+          <label for="goalWeight">체중(kg)</label>
+          <input type="number" id="goalWeigth" class="view" />
         </b-form-radio>
         <b-form-radio v-model="selected" value="goalBodyFat">
-          <label for="bodyFat">체지방률(%)</label>
-          <input type="number" id="bodyFat" v-model="bodyFat" class="view" />
+          <label for="goalBodyFat">체지방률(%)</label>
+          <input type="number" id="goalBodyFat" class="view" />
         </b-form-radio>
         <b-form-radio v-model="selected" value="goalMuscleMass">
-          <label for="muscleMass">골격근량(kg)</label>
-          <input
-            type="number"
-            id="muscleMass"
-            v-model="muscleMass"
-            class="view"
-          />
+          <label for="goalMuscleMass">골격근량(kg)</label>
+          <input type="number" id="goalMuscleMass" class="view" />
         </b-form-radio>
       </b-form-group>
     </fieldset>
@@ -72,7 +67,7 @@
       목표 변경 가능 횟수 : {{ getModifyCnt }}회
     </b-form-checkbox>
     <br />
-    <b-button @click="modifyCnt">수정</b-button>
+    <b-button @click="modifyCnt, checkUpdate">수정</b-button>
   </div>
 </template>
 
@@ -103,6 +98,9 @@ export default {
   methods: {
     modifyCnt() {
       this.$store.dispatch("modifyCnt");
+    },
+    checkUpdate() {
+      // 수정에 동의하는 checkbox가 check 되었는지 확인
     },
   },
 };
