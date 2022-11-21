@@ -33,7 +33,7 @@
       disabled
     /><br /><br /><br />
 
-    <!-- 목표 설정 및 등록 -->
+    <!-- 목표 설정 및 변경 -->
     <h2 class="title">목표 설정</h2>
     <fieldset class="text-center">
       <label form="dueDate">목표 날짜</label>
@@ -57,7 +57,17 @@
     </fieldset>
     <br />
 
-    <b-button @click="registQuest">등록</b-button>
+    <!-- 변경 사항 확인을 위한 checkbox -->
+    <b-form-checkbox
+      id="check-update"
+      name="check-update"
+      value="agree"
+      unchecked-value="disagree"
+    >
+      목표 변경 가능 횟수 : {{ getModifyCnt }}회
+    </b-form-checkbox>
+    <br />
+    <b-button @click="modifyCnt, update">수정</b-button>
   </div>
 </template>
 
@@ -72,29 +82,32 @@ export default {
       weight: 0,
       bodyFat: 0,
       muscleMass: 0,
-      dueDate: 0,
+      dueDate: "",
       selected: "",
-      goal: 0,
-      userSeq: 0,
+      goal: "",
+      userSeq: "",
     };
   },
   computed: {
-    ...mapGetters(["getLoginUser"]),
+    ...mapGetters(["getLoginUser", "getModifyCnt"]),
   },
   created() {
     this.$store.dispatch("getUserInfo", 9);
   },
   methods: {
-    registQuest() {
+    modifyCnt() {
+      this.$store.dispatch("modifyCnt");
+    },
+    update() {
       let quest = {
-        id: 0,
+        id: this.id,
         dueDate: this.dueDate,
         type: this.selected, // select된 radio의 value를 저장
         goal: this.goal,
         modifyCnt: this.getModifyCnt,
         userSeq: this.getLoginUser.userSeq,
       };
-      this.$store.dispatch("registQuest", quest);
+      this.$store.dispatch("updateQuest", quest);
     },
   },
 };

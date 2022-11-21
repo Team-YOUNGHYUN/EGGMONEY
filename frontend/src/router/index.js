@@ -5,8 +5,9 @@ import UserView from "../views/UserView.vue";
 import LoginForm from "../components/LoginForm.vue";
 import UserRegist from "../components/user/UserRegist.vue";
 import UserDetail from "../components/user/UserDetail.vue";
-import QuestRegist from "../components/quest/QuestRegist.vue";
 import QuestDetail from "../components/quest/QuestDetail.vue";
+import QuestRegist from "../components/quest/QuestRegist.vue";
+import QuestUpdate from "../components/quest/QuestUpdate.vue";
 
 Vue.use(VueRouter);
 
@@ -35,23 +36,19 @@ const routes = [
   },
   {
     path: "/quest",
-    component: QuestRegist,
+    component: QuestDetail,
     children: [
       {
         path: "regist",
-        name: "QuestDetail",
-        component: QuestDetail,
+        name: "QuestRegist",
+        component: QuestRegist,
+      },
+      {
+        path: "update",
+        name: "QuestUpdate",
+        component: QuestUpdate,
       },
     ],
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
 ];
 
