@@ -1,16 +1,12 @@
 <template>
   <div class="user">
-     <img alt="Vue logo" src="../assets/logo.png">
-    <router-view/>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <router-view />
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>
