@@ -25,6 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 
+    // For JWT Use
     // 아래는 JwtInterceptor 등록
 //    @Autowired
 //    private JwtInterceptor jwtInterceptor;
