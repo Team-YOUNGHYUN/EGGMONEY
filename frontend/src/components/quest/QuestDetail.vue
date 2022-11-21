@@ -3,26 +3,30 @@
     <h1 class="quest-title">목표 관리</h1>
     <br />
     <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
-    <h2 class="title">현재 신체 정보</h2>
+    <legend>현재 신체 정보</legend>
     <label for="height">키(cm)</label>
     <input
       type="number"
-      id="height"
+      id="userHeight"
       v-model="getLoginUser.height"
+      class="view"
       disabled
     /><br />
+
     <label for="weight">몸무게(kg)</label>
     <input
       type="number"
-      id="weight"
+      id="userWeight"
       v-model="getLoginUser.weight"
+      class="view"
       disabled
     /><br />
     <label for="bodyFat">체지방률(%)</label>
     <input
       type="number"
-      id="bodyFat"
+      id="userBodyFat"
       v-model="getLoginUser.bodyFat"
+      class="view"
       disabled
     /><br />
     <label for="muscleMass">골격근량(kg)</label>
@@ -30,12 +34,13 @@
       type="number"
       id="muscleMass"
       v-model="getLoginUser.muscleMass"
+      class="view"
       disabled
     /><br /><br /><br />
 
     <!-- 목표 설정 및 등록 -->
-    <h2 class="title">목표 설정</h2>
     <fieldset class="text-center">
+      <legend>목표 설정</legend>
       <label form="dueDate">목표 날짜</label>
       <input
         type="date"
@@ -45,47 +50,81 @@
         disabled
       />
       <br />
+
+      <!--
+      <div id="gender" v-if="(getLoginUser.gender = 'male')">
+        <input
+          type="radio"
+          id="male"
+          value="male"
+          class="view"
+          disabled
+          checked
+        />
+        <label for="male">남성</label>
+        <input
+          type="radio"
+          id="female"
+          value="female"
+          class="view"
+          style="margin-left: 7px"
+          disabled
+        />
+        <label for="female">여성</label>
+      </div>
+      <div id="gender" v-else>
+        <input type="radio" id="male" value="male" class="view" disabled />
+        <label for="male">남성</label>
+        <input
+          type="radio"
+          id="female"
+          value="female"
+          class="view"
+          style="margin-left: 7px"
+          disabled
+          checked
+        />
+        <label for="female">여성</label>
+      </div>
+      -->
+
       <!-- 첫 번째: 체중 -->
-      <div v-if="(getQuest.type = 1)">
-        <br />
-        <b-form-radio v-model="selected" value="goalWeight" disabled>
-          <label for="goalWeight">체중(kg)</label>
-          <input
-            type="number"
-            id="goalWeigth"
-            v-model="getQuest.goal"
-            class="view"
-            disabled
-          />
-        </b-form-radio>
+      <div id="quest-type" v-if="(getQuest.type = 1)">
+        <label for="goalWeight">체중(kg)</label>
+        <input
+          type="number"
+          id="goalWeight"
+          v-model="getQuest.weight"
+          class="view"
+          disabled
+          checked
+        />
       </div>
       <!-- 두 번째: 체지방률 -->
-      <div v-else-if="(getQuest.type = 2)">
+      <div id="quest-type" v-else-if="(getQuest.type = 2)">
         <br />
-        <b-form-radio v-model="selected" value="goalBodyFat" disabled>
-          <label for="goalBodyFat">체지방률(%)</label>
-          <input
-            type="number"
-            id="goalBodyFat"
-            v-model="getQuest.goal"
-            class="view"
-            disabled
-          />
-        </b-form-radio>
+        <label for="goalBodyFat">체지방률(%)</label>
+        <input
+          type="number"
+          id="goalBodyFat"
+          v-model="getQuest.bodyFat"
+          class="view"
+          disabled
+          checked
+        />
       </div>
       <!-- 세 번째: 골격근량 -->
       <div v-else-if="(getQuest.type = 3)">
         <br />
-        <b-form-radio v-model="selected" value="goalMuscleMass" disabled>
-          <label for="goalMuscleMass">골격근량(kg)</label>
-          <input
-            type="number"
-            id="goalMuscleMass"
-            v-model="getQuest.goal"
-            class="view"
-            disabled
-          />
-        </b-form-radio>
+        <label for="goalMuscleMass">골격근량(kg)</label>
+        <input
+          type="number"
+          id="goalMuscleMass"
+          v-model="getQuest.muscleMass"
+          class="view"
+          disabled
+          checked
+        />
       </div>
     </fieldset>
     <button @click="test">테스트</button>
