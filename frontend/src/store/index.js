@@ -17,9 +17,15 @@ export default new Vuex.Store({
     questionList: [],
   },
   getters: {
-    getIsUnqEmail: (state) => state.isUnqEmail,
-    getIsUnqNickname: (state) => state.isUnqNickname,
-    getQuestionList: (state) => state.questionList,
+    getIsUnqEmail(state) {
+      return state.isUnqEmail;
+    },
+    getIsUnqNickname(state) {
+      return state.isUnqNickname;
+    },
+    getQuestionList(state) {
+      return state.questionList;
+    },
   },
   mutations: {
     INIT_ISUNQ(state) {
