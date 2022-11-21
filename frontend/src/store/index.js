@@ -177,7 +177,7 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    updateUser({ commit }, user) {
+    updateUser(context, user) {
       const API_URL = `${REST_API}/user`;
       console.log(user);
       return axios({
@@ -186,7 +186,6 @@ export default new Vuex.Store({
         params: user,
       })
         .then(() => {
-          commit();
           alert("회원 정보가 수정되었습니다.");
         })
         .catch((err) => {
