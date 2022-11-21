@@ -82,7 +82,7 @@
       </div>
       <br />
     </fieldset>
-    <br/>
+    <br />
     <fieldset class="optional">
       <legend>선택 입력사항</legend>
       <label for="height">키</label>

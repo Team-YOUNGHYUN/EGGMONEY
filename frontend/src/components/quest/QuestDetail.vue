@@ -45,7 +45,7 @@
       </b-form-group>
     </fieldset>
     <br />
-    <b-button>수정</b-button>
+    <b-button> <router-link to="/quest/regist">수정</router-link> </b-button>
   </div>
 </template>
 
@@ -55,4 +55,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container {
+  /* margin-top: 70px;
+    padding-top: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px; */
+  background: gray;
+  color: white;
+}
+</style>
