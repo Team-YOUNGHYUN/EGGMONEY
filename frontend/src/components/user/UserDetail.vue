@@ -241,10 +241,12 @@ export default {
         .then(() => {
           if (this.getIsUnqNickname) {
             alert("사용 가능한 닉네임입니다.");
+            return;
           }
+          alert("이미 존재하는 닉네임입니다.");
         })
         .catch(() => {
-          alert("이미 존재하는 닉네임입니다.");
+          alert("오류가 발생했습니다.");
         });
     },
   },
