@@ -36,19 +36,18 @@ const routes = [
   },
   {
     path: "/quest",
+    name: "QuestDetail",
     component: QuestDetail,
-    children: [
-      {
-        path: "regist",
-        name: "QuestRegist",
-        component: QuestRegist,
-      },
-      {
-        path: "update",
-        name: "QuestUpdate",
-        component: QuestUpdate,
-      },
-    ],
+  },
+  {
+    path: "/quest/regist",
+    name: "QuestRegist",
+    component: QuestRegist,
+  },
+  {
+    path: "/quest/update",
+    name: "QuestUpdate",
+    component: QuestUpdate,
   },
 ];
 

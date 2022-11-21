@@ -87,7 +87,7 @@ export default {
   methods: {
     registQuest() {
       let quest = {
-        id: 0,
+        id: this.getLoginUser.id,
         dueDate: this.dueDate,
         type: this.selected, // select된 radio의 value를 저장
         goal: this.goal,
