@@ -130,14 +130,14 @@ export default {
     ...mapGetters(["getIsUnqEmail", "getIsUnqNickname", "getQuestionList"]),
   },
   methods: {
-    regist() {
+    async regist() {
       // 필수 입력사항 전부 입력하였는지 확인
       if (
         this.email === "" ||
         this.password === "" ||
         this.confirmPassword === "" ||
         this.name === "" ||
-        this.nickname.length === "" ||
+        this.nickname === "" ||
         this.pwFindQuestionId === "" ||
         this.pwFindAnswer === "" ||
         this.gender === ""
@@ -151,6 +151,11 @@ export default {
         alert("이메일 중복확인 여부를 확인해주세요.");
         return;
       }
+      await this.$store.dispatch("checkEmail", this.getLoginUser.email);
+      if (!this.getIsUnqEmail) {
+        alert("이메일 중복확인 여부를 확인해주세요.");
+        return;
+      }
 
       // 비밀번호 확인 완료여부 확인
       if (this.password !== this.confirmPassword) {
@@ -160,6 +165,11 @@ export default {
 
       // 닉네임 중복확인 완료여부 확인
       if (!this.getIsUnqNickname) {
+        alert("닉네임 중복확인 여부를 확인해주세요.");
+        return;
+      }
+      await this.$store.dispatch("checkNickname", this.getLoginUser.nickname);
+      if (!this.getIsUnqNickname){
         alert("닉네임 중복확인 여부를 확인해주세요.");
         return;
       }
@@ -189,7 +199,15 @@ export default {
         alert("내용을 입력해주세요.");
         return;
       }
-      this.$store.dispatch("checkEmail", this.email);
+      this.$store.dispatch("checkEmail", this.email)
+      .then(() => {
+        if(this.getIsUnqEmail){
+          alert("사용 가능한 이메일입니다.");
+        }
+      })
+      .catch(()=>{
+        alert("이미 존재하는 이메일입니다.");
+      });
     },
     checkNickname() {
       // 닉네임 중복 검사
@@ -197,7 +215,15 @@ export default {
         alert("내용을 입력해주세요.");
         return;
       }
-      this.$store.dispatch("checkNickname", this.nickname);
+      this.$store.dispatch("checkNickname", this.nickname)
+      .then(() => {
+        if(this.getIsUnqNickname){
+          alert("사용 가능한 닉네임입니다.");
+        }
+      })
+      .catch(()=>{
+        alert("이미 존재하는 닉네임입니다.");
+      });
     },
     getQuestionList() {
       this.$store.dispatch("questionList");
