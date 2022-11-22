@@ -1,12 +1,21 @@
 <template>
   <div class="diary">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <router-view />
+    <h1>EGG DIARY</h1>
+    <calendar-detail />
+    <diary-detail />
   </div>
 </template>
 
 <script>
-export default {};
+import CalendarDetail from "@/components/diary/CalendarDetail.vue";
+import DiaryDetail from "@/components/diary/DiaryDetail.vue";
+
+export default {
+  components: {
+    CalendarDetail,
+    DiaryDetail,
+  },
+};
 </script>
 
 <style></style>
