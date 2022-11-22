@@ -9,8 +9,9 @@ const REST_API = `http://localhost:9999/api`;
 
 export default new Vuex.Store({
   state: {
-    currUser: null,
     user: {},
+    checkPassword: "",
+    checkPwFindAnswer: "",
     quest: {},
     isUnqEmail: "",
     isUnqNickname: "",
@@ -21,9 +22,6 @@ export default new Vuex.Store({
     exercises: [],
   },
   getters: {
-    getCurrUser(state){
-      return state.currUser;
-    },
     getUser(state) {
       return state.user;
     },
@@ -51,6 +49,9 @@ export default new Vuex.Store({
     getExercises(state){
       return state.exercises;
     },
+    getCheckPassword(state){
+      return state.checkPassword;
+    }
   },
   mutations: {
     INIT_ISUNQ(state) {
@@ -76,9 +77,6 @@ export default new Vuex.Store({
     QUESTION_LIST(state, payload) {
       state.questionList = payload;
     },
-    SET_USER(state, payload) {
-      state.user = payload;
-    },
     MODIFY_CNT(state) {
       state.ableModifyCnt -= 1;
     },
@@ -94,11 +92,11 @@ export default new Vuex.Store({
     GET_EXERCISE_LIST(state, payload){
       state.exercises = payload;
     },
-    SET_USER_BY_EMAIL(state, payload){
+    SET_USER(state, payload) {
       state.user = payload;
     },
-    SET_CURR_USER(state, payload){
-      state.currUser = payload;
+    CHECK_PASSWORD(state, payload) {
+      state.checkPassword = payload;
     },
   },
   actions: {
@@ -157,19 +155,6 @@ export default new Vuex.Store({
       })
         .then((res) => {
           commit("QUESTION_LIST", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    setUser({ commit }, userSeq) {
-      const API_URL = `${REST_API}/user/${userSeq}`;
-      return axios({
-        url: API_URL,
-        method: "GET",
-      })
-        .then((res) => {
-          commit("SET_USER", res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -278,8 +263,32 @@ export default new Vuex.Store({
         console.log(err);
       })
     },
-    setCurrUser(context){
-      context.commit("SET_CURR_USER", JSON.parse(window.sessionStorage.getItem("user")));
+    setUser(context, email){
+      const API_URL = `${REST_API}/user/${email}`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+      .then((res)=>{
+        context.commit("SET_USER", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
+    checkPassword(context, params){
+      const API_URL = `${REST_API}/check/password`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+        params: params,
+      })
+      .then((res)=>{
+        context.commit("CHECK_PASSWORD", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
     },
     
   },

@@ -11,6 +11,7 @@
         id="password"
         v-model="password"
         class="view"
+        @keyup.enter="doLogin"
       /><br />
     </fieldset>
     <div id="button">
@@ -33,10 +34,11 @@ export default {
     }
   },
   computed:{
-    ...mapGetters(["getCurrUser","getUser"])
+    ...mapGetters(["getUser", "getCheckPassword"])
   },
   methods:{
     async doLogin(){
+      // 0. 공백 검사
       if(this.email===""){
         alert("이메일을 입력하세요.");
         return;
@@ -46,19 +48,22 @@ export default {
         return;
       }
 
-      // 1. 이메일에 해당하는 객체가
-
+      // 1. 이메일, 비밀번호가 일치하는 user 객체의 개수 불러오기
       let params = {
         email: this.email,
         password: this.password,
       }
-      await this.$store.dispatch("loginCheck", params);
-      if(this.password !== this.getUser.password){
+      await this.$store.dispatch("checkPassword", params);
+
+      // 2-1. 해당하는 user 객체가 없으면 로그인 불가
+      if(this.getCheckPassword === 0){
         alert("이메일 또는 비밀번호를 잘못 입력했습니다.");
         return;
       }
+      
+      // 2-2. 해당하는 user 객체가 있으면 세션스토리지에 user 객체 저장
+      await this.$store.dispatch("setUser", this.email);
       await window.sessionStorage.setItem("user", JSON.stringify(this.getUser));
-      await this.$store.dispatch("setCurrUser");
       router.push("/");
     }
   },
