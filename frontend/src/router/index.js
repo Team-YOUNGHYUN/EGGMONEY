@@ -26,8 +26,8 @@ const routes = [
     component: LoginView,
     children: [
       {
-        path: "", 
-        name: "LoginForm", 
+        path: "",
+        name: "LoginForm",
         component: LoginForm,
       },
       {
@@ -39,8 +39,8 @@ const routes = [
         path: "findpw",
         name: "FindPassword",
         component: FindPassword,
-      }
-    ]
+      },
+    ],
   },
   {
     path: "/user",
