@@ -10,7 +10,7 @@ const REST_API = `http://localhost:9999/api`;
 export default new Vuex.Store({
   state: {
     currUser: null,
-    loginUser: {},
+    user: {},
     quest: {},
     isUnqEmail: "",
     isUnqNickname: "",
@@ -24,8 +24,8 @@ export default new Vuex.Store({
     getCurrUser(state){
       return state.currUser;
     },
-    getLoginUser(state) {
-      return state.loginUser;
+    getUser(state) {
+      return state.user;
     },
     getIsUnqEmail(state) {
       return state.isUnqEmail;
@@ -76,8 +76,8 @@ export default new Vuex.Store({
     QUESTION_LIST(state, payload) {
       state.questionList = payload;
     },
-    GET_USER_INFO(state, payload) {
-      state.loginUser = payload;
+    SET_USER(state, payload) {
+      state.user = payload;
     },
     MODIFY_CNT(state) {
       state.ableModifyCnt -= 1;
@@ -95,7 +95,7 @@ export default new Vuex.Store({
       state.exercises = payload;
     },
     SET_USER_BY_EMAIL(state, payload){
-      state.loginUser = payload;
+      state.user = payload;
     },
     SET_CURR_USER(state, payload){
       state.currUser = payload;
@@ -162,14 +162,14 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    getUserInfo({ commit }, loginUserSeq) {
-      const API_URL = `${REST_API}/user/${loginUserSeq}`;
+    setUser({ commit }, userSeq) {
+      const API_URL = `${REST_API}/user/${userSeq}`;
       return axios({
         url: API_URL,
         method: "GET",
       })
         .then((res) => {
-          commit("GET_USER_INFO", res.data);
+          commit("SET_USER", res.data);
         })
         .catch((err) => {
           console.log(err);

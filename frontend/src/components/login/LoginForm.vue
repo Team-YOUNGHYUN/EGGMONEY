@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>이 줄부터 LoginForm 내용이다.</h1>
+    <h1>router: 여기부터 LoginForm 영역이다!</h1>
     <h2 class="title">로그인</h2>
     <fieldset class="text-center">
       <label for="id">이메일</label>
@@ -33,7 +33,7 @@ export default {
     }
   },
   computed:{
-    ...mapGetters(["getCurrUser","getLoginUser"])
+    ...mapGetters(["getCurrUser","getUser"])
   },
   methods:{
     async doLogin(){
@@ -50,11 +50,11 @@ export default {
         password: this.password,
       }
       await this.$store.dispatch("loginCheck", params);
-      if(this.password !== this.getLoginUser.password){
+      if(this.password !== this.getUser.password){
         alert("이메일 또는 비밀번호를 잘못 입력했습니다.");
         return;
       }
-      await window.sessionStorage.setItem("user", JSON.stringify(this.getLoginUser));
+      await window.sessionStorage.setItem("user", JSON.stringify(this.getUser));
       await this.$store.dispatch("setCurrUser");
       router.push("/");
     }

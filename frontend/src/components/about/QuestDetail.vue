@@ -8,7 +8,7 @@
     <input
       type="number"
       id="userHeight"
-      v-model="getLoginUser.height"
+      v-model="getUser.height"
       class="view"
       disabled
     /><br />
@@ -17,7 +17,7 @@
     <input
       type="number"
       id="userWeight"
-      v-model="getLoginUser.weight"
+      v-model="getUser.weight"
       class="view"
       disabled
     /><br />
@@ -25,7 +25,7 @@
     <input
       type="number"
       id="userBodyFat"
-      v-model="getLoginUser.bodyFat"
+      v-model="getUser.bodyFat"
       class="view"
       disabled
     /><br />
@@ -33,7 +33,7 @@
     <input
       type="number"
       id="muscleMass"
-      v-model="getLoginUser.muscleMass"
+      v-model="getUser.muscleMass"
       class="view"
       disabled
     /><br /><br /><br />
@@ -115,7 +115,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getLoginUser", "getQuest"]),
+    ...mapGetters(["getUser", "getQuest"]),
   },
   created() {
     this.$store.dispatch("getUserInfo", 1);
@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     test() {
-      console.log(this.getLoginUser);
+      console.log(this.getUser);
       console.log(this.getQuest);
     },
     // getQuest() {
@@ -133,9 +133,9 @@ export default {
     //   type: this.selected,
     //   goal: this.goal,
     //   modifyCnt: this.getModifyCnt,
-    //   userSeq: this.getLoginUser.userSeq,
+    //   userSeq: this.getUser.userSeq,
     // };
-    // this.$store.dispatch("getQuest", this.getLoginUser.userSeq);
+    // this.$store.dispatch("getQuest", this.getUser.userSeq);
     // },
   },
 };

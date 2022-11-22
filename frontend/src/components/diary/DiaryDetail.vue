@@ -68,7 +68,7 @@ export default {
         };
     },
     computed:{
-        ...mapGetters(["getLoginUser","getRecords",
+        ...mapGetters(["getUser","getRecords",
         "getExerciseParts", "getExercises"])
     },
     methods:{
@@ -106,7 +106,7 @@ export default {
         this.$store.dispatch("getExerciseList");
         await this.$store.dispatch("getUserInfo", 11);
         let params ={
-            email: this.getLoginUser.email,
+            email: this.getUser.email,
             date: this.date,
         }
         this.$store.dispatch("getRecordList", params);

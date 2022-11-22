@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>router: 여기부터 RegistForm 영역이다!</h1>
     <h1>회원가입 페이지이다.</h1>
     <fieldset class="required-input">
       <legend>필수 입력사항</legend>
@@ -151,7 +152,7 @@ export default {
         alert("이메일 중복확인 여부를 확인해주세요.");
         return;
       }
-      await this.$store.dispatch("checkEmail", this.getLoginUser.email);
+      await this.$store.dispatch("checkEmail", this.getUser.email);
       if (!this.getIsUnqEmail) {
         alert("이메일 중복확인 여부를 확인해주세요.");
         return;
@@ -168,7 +169,7 @@ export default {
         alert("닉네임 중복확인 여부를 확인해주세요.");
         return;
       }
-      await this.$store.dispatch("checkNickname", this.getLoginUser.nickname);
+      await this.$store.dispatch("checkNickname", this.getUser.nickname);
       if (!this.getIsUnqNickname){
         alert("닉네임 중복확인 여부를 확인해주세요.");
         return;
