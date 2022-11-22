@@ -5,7 +5,8 @@
       <div>
         <router-link to="/login">Login</router-link> |
         <router-link to="/quest">Quest</router-link> |
-        <router-link to="/diary">Diary</router-link>
+        <router-link to="/diary">Diary</router-link> |
+        <router-link to="/calendar">Calendar</router-link>
       </div>
     </nav>
   </header>
