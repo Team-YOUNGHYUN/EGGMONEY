@@ -5,19 +5,9 @@
     <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
     <h2 class="title">현재 신체 정보</h2>
     <label for="height">키(cm)</label>
-    <input
-      type="number"
-      id="height"
-      v-model="getUser.height"
-      disabled
-    /><br />
+    <input type="number" id="height" v-model="getUser.height" disabled /><br />
     <label for="weight">몸무게(kg)</label>
-    <input
-      type="number"
-      id="weight"
-      v-model="getUser.weight"
-      disabled
-    /><br />
+    <input type="number" id="weight" v-model="getUser.weight" disabled /><br />
     <label for="bodyFat">체지방률(%)</label>
     <input
       type="number"
