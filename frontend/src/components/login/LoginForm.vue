@@ -45,6 +45,9 @@ export default {
         alert("비밀번호를 입력하세요.");
         return;
       }
+
+      // 1. 이메일에 해당하는 객체가
+
       let params = {
         email: this.email,
         password: this.password,

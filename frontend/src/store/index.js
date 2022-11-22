@@ -281,6 +281,7 @@ export default new Vuex.Store({
     setCurrUser(context){
       context.commit("SET_CURR_USER", JSON.parse(window.sessionStorage.getItem("user")));
     },
+    
   },
   modules: {},
 });
