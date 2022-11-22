@@ -5,6 +5,8 @@ import com.eggmoney.backend.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -19,8 +21,8 @@ public class UserServiceImpl implements UserService {
 
     // 사용자 상세
     @Override
-    public User userDetail(int userSeq) {
-        return userDao.userDetail(userSeq);
+    public User userDetail(String email) {
+        return userDao.userDetail(email);
     }
 
     // 사용자 수정
@@ -44,4 +46,25 @@ public class UserServiceImpl implements UserService {
     public int checkNickName(String nickname) {
         return userDao.checkNickname(nickname);
     }
+
+    @Override
+    public int checkPassword(HashMap<String, String> params) {
+        return userDao.checkPassword(params);
+    }
+
+    @Override
+    public int checkFindpw(HashMap<String, String> params) {
+        return userDao.checkFindpw(params);
+    }
+
+    @Override
+    public void updatePassword(HashMap<String, String> params){
+        userDao.updatePassword(params);
+    }
+
+    @Override
+    public void updateFindpw(HashMap<String, String> params) {
+        userDao.updateFindpw(params);
+    }
+
 }

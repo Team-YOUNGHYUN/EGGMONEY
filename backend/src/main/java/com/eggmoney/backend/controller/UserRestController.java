@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
@@ -17,11 +19,6 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
-    // 사용자 로그인: POST, (email, password) 필요
-    // 어디선가 사용자 seq 반환할 방법이 필요
-
-    // 사용자 로그아웃: POST
-
     // 사용자 등록
     @PostMapping("/user")
     public ResponseEntity<String> regist(User user){
@@ -30,9 +27,9 @@ public class UserRestController {
     }
 
     // 사용자 상세
-    @GetMapping("/user/{userSeq}")
-    public ResponseEntity<User> detail(@PathVariable int userSeq){
-        return new ResponseEntity<User>(userService.userDetail(userSeq), HttpStatus.OK);
+    @GetMapping("/user/{email}")
+    public ResponseEntity<User> detail(@PathVariable String email){
+        return new ResponseEntity<User>(userService.userDetail(email), HttpStatus.OK);
     }
 
     // 사용자 수정
@@ -60,5 +57,49 @@ public class UserRestController {
     public ResponseEntity<Integer> checkNickname(@PathVariable String nickname){
         return new ResponseEntity<Integer>(userService.checkNickName(nickname), HttpStatus.OK);
     }
+
+
+    // 비밀번호 일치 검사
+//    int checkPassword(HashMap<String, String> params);
+    @GetMapping("/check/password")
+    public ResponseEntity<Integer> checkPassword(String email, String password){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        return new ResponseEntity<Integer>(userService.checkPassword(params), HttpStatus.OK);
+    }
+
+    // 비밀번호 찾기 답변 일치 검사
+//    int checkFindpw(HashMap<String, String> params);
+    @GetMapping("/check/findpw")
+    public ResponseEntity<Integer> checkFindpw(String email, String pwFindAnswer){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("pwFindAnswer", pwFindAnswer);
+        return new ResponseEntity<Integer>(userService.checkFindpw(params), HttpStatus.OK);
+    }
+
+    // 비밀번호 수정
+//    void updatePassword(HashMap<String, String> params);
+    @PutMapping("/check/password")
+    public ResponseEntity<String> updatePassword(String email, String password){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        userService.updatePassword(params);
+        return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+    }
+
+    // 비밀번호 찾기 답변 수정
+//    void updateFindpw(HashMap<String, String> params);
+    @PutMapping("/check/findpw")
+    public ResponseEntity<String> updateFindpw(String email, String pwFindAnswer){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("pwFindAnswer", pwFindAnswer);
+        userService.updateFindpw(params);
+        return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+    }
+
 
 }

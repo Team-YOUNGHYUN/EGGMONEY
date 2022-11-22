@@ -8,28 +8,28 @@
     <input
       type="number"
       id="height"
-      v-model="getLoginUser.height"
+      v-model="getUser.height"
       disabled
     /><br />
     <label for="weight">몸무게(kg)</label>
     <input
       type="number"
       id="weight"
-      v-model="getLoginUser.weight"
+      v-model="getUser.weight"
       disabled
     /><br />
     <label for="bodyFat">체지방률(%)</label>
     <input
       type="number"
       id="bodyFat"
-      v-model="getLoginUser.bodyFat"
+      v-model="getUser.bodyFat"
       disabled
     /><br />
     <label for="muscleMass">골격근량(kg)</label>
     <input
       type="number"
       id="muscleMass"
-      v-model="getLoginUser.muscleMass"
+      v-model="getUser.muscleMass"
       disabled
     /><br /><br /><br />
 
@@ -128,7 +128,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getLoginUser", "getQuest"]),
+    ...mapGetters(["getUser", "getQuest"]),
   },
   created() {
     this.$store.dispatch("getUserInfo", 1);
@@ -136,7 +136,7 @@ export default {
   },
   methods: {
     test() {
-      console.log(this.getLoginUser);
+      console.log(this.getUser);
       console.log(this.getQuest);
     },
     // getQuest() {
@@ -146,9 +146,9 @@ export default {
     //   type: this.selected,
     //   goal: this.goal,
     //   modifyCnt: this.getModifyCnt,
-    //   userSeq: this.getLoginUser.userSeq,
+    //   userSeq: this.getUser.userSeq,
     // };
-    // this.$store.dispatch("getQuest", this.getLoginUser.userSeq);
+    // this.$store.dispatch("getQuest", this.getUser.userSeq);
     // },
   },
 };
