@@ -32,7 +32,6 @@
     <update id="updateUser" parameterType="User">
         UPDATE user
         SET
-        password = #{password},
         nickname = #{nickname},
         pw_find_question_id = #{pwFindQuestionId},
         height = #{height},
@@ -93,12 +92,6 @@
     <select id="checkNickname" resultType="int" parameterType="String">
         SELECT count(*) FROM user
         WHERE nickname = #{nickname}
-    </select>
-
-    <!-- 이메일로 사용자 번호 조회 -->
-    <select id="doLogin" resultType="User" parameterType="String">
-        SELECT * FROM user
-        WHERE email = #{email}
     </select>
 
 
