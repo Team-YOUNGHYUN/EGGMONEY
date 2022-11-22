@@ -11,6 +11,7 @@ import QuestDetail from "../components/quest/QuestDetail.vue";
 import QuestUpdate from "../components/quest/QuestUpdate.vue";
 import DiaryDetail from "../components/diary/DiaryDetail.vue";
 import FindPassword from "../components/login/FindPassword.vue";
+import CalendarDetail from "../components/diary/CalendarDetail.vue";
 
 Vue.use(VueRouter);
 
@@ -60,8 +61,16 @@ const routes = [
         path: "",
         name: "DiaryDetail",
         component: DiaryDetail,
-      }
-    ]
+      },
+    ],
+  },
+  // Calendar는 메인 페이지와 Diary 페이지에서 각각 보여야 하므로
+  // diary의 child component가 아닌 개별 component로 빼둠
+  {
+    // 임의로 설정한 calendar 경로
+    path: "/calendar",
+    name: "CalendarDetail",
+    component: CalendarDetail,
   },
   {
     path: "/quest",
