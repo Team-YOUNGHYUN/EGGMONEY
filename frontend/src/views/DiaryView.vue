@@ -6,7 +6,14 @@
 </template>
 
 <script>
-export default {};
+import router from '../router';
+export default {
+  created(){
+    if(!this.$store.getters.getCurrUser){
+      router.push("/login");
+    }
+  }
+};
 </script>
 
 <style></style>

@@ -14,8 +14,8 @@
                 :key="record.id">
                 <td>{{record.exercisePart}}</td>
                 <td>{{record.exerciseName}}</td>
-                <td v-if="record.exercisePart!=='유산소'">{{record.setCnt}}</td>
-                <td v-else>{{record.timeCnt}}</td>
+                <td v-if="record.exercisePart!=='유산소'">{{record.setCnt}}회</td>
+                <td v-else>{{record.timeCnt}}분</td>
             </tr>
         </tbody>
     </table>
@@ -44,7 +44,7 @@
     
     <input v-if="!exerciseName" type="number" value=0 disabled>
     <input v-else-if="exercisePart!=='유산소'" type="number" v-model="setCnt">
-    <input v-else type="number" v-model="timeCnt">
+    <input v-else type="number" v-model="timeCnt">  
 
     <button @click="test">confirm</button>
 

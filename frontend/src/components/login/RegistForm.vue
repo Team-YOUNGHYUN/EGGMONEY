@@ -106,7 +106,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "UserRegist",
+  name: "RegistForm",
   data() {
     return {
       userSeq: 0,

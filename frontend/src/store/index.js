@@ -9,6 +9,7 @@ const REST_API = `http://localhost:9999/api`;
 
 export default new Vuex.Store({
   state: {
+    currUser: null,
     loginUser: {},
     quest: {},
     isUnqEmail: "",
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     exercises: [],
   },
   getters: {
+    getCurrUser(state){
+      return state.currUser;
+    },
     getLoginUser(state) {
       return state.loginUser;
     },
@@ -89,6 +93,12 @@ export default new Vuex.Store({
     },
     GET_EXERCISE_LIST(state, payload){
       state.exercises = payload;
+    },
+    SET_USER_BY_EMAIL(state, payload){
+      state.loginUser = payload;
+    },
+    SET_CURR_USER(state, payload){
+      state.currUser = payload;
     },
   },
   actions: {
@@ -253,6 +263,23 @@ export default new Vuex.Store({
       .catch((err)=>{
         console.log(err);
       })
+    },
+    loginCheck(context, params){
+      const API_URL = `${REST_API}/user/login`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+        params: params,
+      })
+      .then((res)=>{
+        context.commit("LOGIN_CHECK", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
+    setCurrUser(context){
+      context.commit("SET_CURR_USER", JSON.parse(window.sessionStorage.getItem("user")));
     },
   },
   modules: {},
