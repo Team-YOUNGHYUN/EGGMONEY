@@ -2,13 +2,15 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import UserView from "../views/UserView.vue";
+import LoginView from "../views/LoginView.vue";
 import DiaryView from "../views/DiaryView.vue";
-import LoginForm from "../components/LoginForm.vue";
-import UserRegist from "../components/user/UserRegist.vue";
+import LoginForm from "../components/login/LoginForm.vue";
+import RegistForm from "../components/login/RegistForm.vue";
 import UserDetail from "../components/user/UserDetail.vue";
 import QuestDetail from "../components/quest/QuestDetail.vue";
 import QuestUpdate from "../components/quest/QuestUpdate.vue";
 import DiaryDetail from "../components/diary/DiaryDetail.vue";
+import FindPassword from "../components/login/FindPassword.vue";
 import CalendarDetail from "../components/diary/CalendarDetail.vue";
 
 Vue.use(VueRouter);
@@ -19,16 +21,31 @@ const routes = [
     name: "home",
     component: HomeView,
   },
-  { path: "/login", name: "loginForm", component: LoginForm },
+  {
+    path: "/login",
+    component: LoginView,
+    children: [
+      {
+        path: "", 
+        name: "LoginForm", 
+        component: LoginForm,
+      },
+      {
+        path: "regist",
+        name: "RegistForm",
+        component: RegistForm,
+      },
+      {
+        path: "findpw",
+        name: "FindPassword",
+        component: FindPassword,
+      }
+    ]
+  },
   {
     path: "/user",
     component: UserView,
     children: [
-      {
-        path: "regist",
-        name: "UserRegist",
-        component: UserRegist,
-      },
       {
         path: "detail",
         name: "UserDetail",

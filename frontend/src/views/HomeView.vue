@@ -11,6 +11,8 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import router from '../router';
+
 // import LoginForm from '@/components/LoginForm.vue'
 // import UserRegist from '@/components/user/UserRegist.vue'
 
@@ -19,5 +21,11 @@ export default {
   components: {
     HelloWorld,
   },
+    created(){
+      if(!this.$store.getters.getCurrUser){
+        router.push("/login");
+      }
+    }
+  
 };
 </script>
