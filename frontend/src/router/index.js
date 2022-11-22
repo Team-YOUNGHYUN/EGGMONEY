@@ -41,8 +41,8 @@ const routes = [
     component: LoginView,
     children: [
       {
-        path: "", 
-        name: "LoginForm", 
+        path: "",
+        name: "LoginForm",
         component: LoginForm,
       },
       {
