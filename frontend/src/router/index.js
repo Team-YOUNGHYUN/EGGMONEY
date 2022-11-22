@@ -16,14 +16,13 @@ import UserDetail from "../components/about/UserDetail.vue";
 import GoalDetail from "../components/about/GoalDetail.vue";
 import MoneyShop from "../components/about/MoneyShop.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     component: HomeView,
-    children:[
+    children: [
       {
         path: "",
         name: "MainPage",
@@ -33,8 +32,8 @@ const routes = [
         path: "diary",
         name: "DiaryPage",
         component: DiaryPage,
-      }
-    ]
+      },
+    ],
   },
   {
     path: "/login",
@@ -54,8 +53,8 @@ const routes = [
         path: "findpw",
         name: "FindpwForm",
         component: FindpwForm,
-      }
-    ]
+      },
+    ],
   },
   {
     path: "/about",
@@ -75,7 +74,7 @@ const routes = [
         path: "shop",
         name: "MoneyShop",
         component: MoneyShop,
-      }
+      },
     ],
   },
   // Calendar는 메인 페이지와 Diary 페이지에서 각각 보여야 하므로
