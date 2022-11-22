@@ -2,9 +2,8 @@
   <div class="container">
     <h1>router: 여기부터 RegistForm 영역이다!</h1>
     <h1>회원가입 페이지이다.</h1>
-    <fieldset class="required-input">
-      <legend>필수 입력사항</legend>
-
+    <fieldset class="required">
+          <legend>필수 입력사항</legend>
       <label for="email">이메일</label>
       <input type="email" id="email" v-model="email" class="view" />
       <button @click="checkEmail">중복확인</button><br />
@@ -106,6 +105,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   name: "RegistForm",
   data() {

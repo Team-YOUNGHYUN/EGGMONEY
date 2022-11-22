@@ -7,12 +7,12 @@
 </template>
 
 <script>
-// import router from '../router';
+import router from '../router';
 export default {
     created(){
-      // if(!this.$store.getters.getCurrUser){
-      //   router.push("/login");
-      // }
+      if(!JSON.parse(window.sessionStorage.getItem("user"))){
+        router.push("/login");
+      }
     }
 };
 </script>

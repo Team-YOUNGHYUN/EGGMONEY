@@ -63,7 +63,7 @@
       <button @click="checkNickname">중복확인</button><br />
 
       <label for="pwFindQuestionId">비밀번호찾기질문</label>
-      <select v-model="getUser.pwFindQuestionId" id="pwFindQuestionId">
+      <select v-model="pwFindQuestionId" id="pwFindQuestionId">
         <option
           v-for="item in getQuestionList"
           :key="item.question"
@@ -72,17 +72,22 @@
           {{ item.question }}
         </option></select
       ><br />
+
+      
       <label for="pwFindAnswer">비밀번호찾기답변</label>
       <input
+        v-if="pwFindQuestionId!==this.getUser.pwFindQuestionId"
         type="text"
         id="pwFindAnswer"
         v-model="getUser.pwFindAnswer"
         value="pwFindAnswer"
         class="view"
-      /><br />
+      />
+        <input v-else type="text" disabled/>
+      <br />
 
       <label for="gender">성별</label>
-      <div id="gender" v-if="(getUser.gender = 'male')">
+      <div id="gender" v-if="getUser.gender = 'male'">
         <input
           type="radio"
           id="male"
@@ -164,6 +169,7 @@ export default {
     return {
       confirmPassword: "",
       originalNickname: "",
+      pwFindQuestionId: "",
     };
   },
   computed: {
@@ -223,9 +229,9 @@ export default {
         point: this.getUser.point,
         rprsnAchvmId: this.getUser.rprsnAchvmId,
       };
-      await this.$store.dispatch("updateUser", user).then(() => {
-        this.$store.dispatch("getUserInfo", this.getUser.userSeq);
-      });
+      await this.$store.dispatch("updateUser", user);
+      await this.$store.dispatch("setUser");
+      JSON.stringify(window.sessionStorage.setItem(this.getUser));
     },
     checkNickname() {
       // 닉네임 중복 검사
@@ -253,10 +259,7 @@ export default {
   },
   created() {
     this.$store.dispatch("questionList");
-    // 아래 기능은 실제로는 메인페이지 created에 구현될 것이다.
-    this.$store.dispatch("getUserInfo", 11).then(() => {
-      this.originalNickname = this.getUser.nickname;
-    });
+    this.pwFindQuestionId = this.getUser.pwFindQuestionId;
   },
 };
 </script>

@@ -7,8 +7,13 @@
 </template>
 
 <script>
+import router from '../router'
 export default {
-
+    created(){
+        if(JSON.parse(window.sessionStorage.getItem("user"))){
+          router.push("/");
+        }
+    }
 }
 </script>
 

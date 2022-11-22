@@ -15,7 +15,7 @@
         <router-link to="/login">Login</router-link> |
         <router-link to="/login/regist">Regist</router-link> |
         <router-link to="/login/findpw">Findpw</router-link> |
-        <div v-if="getCurrUser" @click="logout">Logout</div>
+        <a v-if="getUser" @click="logout" style="cursor: pointer; text-decoration: underline;">Logout</a>
       </div>
     </nav>
   </header>
@@ -32,7 +32,7 @@ export default {
     }
   },
   computed:{
-    ...mapGetters(["getCurrUser"])
+    ...mapGetters(["getUser"])
   },
   methods:{
     async logout(){
