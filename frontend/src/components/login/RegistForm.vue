@@ -266,16 +266,6 @@ export default {
   margin-top: 50px;
   text-align: center;
 }
-.msg {
-  display: inline;
-  margin-left: 6px;
-}
-#true {
-  color: palegreen;
-}
-#false {
-  color: crimson;
-}
 #gender {
   display: inline;
   margin-left: 13px;
