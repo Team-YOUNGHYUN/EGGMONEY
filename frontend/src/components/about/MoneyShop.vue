@@ -1,6 +1,11 @@
 <template>
   <div class="eggmoney-shop">
     <h1 class="shop-title">EGGMONEY SHOP</h1>
+
+    <!-- ========================= 모달창 ============================= -->
+
+    <!-- ======================================================= -->
+
     <div class="shop-items">
       <!-- 아이템1 -->
       <div class="item">
@@ -10,7 +15,13 @@
         />
         <br />
         <p class="point">3,200 point</p>
-        <input type="radio" name="buy" id="item1" value="item1" checked />
+        <input
+          type="radio"
+          name="buy"
+          id="item1"
+          value="item1"
+          v-model="selected"
+        />
       </div>
       <!-- 아이템2 -->
       <div class="item">
@@ -20,7 +31,13 @@
         />
         <br />
         <p class="point">2,800 point</p>
-        <input type="radio" name="buy" id="item2" value="item2" />
+        <input
+          type="radio"
+          name="buy"
+          id="item2"
+          value="item2"
+          v-model="selected"
+        />
       </div>
       <!-- 아이템3 -->
       <div class="item">
@@ -30,7 +47,13 @@
         />
         <br />
         <p class="point">1,200 point</p>
-        <input type="radio" name="buy" id="item3" value="item3" />
+        <input
+          type="radio"
+          name="buy"
+          id="item3"
+          value="item3"
+          v-model="selected"
+        />
       </div>
     </div>
     <b-button variant="warning" @click="popItem">Buy</b-button>
@@ -43,10 +66,20 @@ export default {
   data() {
     return {
       selected: "",
+      // 모달을 숨겨주는 변수 선언
+      modalOpen: false,
     };
   },
   methods: {
-    popItem() {},
+    popItem() {
+      if (this.data.selected === "item1") {
+        console.log("반숙란");
+      } else if (this.data.selected === "item2") {
+        console.log("감동란");
+      } else if (this.data.selected === "item3") {
+        console.log("구운란");
+      }
+    },
   },
 };
 </script>
