@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="diary">
     <h1>다이어리 페이지이다.</h1>
     <h2>일단 운동 기록 기능부터 만들 것..</h2>
 
@@ -112,6 +112,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
