@@ -16,10 +16,13 @@ export default {
     TheFooter,
   },
   computed: {
-    ...mapState(["keyword"]),
+    ...mapState(["keyword1", "keyword2", "keyword3", "keyword4"]),
   },
   created() {
-    this.$store.dispatch("searchYoutube", this.keyword);
+    this.$store.dispatch("searchYoutube1", this.keyword1);
+    this.$store.dispatch("searchYoutube2", this.keyword2);
+    this.$store.dispatch("searchYoutube3", this.keyword3);
+    this.$store.dispatch("searchYoutube4", this.keyword4);
   },
 };
 </script>
