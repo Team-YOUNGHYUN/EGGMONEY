@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User userDetail(String email) {
         User user = userDao.userDetail(email);
-        System.out.println(user);
         user.setPassword("");
         user.setPwFindAnswer("");
         return user;

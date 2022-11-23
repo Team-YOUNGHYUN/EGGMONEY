@@ -4,9 +4,6 @@ public class Question {
     private int id;
     private String question;
 
-    public Question() {
-    }
-
     public Question(int id, String question) {
         this.id = id;
         this.question = question;
