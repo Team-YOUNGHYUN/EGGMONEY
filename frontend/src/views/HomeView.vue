@@ -7,6 +7,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import router from '../router';
 import {mapGetters} from "vuex";
 
@@ -32,5 +33,16 @@ export default {
     const date = today.getDate();
     this.$store.dispatch("setSelectedDate", year+'-'+month+'-'+date);
   }
+=======
+import router from "../router";
+export default {
+  name: "HomeView",
+  components: {},
+  created() {
+    if (!JSON.parse(window.sessionStorage.getItem("user"))) {
+      router.push("/login");
+    }
+  },
+>>>>>>> main
 };
 </script>

@@ -13,6 +13,12 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(Vcalendar, {
   componentPrefix: "vc",
+  // 커스텀 사이즈 설정
+  // screens: {
+  //   tablet: "575px",
+  //   laptop: "990px",
+  //   desktop: "1200px",
+  // },
 });
 
 new Vue({
