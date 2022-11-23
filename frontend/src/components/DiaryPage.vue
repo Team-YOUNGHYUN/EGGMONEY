@@ -9,17 +9,16 @@
 <script>
 // import MainCalendar from "../components/diary";
 import DiaryCalendar from "./diary/DiaryCalendar.vue";
-import DiaryDetail from './diary/DiaryDetail.vue'
+import DiaryDetail from "./diary/DiaryDetail.vue";
 
 export default {
-    data(){
-        return{
-            
-        }
-    },
-    components: {
-        DiaryCalendar, DiaryDetail,
-    },
+  data() {
+    return {};
+  },
+  components: {
+    DiaryCalendar,
+    DiaryDetail,
+  },
 };
 </script>
 

@@ -109,6 +109,4 @@ export default {
 .calendar{
   height: 500px
 }
-.vc-container {
-}
 </style>
