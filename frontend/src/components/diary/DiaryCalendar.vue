@@ -106,7 +106,7 @@ export default {
         dates: this.getRecordDates[index],
       };
       this.attributes.push(attribute);
-      this.selectDate()
+      this.selectDate();
     }
   },
 };
