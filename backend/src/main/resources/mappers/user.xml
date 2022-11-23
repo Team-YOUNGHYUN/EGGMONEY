@@ -60,9 +60,7 @@
 
     <!-- 이메일로 사용자 객체 반환 -->
     <select id="userDetail" resultType="User" parameterType="String">
-        SELECT seq, email, name, nickname, pw_find_question_id, gender,
-        height, weight, body_fat, muscle_mass, point, rprsn_achvm_id
-        FROM user
+        SELECT * FROM user
         WHERE email = #{email}
     </select>
 

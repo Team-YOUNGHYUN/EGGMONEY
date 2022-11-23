@@ -192,7 +192,8 @@ export default {
         rprsnAchvmId: this.rprsnAchvmId,
       };
 
-      this.$store.dispatch("registUser", user);
+      await this.$store.dispatch("registUser", user);
+      this.$store.dispatch("createQuest", this.userSeq);
     },
     checkEmail() {
       // 이메일 중복 검사

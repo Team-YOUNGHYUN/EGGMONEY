@@ -8,27 +8,55 @@
     <br />
     <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
     <h2 class="title">현재 신체 정보</h2>
-    <label for="height">키: </label>
-    <input type="number" id="height" v-model="getUser.height" disabled style="text-align: right;"/>cm<br />
-    <label for="weight">몸무게: </label>
-    <input type="number" id="weight" v-model="getUser.weight" disabled style="text-align: right;"/>kg<br />
-    <label for="bodyFat">체지방률: </label>
-    <input
-      type="number"
-      id="bodyFat"
-      v-model="getUser.bodyFat"
-      disabled
-      style="text-align: right;"
-    />%<br />
-    <label for="muscleMass">골격근량: </label>
-    <input
-      type="number"
-      id="muscleMass"
-      v-model="getUser.muscleMass"
-      disabled
-      style="text-align: right;"
-    />kg<br /><br /><br />
 
+    <div v-if="modifyMode==0">
+        <label for="height">키: </label>
+        <input type="number" id="height" v-model="getUser.height" disabled style="text-align: right;"/>cm<br />
+        <label for="weight">몸무게: </label>
+        <input type="number" id="weight" v-model="getUser.weight" disabled style="text-align: right;"/>kg<br />
+        <label for="bodyFat">체지방률: </label>
+        <input
+        type="number"
+        id="bodyFat"
+        v-model="getUser.bodyFat"
+        disabled
+        style="text-align: right;"
+        />%<br />
+        <label for="muscleMass">골격근량: </label>
+        <input
+        type="number"
+        id="muscleMass"
+        v-model="getUser.muscleMass"
+        disabled
+        style="text-align: right;"
+        />kg<br /><br /><br />
+        <button @click="activeModifyMode">신체 정보 갱신하기</button>
+    </div>
+
+    <div v-else-if="modifyMode==1">
+        <label for="height">키: </label>
+        <input type="number" id="height" v-model="getUser.height" style="text-align: right;"/>cm<br />
+        <label for="weight">몸무게: </label>
+        <input type="number" id="weight" v-model="getUser.weight" style="text-align: right;"/>kg<br />
+        <label for="bodyFat">체지방률: </label>
+        <input
+        type="number"
+        id="bodyFat"
+        v-model="getUser.bodyFat"
+        style="text-align: right;"
+        />%<br />
+        <label for="muscleMass">골격근량: </label>
+        <input
+        type="number"
+        id="muscleMass"
+        v-model="getUser.muscleMass"
+        style="text-align: right;"
+        />kg<br /><br /><br />
+        <button @click="updateUser">갱신</button>
+    </div>
+
+    
+    
     </b-col>
 
 
@@ -58,6 +86,7 @@
             <input type="number" v-else disabled/>
             kg
             <br/>
+            
         </div>
 
         <br/>
@@ -83,17 +112,28 @@ export default {
         return{
             type: 1,
             goal: 0,
+            modifyMode: 0,
         }
     },
     computed:{
         ...mapGetters(["getUser", "getQuest"]),
     },
     methods:{
+        activeModifyMode(){
+            this.modifyMode = 1;
+        },
+        updateUser(){
+            this.$store.dispatch("updateUser", this.getUser);
+        }
     },
     async created(){
         await this.$store.dispatch("setQuest", this.getUser.userSeq);
-        this.type = this.getQuest.type;
-        this.goal = this.getQuest.goal;
+        console.log(this.$store.quest);
+        if(this.getQuest.type!=0){
+            this.type = this.getQuest.type;
+            this.goal = this.getQuest.goal;
+        }
+        
     }
 }
 </script>
