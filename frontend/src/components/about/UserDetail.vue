@@ -73,21 +73,20 @@
         </option></select
       ><br />
 
-      
       <label for="pwFindAnswer">비밀번호찾기답변</label>
       <input
-        v-if="pwFindQuestionId!==this.getUser.pwFindQuestionId"
+        v-if="pwFindQuestionId !== this.getUser.pwFindQuestionId"
         type="text"
         id="pwFindAnswer"
         v-model="getUser.pwFindAnswer"
         value="pwFindAnswer"
         class="view"
       />
-        <input v-else type="text" disabled/>
+      <input v-else type="text" disabled />
       <br />
 
       <label for="gender">성별</label>
-      <div id="gender" v-if="getUser.gender = 'male'">
+      <div id="gender" v-if="(getUser.gender = 'male')">
         <input
           type="radio"
           id="male"
