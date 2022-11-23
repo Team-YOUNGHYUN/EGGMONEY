@@ -23,10 +23,19 @@ export default new Vuex.Store({
     records: [],
     recordDates: [],
     dayRecords: [],
-    // 유튜브 ==============================
-    videos: [],
-    video: null,
-    keyword: "코어 운동",
+    // 유튜브 검색 =========================
+    videos1: [],
+    videos2: [],
+    videos3: [],
+    videos4: [],
+    video1: null,
+    video2: null,
+    video3: null,
+    video4: null,
+    keyword1: "상체 운동",
+    keyword2: "하체 운동",
+    keyword3: "코어 운동",
+    keyword4: "유산소 운동",
     // =====================================
   },
   getters: {
@@ -47,8 +56,8 @@ export default new Vuex.Store({
     },
     getQuest(state) {
       return state.quest;
-    },  
-    getExerciseParts(state){
+    },
+    getExerciseParts(state) {
       return state.exerciseParts;
     },
     getExercises(state) {
@@ -57,18 +66,18 @@ export default new Vuex.Store({
     getCheckPassword(state) {
       return state.checkPassword;
     },
-    getSelectedDate(state){
+    getSelectedDate(state) {
       return state.seletedDate;
     },
-    getRecords(state){
+    getRecords(state) {
       return state.records;
     },
-    getRecordDates(state){
+    getRecordDates(state) {
       return state.recordDates;
     },
-    getDayRecords(state){
+    getDayRecords(state) {
       return state.dayRecords;
-    }
+    },
   },
   mutations: {
     INIT_ISUNQ(state) {
@@ -100,10 +109,10 @@ export default new Vuex.Store({
     GET_QUEST(state, payload) {
       state.quest = payload;
     },
-    SET_EXERCISE_PART_LIST(state, payload){
+    SET_EXERCISE_PART_LIST(state, payload) {
       state.exerciseParts = payload;
     },
-    SET_EXERCISE_LIST(state, payload){
+    SET_EXERCISE_LIST(state, payload) {
       state.exercises = payload;
     },
     SET_USER(state, payload) {
@@ -112,27 +121,42 @@ export default new Vuex.Store({
     CHECK_PASSWORD(state, payload) {
       state.checkPassword = payload;
     },
-    SET_SELECTED_DATE(state, payload){
+    SET_SELECTED_DATE(state, payload) {
       state.seletedDate = payload;
     },
-    SET_RECORDS(state, payload){
+    SET_RECORDS(state, payload) {
       state.records = payload;
     },
-    SET_RECORD_DATES(state, payload){
+    SET_RECORD_DATES(state, payload) {
       state.recordDates = payload;
     },
-    SET_DAY_RECORDS(state, payload){
+    SET_DAY_RECORDS(state, payload) {
       state.dayRecords = payload;
     },
-    // 유튜브 ===============================================
-    SEARCH_YOUTUBE(state, videos) {
-      state.videos = videos;
+    // 유튜브 검색 ===========================================
+    SEARCH_YOUTUBE1(state, videos1) {
+      state.videos1 = videos1;
     },
-    CLICK_VIDEO(state, video) {
-      state.video = video;
+    SEARCH_YOUTUBE2(state, videos2) {
+      state.videos2 = videos2;
     },
-    SET_KEYWORD(state, keyword) {
-      state.keyword = keyword;
+    SEARCH_YOUTUBE3(state, videos3) {
+      state.videos3 = videos3;
+    },
+    SEARCH_YOUTUBE4(state, videos4) {
+      state.videos4 = videos4;
+    },
+    SET_KEYWORD1(state, keyword1) {
+      state.keyword1 = keyword1;
+    },
+    SET_KEYWORD2(state, keyword2) {
+      state.keyword2 = keyword2;
+    },
+    SET_KEYWORD3(state, keyword3) {
+      state.keyword3 = keyword3;
+    },
+    SET_KEYWORD4(state, keyword4) {
+      state.keyword4 = keyword4;
     },
     // =======================================================
   },
@@ -246,31 +270,31 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setExercisePartList(context){
+    setExercisePartList(context) {
       const API_URL = `${REST_API}/exercise/part`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("SET_EXERCISE_PART_LIST", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("SET_EXERCISE_PART_LIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    setExerciseList(context){
+    setExerciseList(context) {
       const API_URL = `${REST_API}/exercise`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("SET_EXERCISE_LIST", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("SET_EXERCISE_LIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     loginCheck(context, params) {
       const API_URL = `${REST_API}/user/login`;
@@ -314,7 +338,7 @@ export default new Vuex.Store({
         });
     },
     // 유튜브 검색 ==================================================
-    searchYoutube({ commit }, payload) {
+    searchYoutube1({ commit }, payload) {
       const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
       const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
 
@@ -326,55 +350,112 @@ export default new Vuex.Store({
           part: "snippet",
           q: payload,
           type: "video",
-          maxResult: 4,
+          maxResult: 10,
         },
       })
         .then((res) => {
-          commit("SEARCH_YOUTUBE", res.data.items);
+          commit("SEARCH_YOUTUBE1", res.data.items);
         })
         .catch((err) => console.log(err));
     },
-    clickVideo({ commit }, payload) {
-      commit("CLICK_VIDEO", payload);
+    searchYoutube2({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 10,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE2", res.data.items);
+        })
+        .catch((err) => console.log(err));
     },
-    setSelectedDate(context, date){
+    searchYoutube3({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 10,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE3", res.data.items);
+        })
+        .catch((err) => console.log(err));
+    },
+    searchYoutube4({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 10,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE4", res.data.items);
+        })
+        .catch((err) => console.log(err));
+    },
+    setSelectedDate(context, date) {
       context.commit("SET_SELECTED_DATE", date);
     },
-    setRecords(context, email){
+    setRecords(context, email) {
       const API_URL = `${REST_API}/record/${email}`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("SET_RECORDS", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("SET_RECORDS", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    setRecordDates(context, email){
+    setRecordDates(context, email) {
       const API_URL = `${REST_API}/record/date=${email}`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("SET_RECORD_DATES", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("SET_RECORD_DATES", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    setDayRecords(context, params){
+    setDayRecords(context, params) {
       let recordList = [];
-      for(let record of params.records){
-        if(record.regDate === params.date){
+      for (let record of params.records) {
+        if (record.regDate === params.date) {
           recordList.push(record);
         }
       }
       context.commit("SET_DAY_RECORDS", recordList);
-    }
+    },
   },
   modules: {},
 });
