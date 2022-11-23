@@ -239,17 +239,14 @@ export default new Vuex.Store({
     },
     updateQuest({ commit }, quest) {
       const API_URL = `${REST_API}/quest`;
-      let params = null;
-      if (quest) params = quest;
+      console.log(quest)
       axios({
         url: API_URL,
-        method: "POST",
-        params: params,
+        method: "PUT",
+        params: quest,
       })
         .then(() => {
-          alert("목표 수정이 완료되었습니다.");
-          commit("UPDATE_QUEST", params);
-          router.push("/quest");
+          commit("SET_QUEST", quest);
         })
         .catch((err) => {
           console.log(err);
