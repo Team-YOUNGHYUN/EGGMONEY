@@ -86,7 +86,7 @@ export default {
 }
 
 .content-box {
-  background-color: bisque;
+  background-color: #1a202c;
 }
 
 .video-list {

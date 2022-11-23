@@ -457,7 +457,7 @@ export default new Vuex.Store({
       }
       context.commit("SET_DAY_RECORDS", recordList);
     },
-    createQuest(context, userSeq){
+    createQuest(context, userSeq) {
       const API_URL = `${REST_API}/quest/${userSeq}`;
       return axios({
         url: API_URL,
@@ -469,7 +469,7 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
-    }
+    },
   },
   modules: {},
 });

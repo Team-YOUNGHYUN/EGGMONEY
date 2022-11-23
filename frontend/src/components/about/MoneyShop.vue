@@ -10,7 +10,7 @@
           class="egg-img"
           alt="응애계란"
         />
-        <p>제품을 구매하였습니다.</p>
+        <p class="popup-text">제품을 구매하였습니다.</p>
         <b-button varian="primary" @click="popItem">닫기</b-button>
       </div>
     </div>
@@ -98,7 +98,7 @@ export default {
 
 <style>
 .eggmoney-shop {
-  background-color: darksalmon;
+  background-color: #1a202c;
 }
 
 .shop-items {
@@ -108,8 +108,8 @@ export default {
 }
 
 .item {
-  background-color: bisque;
-  border: 1px solid brown;
+  background-color: slategray;
+  border: 1px solid white;
 }
 
 .point {
@@ -127,7 +127,7 @@ export default {
 .white-bg {
   width: 90%;
   margin: 80px auto;
-  background: white;
+  background: #1a202c;
   border-radius: 5px; /* 모서리 곡률..아마도? */
   padding: 20px 0;
 }
@@ -152,5 +152,10 @@ export default {
 .egg-img {
   width: 250px;
   height: 250px;
+}
+
+.popup-text,
+.shop-title {
+  color: white;
 }
 </style>
