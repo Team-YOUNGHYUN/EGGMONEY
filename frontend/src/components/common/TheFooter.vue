@@ -1,7 +1,9 @@
 <template>
-  <div class="container">
-    이곳은 Footer 영역이다.
-  </div>
+  <footer>
+    <nav class="footer-nav">
+      이곳은 Footer 영역이다.
+    </nav>
+  </footer>
 </template>
 
 <script>
@@ -11,7 +13,7 @@ export default {
 </script>
 
 <style>
-.container{
+.footer-nav{
     background-color: blueviolet;
 }
 </style>

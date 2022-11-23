@@ -1,15 +1,14 @@
 <template>
-  <div class="text-center section">
+  <div class="calendar">
     <h2 class="h2">EGG DIARY</h2>
     <vc-calendar
     @dayclick="selectDate"
       color="blue"
       is-range
-      :colums="$screens({ default: 1, lg: 2 })"
-      class="custom-calendar max-w-full"
+      :colums="$screens({ default: 1, lg: 1 })"
+      class="vc-container"
       :attributes="attributes"
-    />
-  <button @click="test">콘솔</button>
+      is-expanded />
   </div>
 </template>
 
@@ -24,14 +23,14 @@ export default {
     // const day = today.getDay();
 
     return {
-      // attributes: [
-      //   {
-      //     // 오늘(시스템) 날짜에 yellow highlight 표시
-      //     key: 1,
-      //     highlight: "yellow",
-      //     dates: new Date(year, month, date),
-      //   },
-
+      attributes: [
+        // {
+        //   // 오늘(시스템) 날짜에 yellow highlight 표시
+        //   key: 1,
+        //   highlight: "yellow",
+        //   dates: '2022-11-11',
+        // },
+]
         // {
         //   key: 2,
         //   dot: true,
@@ -77,13 +76,9 @@ export default {
     };
   },
   computed:{
-    ...mapGetters(["getSelectedDate","getRecords"]),
+    ...mapGetters(["getSelectedDate","getRecords", "getDayRecords", "getRecordDates"]),
   },
   methods:{
-    test(){
-      console.log(this.getSelectedDate);
-      
-    },
     async selectDate(date){
       await this.$store.dispatch("setSelectedDate", date.id);
       let params = {
@@ -94,9 +89,24 @@ export default {
     }
   },
   created(){
-    
+    for(let index in this.getRecordDates){
+      let attribute = {
+        key: index,
+        highlight: {
+            style: {
+              backgroundColor: "yellow",
+            },
+          },
+        dates: this.getRecordDates[index]
+      }
+      this.attributes.push(attribute);
+    }
   }
 };
 </script>
 
-<style></style>
+<style>
+.calendar{
+  height: 500px
+}
+</style>
