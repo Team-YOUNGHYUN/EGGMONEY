@@ -1,8 +1,8 @@
 <template>
-  <div class="text-center">
+  <div class="main-calendar">
     <vc-calendar
       color="blue"
-      class="main-calendar"
+      class="vc-main-calendar"
       :attributes="attributes"
       :columns="$screens({ default: 1, lg: 1 })"
       disable-page-swipe
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style>
-.text-center {
+.main-calendar {
   align-content: center;
   width: 60%;
   height: 60%;
