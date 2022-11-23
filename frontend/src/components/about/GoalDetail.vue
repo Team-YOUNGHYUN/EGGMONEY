@@ -68,6 +68,7 @@
             <input type="radio" v-model="type" value=1 id="weight"/>
             <label for="weight">체중:</label>
             <input type="number" v-model="goal" v-if="type==1"/>
+            <input type="number" v-else-if="type==0 && getQuest.type==1" v-model="goal" disabled/>
             <input type="number" v-else disabled/>
             kg
             <br/>
@@ -75,6 +76,7 @@
             <input type="radio" v-model="type" value=2 id="bodyFat"/>
             <label for="bodyFat">체지방률:</label>
             <input type="number" v-model="goal" v-if="type==2" />
+            <input type="number" v-else-if="type==0 && getQuest.type==2" v-model="goal" disabled/>
             <input type="number" v-else disabled/>
             %
             <br/>
@@ -83,21 +85,30 @@
             <input type="radio" v-model="type" value=3 id="muscleMass"/>
             <label for="muscleMass">골격근량:</label>
             <input type="number" v-model="goal" v-if="type==3" />
+            <input type="number" v-else-if="type==0 && getQuest.type==3" v-model="goal" disabled/>
             <input type="number" v-else disabled/>
             kg
             <br/>
-            
+            <h3 v-if="this.type==1">목표까지 {{this.goal-this.getUser.weight}}kg!</h3>
+            <h3 v-else-if="this.type==2">목표까지 {{this.goal-this.getUser.bodyFat}}%!</h3>
+            <h3 v-else-if="this.type==3">목표까지 {{this.goal-this.getUser.muscleMass}}kg!</h3>
+            <h3 v-else-if="this.getQuest.type==1">목표까지 {{this.goal-this.getUser.weight}}kg!</h3>
+            <h3 v-else-if="this.getQuest.type==2">목표까지 {{this.goal-this.getUser.bodyFat}}%!</h3>
+            <h3 v-else-if="this.getQuest.type==3">목표까지 {{this.goal-this.getUser.muscleMass}}kg!</h3>
+            <div>당신은 지금까지 목표를 {{this.getQuest.modifyCnt}}번 수정했다..</div>
+
+
         </div>
 
         <br/>
 
         <label form="dueDate">목표 날짜</label>
-        <input type="date" id="dueDate" v-model="getQuest.dueDate" class="view"/>
+        <input type="date" id="dueDate" v-model="dueDate" class="view"/>
 
     </fieldset>
     <br/>
     <!-- <button @click="test">테스트</button> -->
-    <!-- <b-button @click="getQuest">등록</b-button> -->
+    <b-button @click="updateQuest">등록</b-button>
     </b-col>
     </b-row>
   </b-container>
@@ -105,13 +116,16 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import router from '@/router';
 
 export default {
     name: "GoalDetail",
     data(){
         return{
-            type: 1,
+            type: 0,
             goal: 0,
+            dueDate: '',
+            modifyCnt: 0,
             modifyMode: 0,
         }
     },
@@ -124,16 +138,30 @@ export default {
         },
         updateUser(){
             this.$store.dispatch("updateUser", this.getUser);
+            this.modifyMode = 0,
+            router.push("/about/goal");
+        },
+        updateQuest(){
+            console.log(this.dueDate)
+            let quest = {
+                id: 0,
+                type: this.type,
+                goal: this.goal,
+                dueDate: this.dueDate,
+                modifyCnt: this.modifyCnt+1,
+                userSeq: this.getUser.userSeq
+            }
+            this.$store.dispatch("updateQuest", quest);
+            router.push("/about/goal");
+            this.type = 0;
         }
     },
     async created(){
         await this.$store.dispatch("setQuest", this.getUser.userSeq);
-        console.log(this.$store.quest);
-        if(this.getQuest.type!=0){
-            this.type = this.getQuest.type;
-            this.goal = this.getQuest.goal;
-        }
-        
+        // this.type = this.getQuest.type;
+        this.goal = this.getQuest.goal;
+        this.dueDate = this.getQuest.dueDate;
+        this.modifyCnt = this.getQuest.modifyCnt;
     }
 }
 </script>
