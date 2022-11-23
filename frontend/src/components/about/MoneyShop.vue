@@ -1,6 +1,22 @@
 <template>
   <div class="eggmoney-shop">
     <h1 class="shop-title">EGGMONEY SHOP</h1>
+
+    <!-- ========================= 모달창 ============================= -->
+    <div class="black-bg" v-show="modalOpen">
+      <div class="white-bg">
+        <img
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7ca0314f-6f5d-4149-892b-cb08045d1573/%EC%9D%91%EC%95%A0%EA%B3%84%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221123T134043Z&X-Amz-Expires=86400&X-Amz-Signature=bb0b7be15340fa5b70798291bd4b705f40e7d79801a8d44e8ae16161240a6657&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%259D%2591%25EC%2595%25A0%25EA%25B3%2584%25EB%259E%2580.png%22&x-id=GetObject"
+          class="egg-img"
+          alt="응애계란"
+        />
+        <p>제품을 구매하였습니다.</p>
+        <b-button varian="primary" @click="popItem">닫기</b-button>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+
     <div class="shop-items">
       <!-- 아이템1 -->
       <div class="item">
@@ -10,7 +26,13 @@
         />
         <br />
         <p class="point">3,200 point</p>
-        <input type="radio" name="buy" id="item1" value="item1" checked />
+        <input
+          type="radio"
+          name="buy"
+          id="item1"
+          value="item1"
+          v-model="selected"
+        />
       </div>
       <!-- 아이템2 -->
       <div class="item">
@@ -20,7 +42,13 @@
         />
         <br />
         <p class="point">2,800 point</p>
-        <input type="radio" name="buy" id="item2" value="item2" />
+        <input
+          type="radio"
+          name="buy"
+          id="item2"
+          value="item2"
+          v-model="selected"
+        />
       </div>
       <!-- 아이템3 -->
       <div class="item">
@@ -30,7 +58,13 @@
         />
         <br />
         <p class="point">1,200 point</p>
-        <input type="radio" name="buy" id="item3" value="item3" />
+        <input
+          type="radio"
+          name="buy"
+          id="item3"
+          value="item3"
+          v-model="selected"
+        />
       </div>
     </div>
     <b-button variant="warning" @click="popItem">Buy</b-button>
@@ -43,10 +77,21 @@ export default {
   data() {
     return {
       selected: "",
+      // 모달을 숨겨주는 변수 선언
+      modalOpen: false,
     };
   },
   methods: {
-    popItem() {},
+    popItem() {
+      // if (this.data.selected === "item1") {
+      //   console.log("반숙란");
+      // } else if (this.data.selected === "item2") {
+      //   console.log("감동란");
+      // } else if (this.data.selected === "item3") {
+      //   console.log("구운란");
+      // }
+      this.modalOpen = !this.modalOpen;
+    },
   },
 };
 </script>
@@ -69,5 +114,43 @@ export default {
 
 .point {
   font-weight: bold;
+}
+
+/* modal css */
+.black-bg {
+  width: 100%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+}
+
+.white-bg {
+  width: 90%;
+  margin: 80px auto;
+  background: white;
+  border-radius: 5px; /* 모서리 곡률..아마도? */
+  padding: 20px 0;
+}
+
+.close {
+  cursor: pointer;
+  border: none;
+  background: #6667ab;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.close:hover {
+  color: white;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+
+.egg-img {
+  width: 250px;
+  height: 250px;
 }
 </style>
