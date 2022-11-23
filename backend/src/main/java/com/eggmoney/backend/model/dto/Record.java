@@ -9,6 +9,9 @@ public class Record {
     private int setCnt;
     private int timeCnt;
 
+    public Record() {
+    }
+
     public Record(int id, int userSeq, String regDate, String exercisePart, String exerciseName, int setCnt, int timeCnt) {
         this.id = id;
         this.userSeq = userSeq;
