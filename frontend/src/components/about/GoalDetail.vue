@@ -1,88 +1,105 @@
 <template>
   <b-container>
-    <h1>router: 여기부터 goalDetail 영역이다!</h1>
-
+    <h1>목표 관리</h1>
     <b-row>
-    <b-col>
-    <h1 class="quest-title">목표 관리</h1>
-    <br />
-    <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
-    <h2 class="title">현재 신체 정보</h2>
+      <b-col>
+        <br />
+        <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
+        <h2 class="title">현재 신체 정보</h2>
 
-    <div v-if="modifyMode==0">
-        <label for="height">키: </label>
-        <input type="number" id="height" v-model="getUser.height" disabled style="text-align: right;"/>cm<br />
-        <label for="weight">몸무게: </label>
-        <input type="number" id="weight" v-model="getUser.weight" disabled style="text-align: right;"/>kg<br />
-        <label for="bodyFat">체지방률: </label>
-        <input
-        type="number"
-        id="bodyFat"
-        v-model="getUser.bodyFat"
-        disabled
-        style="text-align: right;"
-        />%<br />
-        <label for="muscleMass">골격근량: </label>
-        <input
-        type="number"
-        id="muscleMass"
-        v-model="getUser.muscleMass"
-        disabled
-        style="text-align: right;"
-        />kg<br /><br /><br />
-        <button @click="activeModifyMode">신체 정보 갱신하기</button>
-    </div>
+        <div v-if="modifyMode == 0">
+          <label for="height">키: </label>
+          <input
+            type="number"
+            id="height"
+            v-model="getUser.height"
+            disabled
+            style="text-align: right"
+          />cm<br />
+          <label for="weight">몸무게: </label>
+          <input
+            type="number"
+            id="weight"
+            v-model="getUser.weight"
+            disabled
+            style="text-align: right"
+          />kg<br />
+          <label for="bodyFat">체지방률: </label>
+          <input
+            type="number"
+            id="bodyFat"
+            v-model="getUser.bodyFat"
+            disabled
+            style="text-align: right"
+          />%<br />
+          <label for="muscleMass">골격근량: </label>
+          <input
+            type="number"
+            id="muscleMass"
+            v-model="getUser.muscleMass"
+            disabled
+            style="text-align: right"
+          />kg<br /><br /><br />
+          <b-button variant="secondary" @click="activeModifyMode"
+            >신체 정보 갱신하기</b-button
+          >
+        </div>
 
-    <div v-else-if="modifyMode==1">
-        <label for="height">키: </label>
-        <input type="number" id="height" v-model="getUser.height" style="text-align: right;"/>cm<br />
-        <label for="weight">몸무게: </label>
-        <input type="number" id="weight" v-model="getUser.weight" style="text-align: right;"/>kg<br />
-        <label for="bodyFat">체지방률: </label>
-        <input
-        type="number"
-        id="bodyFat"
-        v-model="getUser.bodyFat"
-        style="text-align: right;"
-        />%<br />
-        <label for="muscleMass">골격근량: </label>
-        <input
-        type="number"
-        id="muscleMass"
-        v-model="getUser.muscleMass"
-        style="text-align: right;"
-        />kg<br /><br /><br />
-        <button @click="updateUser">갱신</button>
-    </div>
+        <div v-else-if="modifyMode == 1">
+          <label for="height">키: </label>
+          <input
+            type="number"
+            id="height"
+            v-model="getUser.height"
+            style="text-align: right"
+          />cm<br />
+          <label for="weight">몸무게: </label>
+          <input
+            type="number"
+            id="weight"
+            v-model="getUser.weight"
+            style="text-align: right"
+          />kg<br />
+          <label for="bodyFat">체지방률: </label>
+          <input
+            type="number"
+            id="bodyFat"
+            v-model="getUser.bodyFat"
+            style="text-align: right"
+          />%<br />
+          <label for="muscleMass">골격근량: </label>
+          <input
+            type="number"
+            id="muscleMass"
+            v-model="getUser.muscleMass"
+            style="text-align: right"
+          />kg<br /><br /><br />
+          <button @click="updateUser">갱신</button>
+        </div>
+      </b-col>
 
-    
-    
-    </b-col>
-
-
-    <!-- 목표 설정 및 등록 -->
-    <b-col>
-    <h2 class="title">목표 설정</h2>
-    <fieldset class="text-center">
-        <div>
-            <input type="radio" v-model="type" value=1 id="weight"/>
+      <!-- 목표 설정 및 등록 -->
+      <b-col>
+        <h2 class="title">목표 설정</h2>
+        <fieldset class="text-center">
+          <div>
+            <input type="radio" v-model="type" value="1" id="weight" />
             <label for="weight">체중:</label>
             <input type="number" v-model="goal" v-if="type==1"/>
             <input type="number" v-else-if="type==0 && getQuest.type==1" v-model="goal" disabled/>
             <input type="number" v-else disabled/>
             kg
-            <br/>
+            <br />
 
-            <input type="radio" v-model="type" value=2 id="bodyFat"/>
+            <input type="radio" v-model="type" value="2" id="bodyFat" />
             <label for="bodyFat">체지방률:</label>
             <input type="number" v-model="goal" v-if="type==2" />
             <input type="number" v-else-if="type==0 && getQuest.type==2" v-model="goal" disabled/>
             <input type="number" v-else disabled/>
             %
-            <br/>
+            <br />
 
-
-            <input type="radio" v-model="type" value=3 id="muscleMass"/>
+            <input type="radio" v-model="type" value="3" id="muscleMass" />
             <label for="muscleMass">골격근량:</label>
             <input type="number" v-model="goal" v-if="type==3" />
             <input type="number" v-else-if="type==0 && getQuest.type==3" v-model="goal" disabled/>
@@ -129,8 +146,8 @@ export default {
             modifyMode: 0,
         }
     },
-    computed:{
-        ...mapGetters(["getUser", "getQuest"]),
+    updateUser() {
+      this.$store.dispatch("updateUser", this.getUser);
     },
     methods:{
         activeModifyMode(){
@@ -163,7 +180,8 @@ export default {
         this.dueDate = this.getQuest.dueDate;
         this.modifyCnt = this.getQuest.modifyCnt;
     }
-}
+  },
+};
 </script>
 
 <style>
@@ -173,7 +191,7 @@ export default {
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 100px; */
-  background: gray;
+  background: #1a202c;
   color: white;
 }
 </style>

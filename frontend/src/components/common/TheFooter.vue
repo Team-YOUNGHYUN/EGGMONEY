@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <nav class="footer-nav">Team YOUNGHYEON</nav>
+    <nav class="footer-nav">ⓒ 2022. Team YOUNGHYEON. All Rights Reserved.</nav>
   </footer>
 </template>
 
@@ -13,5 +13,6 @@ export default {};
   background-color: #1a202c;
   text-align: left;
   font-weight: bold;
+  color: white;
 }
 </style>
