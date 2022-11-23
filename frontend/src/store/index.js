@@ -106,7 +106,7 @@ export default new Vuex.Store({
     MODIFY_CNT(state) {
       state.ableModifyCnt -= 1;
     },
-    GET_QUEST(state, payload) {
+    SET_QUEST(state, payload) {
       state.quest = payload;
     },
     SET_EXERCISE_PART_LIST(state, payload) {
@@ -221,14 +221,14 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    getQuest({ commit }, userSeq) {
+    setQuest({ commit }, userSeq) {
       const API_URL = `${REST_API}/quest/${userSeq}`;
       return axios({
         url: API_URL,
         method: "GET",
       })
         .then((res) => {
-          commit("GET_QUEST", res.data);
+          commit("SET_QUEST", res.data);
         })
         .catch((err) => {
           console.log(err);

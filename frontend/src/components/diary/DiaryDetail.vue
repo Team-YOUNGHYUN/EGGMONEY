@@ -101,6 +101,12 @@ export default {
         },
     },
     async created(){
+         // 오늘 날짜 세팅
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const date = today.getDate();
+        this.$store.dispatch("setSelectedDate", year+'-'+month+'-'+date);
         this.$store.dispatch("setExercisePartList");
         this.$store.dispatch("setExerciseList");
         let params = {
@@ -108,6 +114,7 @@ export default {
             date: this.getSelectedDate,
         }
         this.$store.dispatch("setDayRecords", params);
+
     }
 }
 </script>
