@@ -17,9 +17,12 @@ export default new Vuex.Store({
     isUnqNickname: "",
     questionList: [],
     ableModifyCnt: 3,
-    records: [],
     exerciseParts: [],
     exercises: [],
+    seletedDate: "",
+    records: [],
+    recordDates: [],
+    dayRecords: [],
     // 유튜브 ==============================
     videos: [],
     video: null,
@@ -44,11 +47,8 @@ export default new Vuex.Store({
     },
     getQuest(state) {
       return state.quest;
-    },
-    getRecords(state) {
-      return state.records;
-    },
-    getExerciseParts(state) {
+    },  
+    getExerciseParts(state){
       return state.exerciseParts;
     },
     getExercises(state) {
@@ -57,6 +57,18 @@ export default new Vuex.Store({
     getCheckPassword(state) {
       return state.checkPassword;
     },
+    getSelectedDate(state){
+      return state.seletedDate;
+    },
+    getRecords(state){
+      return state.records;
+    },
+    getRecordDates(state){
+      return state.recordDates;
+    },
+    getDayRecords(state){
+      return state.dayRecords;
+    }
   },
   mutations: {
     INIT_ISUNQ(state) {
@@ -88,13 +100,10 @@ export default new Vuex.Store({
     GET_QUEST(state, payload) {
       state.quest = payload;
     },
-    GET_RECORD_LIST(state, payload) {
-      state.records = payload;
-    },
-    GET_EXERCISE_PART_LIST(state, payload) {
+    SET_EXERCISE_PART_LIST(state, payload){
       state.exerciseParts = payload;
     },
-    GET_EXERCISE_LIST(state, payload) {
+    SET_EXERCISE_LIST(state, payload){
       state.exercises = payload;
     },
     SET_USER(state, payload) {
@@ -102,6 +111,18 @@ export default new Vuex.Store({
     },
     CHECK_PASSWORD(state, payload) {
       state.checkPassword = payload;
+    },
+    SET_SELECTED_DATE(state, payload){
+      state.seletedDate = payload;
+    },
+    SET_RECORDS(state, payload){
+      state.records = payload;
+    },
+    SET_RECORD_DATES(state, payload){
+      state.recordDates = payload;
+    },
+    SET_DAY_RECORDS(state, payload){
+      state.dayRecords = payload;
     },
     // 유튜브 ===============================================
     SEARCH_YOUTUBE(state, videos) {
@@ -225,45 +246,31 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    getRecordList(context, params) {
-      const API_URL = `${REST_API}/record`;
-      return axios({
-        url: API_URL,
-        method: "GET",
-        params: params,
-      })
-        .then((res) => {
-          context.commit("GET_RECORD_LIST", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    getExercisePartList(context) {
+    setExercisePartList(context){
       const API_URL = `${REST_API}/exercise/part`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-        .then((res) => {
-          context.commit("GET_EXERCISE_PART_LIST", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .then((res)=>{
+        context.commit("SET_EXERCISE_PART_LIST", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
     },
-    getExerciseList(context) {
+    setExerciseList(context){
       const API_URL = `${REST_API}/exercise`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-        .then((res) => {
-          context.commit("GET_EXERCISE_LIST", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .then((res)=>{
+        context.commit("SET_EXERCISE_LIST", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
     },
     loginCheck(context, params) {
       const API_URL = `${REST_API}/user/login`;
@@ -330,7 +337,44 @@ export default new Vuex.Store({
     clickVideo({ commit }, payload) {
       commit("CLICK_VIDEO", payload);
     },
-    // ===============================================================
+    setSelectedDate(context, date){
+      context.commit("SET_SELECTED_DATE", date);
+    },
+    setRecords(context, email){
+      const API_URL = `${REST_API}/record/${email}`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+      .then((res)=>{
+        context.commit("SET_RECORDS", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
+    setRecordDates(context, email){
+      const API_URL = `${REST_API}/record/date=${email}`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+      .then((res)=>{
+        context.commit("SET_RECORD_DATES", res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    },
+    setDayRecords(context, params){
+      let recordList = [];
+      for(let record of params.records){
+        if(record.regDate === params.date){
+          recordList.push(record);
+        }
+      }
+      context.commit("SET_DAY_RECORDS", recordList);
+    }
   },
   modules: {},
 });

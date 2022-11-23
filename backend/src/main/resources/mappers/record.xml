@@ -14,12 +14,19 @@
         <result column="time_cnt" property="timeCnt"/>
     </resultMap>
 
-    <select id="selectRecord" resultMap="recordMap" parameterType="HashMap">
+    <select id="selectRecord" resultMap="recordMap" parameterType="String">
         SELECT *
         FROM record R,
         (SELECT * FROM user WHERE user.email = #{email}) U
-        WHERE R.reg_date = #{date}
-        AND R.user_seq = U.seq
+        WHERE R.user_seq = U.seq
+    </select>
+
+    <select id="selectDate" resultType="String" parameterType="String">
+        SELECT DISTINCT R.reg_date
+        FROM record R,
+        (SELECT * FROM user WHERE user.email = #{email}) U
+        WHERE R.user_seq = U.seq
+        ORDER BY R.reg_date ASC
     </select>
 
     <insert id="insertRecord" parameterType="Record">

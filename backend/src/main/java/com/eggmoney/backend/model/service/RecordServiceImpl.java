@@ -15,9 +15,12 @@ public class RecordServiceImpl implements RecordService {
     private RecordDao recordDao;
 
     @Override
-    public List<Record> selectRecord(HashMap<String, String> params) {
-        return recordDao.selectRecord(params);
+    public List<Record> selectRecord(String email) {
+        return recordDao.selectRecord(email);
     }
+
+    @Override
+    public List<String> selectDate(String email){ return recordDao.selectDate(email); }
 
     @Override
     public void addRecord(Record record) {

@@ -10,8 +10,8 @@
             <th>운동횟수(시간)</th>
         </thead>
         <tbody>
-            <tr v-for="record in this.getRecords" 
-                :key="record.id">
+            <tr v-for="(record, index) in this.getDayRecords" 
+                :key="index">
                 <td>{{record.exercisePart}}</td>
                 <td>{{record.exerciseName}}</td>
                 <td v-if="record.exercisePart!=='유산소'">{{record.setCnt}}회</td>
@@ -63,13 +63,12 @@ export default {
             setCnt: 0,
             timeCnt: 0,
             activeExercises: [],
-            date: "2022-11-11",
             
         };
     },
     computed:{
-        ...mapGetters(["getUser","getRecords",
-        "getExerciseParts", "getExercises"])
+        ...mapGetters(["getUser","getRecords", "getRecordDates", "getDayRecords",
+        "getExerciseParts", "getExercises", "getSelectedDate"])
     },
     methods:{
         test(){
@@ -102,14 +101,13 @@ export default {
         },
     },
     async created(){
-        this.$store.dispatch("getExercisePartList");
-        this.$store.dispatch("getExerciseList");
-        await this.$store.dispatch("getUserInfo", 11);
-        let params ={
-            email: this.getUser.email,
-            date: this.date,
+        this.$store.dispatch("setExercisePartList");
+        this.$store.dispatch("setExerciseList");
+        let params = {
+            records: this.getRecords,
+            date: this.getSelectedDate,
         }
-        this.$store.dispatch("getRecordList", params);
+        this.$store.dispatch("setDayRecords", params);
     }
 }
 </script>
