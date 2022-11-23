@@ -7,14 +7,14 @@
 </template>
 
 <script>
-// import router from "../router";
+import router from "../router";
 export default {
   name: "HomeView",
   components: {},
   created() {
-    // if(!JSON.parse(window.sessionStorage.getItem("user"))){
-    //   router.push("/login");
-    // }
+    if (!JSON.parse(window.sessionStorage.getItem("user"))) {
+      router.push("/login");
+    }
   },
 };
 </script>
