@@ -21,12 +21,14 @@ public class RecordRestController {
     private RecordService recordService;
 
     // 운동 목록 반환
-    @GetMapping("/record")
-    public ResponseEntity<List<Record>> selectRecord(String email, String date){
-        HashMap<String, String> params = new HashMap<>();
-        params.put("email", email);
-        params.put("date", date);
-        return new ResponseEntity<List<Record>>(recordService.selectRecord(params), HttpStatus.OK);
+    @GetMapping("/record/{email}")
+    public ResponseEntity<List<Record>> selectRecord(@PathVariable String email){;
+        return new ResponseEntity<List<Record>>(recordService.selectRecord(email), HttpStatus.OK);
+    }
+    // 운동 기록 날짜 목록 반환
+    @GetMapping("/record/date={email}")
+    public ResponseEntity<List<String>> selectDate(@PathVariable String email){;
+        return new ResponseEntity<List<String>>(recordService.selectDate(email), HttpStatus.OK);
     }
 
     // 운동 기록 등록

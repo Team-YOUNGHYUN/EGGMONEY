@@ -1,18 +1,25 @@
 <template>
   <div>
     <h1>router: 여기부터 DiaryPage 영역이다!</h1>
-    <calendar-detail />
+    <diary-calendar/>
+    <diary-detail/>
   </div>
 </template>
 
 <script>
 // import MainCalendar from "../components/diary";
-import CalendarDetail from "./diary/CalendarDetail.vue";
+import DiaryCalendar from "./diary/DiaryCalendar.vue";
+import DiaryDetail from './diary/DiaryDetail.vue'
 
 export default {
-  components: {
-    CalendarDetail,
-  },
+    data(){
+        return{
+            
+        }
+    },
+    components: {
+        DiaryCalendar, DiaryDetail,
+    },
 };
 </script>
 
