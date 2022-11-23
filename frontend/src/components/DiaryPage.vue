@@ -7,11 +7,11 @@
 
 <script>
 // import MainCalendar from "../components/diary";
-import CalendarDetail from "./diary/CalendarDetail.vue";
+// import CalendarDetail from "./diary/CalendarDetail.vue";
 
 export default {
   components: {
-    CalendarDetail,
+    // CalendarDetail,
   },
 };
 </script>

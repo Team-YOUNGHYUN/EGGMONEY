@@ -2,6 +2,7 @@
   <div class="main-calendar">
     <vc-calendar
       color="blue"
+      is-dark
       class="vc-main-calendar"
       :attributes="attributes"
       :columns="$screens({ default: 1, lg: 1 })"
@@ -34,7 +35,7 @@ export default {
           key: 2,
           highlight: {
             style: {
-              backgroundColor: "yellow",
+              backgroundColor: "brown",
             },
           },
           dates: ["2022-11-11", "2022-11-05"],
@@ -47,8 +48,7 @@ export default {
 
 <style>
 .main-calendar {
-  align-content: center;
-  width: 60%;
-  height: 60%;
+  width: 90%;
+  margin: 10px auto;
 }
 </style>

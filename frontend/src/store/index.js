@@ -20,10 +20,19 @@ export default new Vuex.Store({
     records: [],
     exerciseParts: [],
     exercises: [],
-    // 유튜브 ==============================
-    videos: [],
-    video: null,
-    keyword: "코어 운동",
+    // 유튜브 검색 =========================
+    videos1: [],
+    videos2: [],
+    videos3: [],
+    videos4: [],
+    video1: null,
+    video2: null,
+    video3: null,
+    video4: null,
+    keyword1: "상체 운동",
+    keyword2: "하체 운동",
+    keyword3: "코어 운동",
+    keyword4: "유산소 운동",
     // =====================================
   },
   getters: {
@@ -103,15 +112,30 @@ export default new Vuex.Store({
     CHECK_PASSWORD(state, payload) {
       state.checkPassword = payload;
     },
-    // 유튜브 ===============================================
-    SEARCH_YOUTUBE(state, videos) {
-      state.videos = videos;
+    // 유튜브 검색 ===========================================
+    SEARCH_YOUTUBE1(state, videos1) {
+      state.videos1 = videos1;
     },
-    CLICK_VIDEO(state, video) {
-      state.video = video;
+    SEARCH_YOUTUBE2(state, videos2) {
+      state.videos2 = videos2;
     },
-    SET_KEYWORD(state, keyword) {
-      state.keyword = keyword;
+    SEARCH_YOUTUBE3(state, videos3) {
+      state.videos3 = videos3;
+    },
+    SEARCH_YOUTUBE4(state, videos4) {
+      state.videos4 = videos4;
+    },
+    SET_KEYWORD1(state, keyword1) {
+      state.keyword1 = keyword1;
+    },
+    SET_KEYWORD2(state, keyword2) {
+      state.keyword2 = keyword2;
+    },
+    SET_KEYWORD3(state, keyword3) {
+      state.keyword3 = keyword3;
+    },
+    SET_KEYWORD4(state, keyword4) {
+      state.keyword4 = keyword4;
     },
     // =======================================================
   },
@@ -307,7 +331,7 @@ export default new Vuex.Store({
         });
     },
     // 유튜브 검색 ==================================================
-    searchYoutube({ commit }, payload) {
+    searchYoutube1({ commit }, payload) {
       const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
       const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
 
@@ -319,16 +343,73 @@ export default new Vuex.Store({
           part: "snippet",
           q: payload,
           type: "video",
-          maxResult: 4,
+          maxResult: 10,
         },
       })
         .then((res) => {
-          commit("SEARCH_YOUTUBE", res.data.items);
+          commit("SEARCH_YOUTUBE1", res.data.items);
         })
         .catch((err) => console.log(err));
     },
-    clickVideo({ commit }, payload) {
-      commit("CLICK_VIDEO", payload);
+    searchYoutube2({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 10,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE2", res.data.items);
+        })
+        .catch((err) => console.log(err));
+    },
+    searchYoutube3({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 10,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE3", res.data.items);
+        })
+        .catch((err) => console.log(err));
+    },
+    searchYoutube4({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 10,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE4", res.data.items);
+        })
+        .catch((err) => console.log(err));
     },
     // ===============================================================
   },
