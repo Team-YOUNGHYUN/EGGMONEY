@@ -1,19 +1,17 @@
 <template>
   <footer>
-    <nav class="footer-nav">
-      이곳은 Footer 영역이다.
-    </nav>
+    <nav class="footer-nav">Team YOUNGHYEON</nav>
   </footer>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-.footer-nav{
-    background-color: blueviolet;
+.footer-nav {
+  background-color: #1a202c;
+  text-align: left;
+  font-weight: bold;
 }
 </style>
