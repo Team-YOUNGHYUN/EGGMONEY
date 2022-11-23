@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <h1>router: 여기부터 DiaryPage 영역이다!</h1>
-    <diary-calendar style="float: left; width:40%; margin:0px 5%"/>
-    <diary-detail style="float: left; width:40%; margin:0px 5%"/>
+    <diary-calendar style="float: left; width: 40%; margin: 0px 5%" />
+    <diary-detail style="float: left; width: 40%; margin: 0px 5%" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-.container{
-    height: 500px;
+.container {
+  height: 500px;
 }
 </style>

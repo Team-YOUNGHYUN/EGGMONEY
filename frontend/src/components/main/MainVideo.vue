@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <br />
-    <h2 class="mc-title">오늘의 운동 추천</h2>
+    <h2 class="mv-title">오늘의 운동 추천</h2>
     <br />
     <!-- 아래 코드는 randomVideo가 잘 동작하는지 확인하는 코드 -->
     <!-- <p>{{ this.randomVideo }}</p> -->
@@ -81,7 +81,7 @@ export default {
 </script>
 
 <style>
-.mc-title {
+.mv-title {
   text-align: left;
 }
 
