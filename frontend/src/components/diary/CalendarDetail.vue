@@ -5,7 +5,7 @@
       color="blue"
       is-range
       is-extended
-      :colums="$screens({ default: 1, lg: 2 })"
+      :columns="$screens({ default: 1, xl: 1 })"
       class="custom-calendar max-w-full"
       :attributes="attributes"
       disable-page-swipe

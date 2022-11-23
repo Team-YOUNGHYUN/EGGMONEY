@@ -3,7 +3,7 @@
     <h1>router: 여기부터 RegistForm 영역이다!</h1>
     <h1>회원가입 페이지이다.</h1>
     <fieldset class="required">
-          <legend>필수 입력사항</legend>
+      <legend>필수 입력사항</legend>
       <label for="email">이메일</label>
       <input type="email" id="email" v-model="email" class="view" />
       <button @click="checkEmail">중복확인</button><br />
@@ -170,7 +170,7 @@ export default {
         return;
       }
       await this.$store.dispatch("checkNickname", this.getUser.nickname);
-      if (!this.getIsUnqNickname){
+      if (!this.getIsUnqNickname) {
         alert("닉네임 중복확인 여부를 확인해주세요.");
         return;
       }
@@ -200,17 +200,18 @@ export default {
         alert("내용을 입력해주세요.");
         return;
       }
-      this.$store.dispatch("checkEmail", this.email)
-      .then(() => {
-        if(this.getIsUnqEmail){
-          alert("사용 가능한 이메일입니다.");
-          return
-        }
-        alert("이미 존재하는 이메일입니다.");
-      })
-      .catch(()=>{
-        alert("오류가 발생했습니다.");
-      });
+      this.$store
+        .dispatch("checkEmail", this.email)
+        .then(() => {
+          if (this.getIsUnqEmail) {
+            alert("사용 가능한 이메일입니다.");
+            return;
+          }
+          alert("이미 존재하는 이메일입니다.");
+        })
+        .catch(() => {
+          alert("오류가 발생했습니다.");
+        });
     },
     checkNickname() {
       // 닉네임 중복 검사
@@ -218,17 +219,18 @@ export default {
         alert("내용을 입력해주세요.");
         return;
       }
-      this.$store.dispatch("checkNickname", this.nickname)
-      .then(() => {
-        if(this.getIsUnqNickname){
-          alert("사용 가능한 닉네임입니다.");
-          return;
-        }
-        alert("이미 존재하는 닉네임입니다.");
-      })
-      .catch(()=>{
-        alert("오류가 발생했습니다.");
-      });
+      this.$store
+        .dispatch("checkNickname", this.nickname)
+        .then(() => {
+          if (this.getIsUnqNickname) {
+            alert("사용 가능한 닉네임입니다.");
+            return;
+          }
+          alert("이미 존재하는 닉네임입니다.");
+        })
+        .catch(() => {
+          alert("오류가 발생했습니다.");
+        });
     },
     getQuestionList() {
       this.$store.dispatch("questionList");
