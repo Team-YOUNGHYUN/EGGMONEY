@@ -4,9 +4,6 @@ public class Quote {
     private int id;
     private String content;
 
-    public Quote() {
-    }
-
     public Quote(int id, String content) {
         this.id = id;
         this.content = content;

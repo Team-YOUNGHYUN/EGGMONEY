@@ -16,9 +16,6 @@ public class User {
     private int point;
     private int rprsnAchvmId;
 
-    public User() {
-    }
-
     public User(int userSeq, String email, String password, String name, String nickname, int pwFindQuestionId, String pwFindAnswer, String gender, int height, double weight, double bodyFat, double muscleMass, int point, int rprsnAchvmId) {
         this.userSeq = userSeq;
         this.email = email;
@@ -27,21 +24,6 @@ public class User {
         this.nickname = nickname;
         this.pwFindQuestionId = pwFindQuestionId;
         this.pwFindAnswer = pwFindAnswer;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.bodyFat = bodyFat;
-        this.muscleMass = muscleMass;
-        this.point = point;
-        this.rprsnAchvmId = rprsnAchvmId;
-    }
-
-    public User(int userSeq, String email, String name, String nickname, int pwFindQuestionId, String gender, int height, double weight, double bodyFat, double muscleMass, int point, int rprsnAchvmId) {
-        this.userSeq = userSeq;
-        this.email = email;
-        this.name = name;
-        this.nickname = nickname;
-        this.pwFindQuestionId = pwFindQuestionId;
         this.gender = gender;
         this.height = height;
         this.weight = weight;

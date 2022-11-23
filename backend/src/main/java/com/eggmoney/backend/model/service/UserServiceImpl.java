@@ -22,7 +22,10 @@ public class UserServiceImpl implements UserService {
     // 사용자 상세
     @Override
     public User userDetail(String email) {
-        return userDao.userDetail(email);
+        User user = userDao.userDetail(email);
+        user.setPassword("");
+        user.setPwFindAnswer("");
+        return user;
     }
 
     // 사용자 수정

@@ -8,9 +8,6 @@ public class Quest {
     private int modifyCnt;
     private int userSeq;
 
-    public Quest() {
-    }
-
     public Quest(int id, String dueDate, int type, int goal, int modifyCnt, int userSeq) {
         this.id = id;
         this.dueDate = dueDate;

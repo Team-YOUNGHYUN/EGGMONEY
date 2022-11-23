@@ -257,6 +257,7 @@ export default new Vuex.Store({
     },
     updateUser(context, user) {
       const API_URL = `${REST_API}/user`;
+      console.log(user);
       return axios({
         url: API_URL,
         method: "PUT",
@@ -456,6 +457,19 @@ export default new Vuex.Store({
       }
       context.commit("SET_DAY_RECORDS", recordList);
     },
+    createQuest(context, userSeq){
+      const API_URL = `${REST_API}/quest/${userSeq}`;
+      return axios({
+        url: API_URL,
+        method: "POST",
+      })
+        .then(() => {
+          context.commit();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   },
   modules: {},
 });
