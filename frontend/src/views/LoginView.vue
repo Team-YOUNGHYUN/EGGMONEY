@@ -18,5 +18,14 @@ export default {
 </script>
 
 <style>
-
+.msg {
+  display: inline;
+  margin-left: 6px;
+}
+#true {
+  color: palegreen;
+}
+#false {
+  color: crimson;
+}
 </style>

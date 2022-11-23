@@ -11,8 +11,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     checkPassword: "",
-    checkPwFindAnswer: "",
+    checkAnswer: "",
     quest: {},
+    question: "",
     isUnqEmail: "",
     isUnqNickname: "",
     questionList: [],
@@ -78,6 +79,12 @@ export default new Vuex.Store({
     getDayRecords(state) {
       return state.dayRecords;
     },
+    getQuestion(state) {
+      return state.question;
+    },
+    getCheckAnswer(state) {
+      return state.checkAnswer;
+    }
   },
   mutations: {
     INIT_ISUNQ(state) {
@@ -158,6 +165,17 @@ export default new Vuex.Store({
     SET_KEYWORD4(state, keyword4) {
       state.keyword4 = keyword4;
     },
+    SELECT_QUESTION(state, payload){
+      state.question = payload;
+    },
+    CHECK_ANSWER(state, payload){
+      if(payload==1){
+        state.checkAnswer = true;
+        return;
+      }
+      state.checkAnswer = false;
+      return;
+    }
     // =======================================================
   },
   actions: {
@@ -467,6 +485,47 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    selectQuestion(context, userSeq){
+      const API_URL = `${REST_API}/question/${userSeq}`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          context.commit("SELECT_QUESTION", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    checkAnswer(context, params){
+      const API_URL = `${REST_API}/check/findpw`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+        params: params
+      })
+        .then((res) => {
+          context.commit("CHECK_ANSWER", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updatePassword(context, params){
+      const API_URL = `${REST_API}/check/password`;
+      return axios({
+        url: API_URL,
+        method: "PUT",
+        params: params
+      })
+        .then(() => {
+          context.commit();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   },
   modules: {},
 });

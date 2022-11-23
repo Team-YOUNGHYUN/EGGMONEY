@@ -16,10 +16,9 @@
     </fieldset>
     <div id="button">
       <!-- <button class="btn btn-success" @click="doLogin">로그인</button> -->
-      <button class="btn btn-success" @click="doLogin">로그인</button> |
-      <router-link to="/login/regist" tag="button" class="btn btn-success"
-        >회원가입</router-link
-      >
+      <button class="btn btn-success" @click="doLogin">로그인</button> |  
+      <router-link to="/login/regist" tag="button" class="btn btn-success">회원가입</router-link> |
+      <router-link to="/login/findpw" tag="button" class="btn btn-success">비밀번호 찾기</router-link>
     </div>
   </div>
 </template>
