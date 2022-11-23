@@ -20,6 +20,11 @@ export default new Vuex.Store({
     records: [],
     exerciseParts: [],
     exercises: [],
+    // 유튜브 ==============================
+    videos: [],
+    video: null,
+    keyword: "코어 운동",
+    // =====================================
   },
   getters: {
     getUser(state) {
@@ -40,18 +45,18 @@ export default new Vuex.Store({
     getQuest(state) {
       return state.quest;
     },
-    getRecords(state){
+    getRecords(state) {
       return state.records;
     },
-    getExerciseParts(state){
+    getExerciseParts(state) {
       return state.exerciseParts;
     },
-    getExercises(state){
+    getExercises(state) {
       return state.exercises;
     },
-    getCheckPassword(state){
+    getCheckPassword(state) {
       return state.checkPassword;
-    }
+    },
   },
   mutations: {
     INIT_ISUNQ(state) {
@@ -83,13 +88,13 @@ export default new Vuex.Store({
     GET_QUEST(state, payload) {
       state.quest = payload;
     },
-    GET_RECORD_LIST(state, payload){
+    GET_RECORD_LIST(state, payload) {
       state.records = payload;
     },
-    GET_EXERCISE_PART_LIST(state, payload){
+    GET_EXERCISE_PART_LIST(state, payload) {
       state.exerciseParts = payload;
     },
-    GET_EXERCISE_LIST(state, payload){
+    GET_EXERCISE_LIST(state, payload) {
       state.exercises = payload;
     },
     SET_USER(state, payload) {
@@ -98,6 +103,17 @@ export default new Vuex.Store({
     CHECK_PASSWORD(state, payload) {
       state.checkPassword = payload;
     },
+    // 유튜브 ===============================================
+    SEARCH_YOUTUBE(state, videos) {
+      state.videos = videos;
+    },
+    CLICK_VIDEO(state, video) {
+      state.video = video;
+    },
+    SET_KEYWORD(state, keyword) {
+      state.keyword = keyword;
+    },
+    // =======================================================
   },
   actions: {
     initIsUnq({ commit }) {
@@ -209,88 +225,112 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    getRecordList(context, params){
+    getRecordList(context, params) {
       const API_URL = `${REST_API}/record`;
       return axios({
         url: API_URL,
         method: "GET",
         params: params,
       })
-      .then((res)=>{
-        context.commit("GET_RECORD_LIST", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("GET_RECORD_LIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    getExercisePartList(context){
+    getExercisePartList(context) {
       const API_URL = `${REST_API}/exercise/part`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("GET_EXERCISE_PART_LIST", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("GET_EXERCISE_PART_LIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    getExerciseList(context){
+    getExerciseList(context) {
       const API_URL = `${REST_API}/exercise`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("GET_EXERCISE_LIST", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("GET_EXERCISE_LIST", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    loginCheck(context, params){
+    loginCheck(context, params) {
       const API_URL = `${REST_API}/user/login`;
       return axios({
         url: API_URL,
         method: "GET",
         params: params,
       })
-      .then((res)=>{
-        context.commit("LOGIN_CHECK", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("LOGIN_CHECK", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    setUser(context, email){
+    setUser(context, email) {
       const API_URL = `${REST_API}/user/${email}`;
       return axios({
         url: API_URL,
         method: "GET",
       })
-      .then((res)=>{
-        context.commit("SET_USER", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("SET_USER", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    checkPassword(context, params){
+    checkPassword(context, params) {
       const API_URL = `${REST_API}/check/password`;
       return axios({
         url: API_URL,
         method: "GET",
         params: params,
       })
-      .then((res)=>{
-        context.commit("CHECK_PASSWORD", res.data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then((res) => {
+          context.commit("CHECK_PASSWORD", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    
+    // 유튜브 검색 ==================================================
+    searchYoutube({ commit }, payload) {
+      const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search`;
+      const YOUTUBE_KEY = process.env.VUE_APP_YOUTUBE_API_KEY;
+
+      axios({
+        url: YOUTUBE_URL,
+        method: "GET",
+        params: {
+          key: YOUTUBE_KEY,
+          part: "snippet",
+          q: payload,
+          type: "video",
+          maxResult: 4,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_YOUTUBE", res.data.items);
+        })
+        .catch((err) => console.log(err));
+    },
+    clickVideo({ commit }, payload) {
+      commit("CLICK_VIDEO", payload);
+    },
+    // ===============================================================
   },
   modules: {},
 });

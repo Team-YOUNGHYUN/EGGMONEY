@@ -9,10 +9,18 @@
 <script>
 import TheHeader from "./components/common/TheHeader.vue";
 import TheFooter from "./components/common/TheFooter.vue";
+import { mapState } from "vuex";
 export default {
   components: {
-    TheHeader, TheFooter,
-  }
+    TheHeader,
+    TheFooter,
+  },
+  computed: {
+    ...mapState(["keyword"]),
+  },
+  created() {
+    this.$store.dispatch("searchYoutube", this.keyword);
+  },
 };
 </script>
 
