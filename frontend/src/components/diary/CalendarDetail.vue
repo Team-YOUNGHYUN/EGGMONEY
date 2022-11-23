@@ -4,6 +4,7 @@
     <vc-calendar
       color="blue"
       is-range
+      is-extended
       :colums="$screens({ default: 1, lg: 2 })"
       class="custom-calendar max-w-full"
       :attributes="attributes"
@@ -70,7 +71,7 @@ export default {
             },
           },
           // 여기 dates에 필요한 내용을 insert
-          dates: [new Date(year, month, 7), new Date(year, month, 2)],
+          dates: ["2022-11-11", "2022-11-05"],
         },
       ],
     };

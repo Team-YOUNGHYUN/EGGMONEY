@@ -5,6 +5,9 @@ public class Exercise {
     private String name;
     private String Part;
 
+    public Exercise() {
+    }
+
     public Exercise(int id, String name, String part) {
         this.id = id;
         this.name = name;

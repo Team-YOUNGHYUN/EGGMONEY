@@ -8,6 +8,9 @@ public class Achvm {
     private int reward;
     private int hidden;
 
+    public Achvm() {
+    }
+
     public Achvm(int id, String title, String content, String imgSrc, int reward, int hidden) {
         this.id = id;
         this.title = title;
