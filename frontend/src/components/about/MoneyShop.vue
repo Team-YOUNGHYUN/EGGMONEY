@@ -5,7 +5,7 @@
     <div class="black-bg" v-show="modalOpen">
       <div class="white-bg">
         <img
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7ca0314f-6f5d-4149-892b-cb08045d1573/%EC%9D%91%EC%95%A0%EA%B3%84%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221123T134043Z&X-Amz-Expires=86400&X-Amz-Signature=bb0b7be15340fa5b70798291bd4b705f40e7d79801a8d44e8ae16161240a6657&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%259D%2591%25EC%2595%25A0%25EA%25B3%2584%25EB%259E%2580.png%22&x-id=GetObject"
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7ca0314f-6f5d-4149-892b-cb08045d1573/%EC%9D%91%EC%95%A0%EA%B3%84%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T183147Z&X-Amz-Expires=86400&X-Amz-Signature=e68edc6ece7e8b02a198f972906195395379cc96b9c2fb8cb6d506efb4828ecb&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%259D%2591%25EC%2595%25A0%25EA%25B3%2584%25EB%259E%2580.png%22&x-id=GetObject"
           class="egg-img"
           alt="응애계란"
         />
@@ -20,7 +20,7 @@
       <!-- 아이템1 -->
       <div class="item">
         <img
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/14e7861b-ee43-4215-83fa-08002bc08c02/%EB%B0%98%EC%88%99%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221123T074810Z&X-Amz-Expires=86400&X-Amz-Signature=5167d0532d44fb04d5af18e82e0b38174011bdb0752ac452c17234bdaff9bbe9&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EB%25B0%2598%25EC%2588%2599%25EB%259E%2580.png%22&x-id=GetObject"
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/14e7861b-ee43-4215-83fa-08002bc08c02/%EB%B0%98%EC%88%99%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T183121Z&X-Amz-Expires=86400&X-Amz-Signature=63817b3abdbaf4176d715295a2be9a3d13a9532743a6249f8cdb0bb494910274&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EB%25B0%2598%25EC%2588%2599%25EB%259E%2580.png%22&x-id=GetObject"
           alt="반숙란"
         />
         <br />
@@ -36,7 +36,7 @@
       <!-- 아이템2 -->
       <div class="item">
         <img
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/395a3f9e-d719-4024-a59f-b4300b34fb08/%EA%B5%AC%EC%9A%B4%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221123T074832Z&X-Amz-Expires=86400&X-Amz-Signature=e3048abcdc800aede983a5179678203cf2d5e113685438634426f75caeb85783&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EA%25B5%25AC%25EC%259A%25B4%25EB%259E%2580.png%22&x-id=GetObject"
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/395a3f9e-d719-4024-a59f-b4300b34fb08/%EA%B5%AC%EC%9A%B4%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T183211Z&X-Amz-Expires=86400&X-Amz-Signature=383b673668f46421108624f5e9276062b24c7866de29c4575981decc7433840b&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EA%25B5%25AC%25EC%259A%25B4%25EB%259E%2580.png%22&x-id=GetObject"
           alt="구운란"
         />
         <br />
@@ -52,7 +52,7 @@
       <!-- 아이템3 -->
       <div class="item">
         <img
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f830884a-f71d-4a23-b329-75cc67cf21f5/%EA%B0%90%EB%8F%99%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221123T074904Z&X-Amz-Expires=86400&X-Amz-Signature=37c052aabc6b006a337146742ef290a94d6efa083c5286b329de6a716176c399&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EA%25B0%2590%25EB%258F%2599%25EB%259E%2580.png%22&x-id=GetObject"
+          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f830884a-f71d-4a23-b329-75cc67cf21f5/%EA%B0%90%EB%8F%99%EB%9E%80.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221124T183232Z&X-Amz-Expires=86400&X-Amz-Signature=b9c2cfa9ceaba562958e35218ee191b628c79870e76c6ad99fa42074f54cd490&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EA%25B0%2590%25EB%258F%2599%25EB%259E%2580.png%22&x-id=GetObject"
           alt="감동란"
         />
         <br />
