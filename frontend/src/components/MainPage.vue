@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>router: 여기부터 MainPage 영역이다!</h1>
+  <div class="main-page">
     <main-goal></main-goal>
     <main-calendar></main-calendar>
     <main-video></main-video>
@@ -20,4 +19,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.main-page {
+  margin-top: 15px;
+}
+</style>
