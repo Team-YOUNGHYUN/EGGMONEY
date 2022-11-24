@@ -182,7 +182,7 @@ export default new Vuex.Store({
     },
     SELECT_COMMENT(state, payload){
       state.comment = payload;
-    }
+    },
 
     // =======================================================
   },
@@ -562,34 +562,34 @@ export default new Vuex.Store({
           console.log(err);
         }); 
     },
-  },
-  updateComment(context, params){
-    const API_URL = `${REST_API}/comment`;
-    return axios({
-      url: API_URL,
-      method: "PUT",
-      params: params
-    })
-      .then(() => {
-        context.commit();
+    updateComment(context, params){
+      const API_URL = `${REST_API}/comment`;
+      return axios({
+        url: API_URL,
+        method: "PUT",
+        params: params
       })
-      .catch((err) => {
-        console.log(err);
-      }); 
-  },
-  selectComment(context, params){
-    const API_URL = `${REST_API}/comment`;
-    return axios({
-      url: API_URL,
-      method: "POST",
-      params: params
-    })
-      .then((res) => {
-        context.commit("SELECT_COMMENT", res.data);
+        .then(() => {
+          context.commit();
+        })
+        .catch((err) => {
+          console.log(err);
+        }); 
+    },
+    selectComment(context, params){
+      const API_URL = `${REST_API}/comment`;
+      return axios({
+        url: API_URL,
+        method: "POST",
+        params: params
       })
-      .catch((err) => {
-        console.log(err);
-      }); 
+        .then((res) => {
+          context.commit("SELECT_COMMENT", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        }); 
+    },
   },
   modules: {},
 });

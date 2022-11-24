@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>회원정보 수정 페이지이다.</h1>
+    <h1>회원정보 수정</h1>
     <b-row  style="margin-top: 50px">
       <h2>나의 회원 정보</h2>
     </b-row>

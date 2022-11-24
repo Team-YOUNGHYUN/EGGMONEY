@@ -1,6 +1,5 @@
 <template>
   <div class="login">
-    <h1>Welcome ^.^</h1>
     <router-view />
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <br />
-    <h2 class="mv-title">오늘의 운동 추천</h2>
+    <h2 class="mv-title">오늘의 운동 추천 영상</h2>
     <div class="video-list">
       <!-- 상체 영상 랜덤 -->
       <div class="part-video">
