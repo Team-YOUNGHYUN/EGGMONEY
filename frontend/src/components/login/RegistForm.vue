@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>회원가입 페이지이다.</h1>
+    <h1>회원가입</h1>
     <b-row style="margin-top: 50px">
       <h2>필수 입력사항</h2>
     </b-row>
@@ -390,6 +390,7 @@ export default {
   methods: {
     async regist() {
       // 필수 입력사항 전부 입력하였는지 확인
+      
       if (
         this.email === "" ||
         this.password === "" ||
@@ -409,7 +410,7 @@ export default {
         alert("이메일 중복확인 여부를 확인해주세요.");
         return;
       }
-      await this.$store.dispatch("checkEmail", this.getUser.email);
+      await this.$store.dispatch("checkEmail", this.email);
       if (!this.getIsUnqEmail) {
         alert("이메일 중복확인 여부를 확인해주세요.");
         return;
@@ -426,12 +427,12 @@ export default {
         alert("닉네임 중복확인 여부를 확인해주세요.");
         return;
       }
-      await this.$store.dispatch("checkNickname", this.getUser.nickname);
+      await this.$store.dispatch("checkNickname", this.nickname);
       if (!this.getIsUnqNickname) {
         alert("닉네임 중복확인 여부를 확인해주세요.");
         return;
       }
-
+      console.log('ok')
       let user = {
         userSeq: this.userSeq,
         email: this.email,
@@ -450,7 +451,8 @@ export default {
       };
 
       await this.$store.dispatch("registUser", user);
-      this.$store.dispatch("createQuest", this.userSeq);
+      await this.$store.dispatch("createQuest", this.userSeq);
+      this.$store.dispatch("setQuest", this.userSeq);
     },
     checkEmail() {
       // 이메일 중복 검사

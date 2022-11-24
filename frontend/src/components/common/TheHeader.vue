@@ -15,6 +15,7 @@
       </div>
       <div class="header-index" style="font-size: 1.6em">
         <!-- HomeView : <router-link to="/"></router-link> -->
+        <a class="index" v-if="getUser">MONEY: ￦{{this.money}}ㅤㅤ</a>
         <router-link to="/diary" class="index">다이어리</router-link>&nbsp;
         <router-link to="/about/goal" class="index">목표</router-link>&nbsp;
         <router-link to="/about/shop" class="index">상점</router-link>&nbsp;
@@ -36,8 +37,10 @@ import router from "@/router";
 import { mapGetters } from "vuex";
 export default {
   name: "TheHeader",
-  date() {
-    return {};
+  data() {
+    return {
+      money: "2,000"
+    };
   },
   computed: {
     ...mapGetters(["getUser"]),

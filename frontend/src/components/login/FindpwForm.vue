@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <b-row>
-        <h1>비밀번호 찾기 페이지이다.</h1>
+        <h1>비밀번호 찾기</h1>
     </b-row>
     <b-row align-h="center">
         <b-col cols="5">
