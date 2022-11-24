@@ -1,7 +1,6 @@
 <template>
   <div class="eggmoney-shop">
     <h1 class="shop-title">EGGMONEY SHOP</h1>
-
     <!-- ========================= 모달창 ============================= -->
     <div class="black-bg" v-show="modalOpen">
       <div class="white-bg">
@@ -77,19 +76,11 @@ export default {
   data() {
     return {
       selected: "",
-      // 모달을 숨겨주는 변수 선언
       modalOpen: false,
     };
   },
   methods: {
     popItem() {
-      // if (this.data.selected === "item1") {
-      //   console.log("반숙란");
-      // } else if (this.data.selected === "item2") {
-      //   console.log("감동란");
-      // } else if (this.data.selected === "item3") {
-      //   console.log("구운란");
-      // }
       this.modalOpen = !this.modalOpen;
     },
   },

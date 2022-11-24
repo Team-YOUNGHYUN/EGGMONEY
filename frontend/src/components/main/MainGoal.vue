@@ -6,8 +6,10 @@
     <br />
     <div class="goal-text">
       Due dueDate
-      <b-button variant="light"
-        ><router-link to="/about/goal">변경</router-link></b-button
+      <b-button variant="dark"
+        ><router-link to="/about/goal" class="updateBtn"
+          >변경</router-link
+        ></b-button
       >
     </div>
     <br />
@@ -23,7 +25,14 @@ export default {
 
 <style>
 .main-goal {
-  background-color: #1a202c;
+  background-color: #fee0bc;
+  color: black;
+  margin-left: 25em;
+  margin-right: 25em;
+}
+
+.updateBtn {
+  text-decoration: none;
   color: white;
 }
 </style>
