@@ -2,11 +2,10 @@
   <b-container>
     <b-row align-h="center">
       <h1 class="quest-title" style="font-size: 2.5em">목표 관리</h1>
-      <b-col class="col-left">
+      <b-col class="d-flex flex-column align-item-center">
         <br />
         <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
         <h2 class="title">현재 신체 정보</h2>
-
         <div class="body-status" v-if="modifyMode == 0">
           <div class="input-group mb-3">
             <span class="input-group-text">키(cm)</span>
@@ -48,6 +47,7 @@
               style="text-align: right"
             />
           </div>
+
           <b-button variant="dark" @click="activeModifyMode">수정</b-button>
         </div>
         <!-- 신체 정보 수정 -->
@@ -88,15 +88,15 @@
               style="text-align: right"
             />
           </div>
-          <b-button variant="dark" @click="activeModifyMode">수정</b-button>
+          <b-button variant="dark" @click="updateUser">완료</b-button>
         </div>
       </b-col>
 
       <!-- 목표 설정 및 등록 -->
       <b-col class="col-right">
         <h2 class="title">목표 설정</h2>
-        <fieldset class="text-center">
-          <div>
+        <fieldset>
+          <div class="d-flex flex-column align-item-center">
             <div class="input-group mb-3">
               <input type="radio" v-model="type" value="1" id="weight" />
               <span class="input-group-text">체중(kg)</span>
@@ -153,11 +153,12 @@
             <h3 v-else-if="this.getQuest.type == 3">
               목표까지 {{ this.goal - this.getUser.muscleMass }}kg!
             </h3>
-            <div>현재까지 목표 수정 횟수: {{ this.getQuest.modifyCnt }}번</div>
           </div>
-          <br />
           <label form="dueDate">목표 날짜</label>
           <input type="date" id="dueDate" v-model="dueDate" class="view" />
+          <div class="modCnt">
+            현재까지 목표 수정 횟수: {{ this.getQuest.modifyCnt }}번
+          </div>
         </fieldset>
         <br />
         <b-button variant="dark" @click="updateQuest">등록</b-button>
@@ -233,7 +234,20 @@ export default {
   width: 115px;
 }
 
+.input-group {
+  width: 380px;
+  margin: 0 auto;
+}
+
+.modCnt {
+  margin-top: 15px;
+}
+
 input {
   margin-right: 5px;
+}
+
+label {
+  margin-right: 10px;
 }
 </style>
