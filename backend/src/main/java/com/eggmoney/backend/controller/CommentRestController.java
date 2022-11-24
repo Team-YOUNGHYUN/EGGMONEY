@@ -26,7 +26,7 @@ public class CommentRestController {
         return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
     }
 
-    @GetMapping("/comment/{id}")
+    @GetMapping("/comment")
     // 코멘트 상세
     public ResponseEntity<Comment> commentDetail(String email, String date){
         HashMap<String, String> params = new HashMap<>();
