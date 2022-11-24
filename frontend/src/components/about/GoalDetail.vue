@@ -7,39 +7,47 @@
         <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
         <h2 class="title">현재 신체 정보</h2>
 
-        <div class="input-group mb-3" v-if="modifyMode == 0">
-          <span class="input-group-text">키(cm)</span>
-          <input
-            type="number"
-            id="height"
-            v-model="getUser.height"
-            disabled
-            style="text-align: right"
-          />
-          <span class="input-group-text">몸무게(kg)</span>
-          <input
-            type="number"
-            id="weight"
-            v-model="getUser.weight"
-            disabled
-            style="text-align: right"
-          />
-          <span class="input-group-text">체지방률(%)</span>
-          <input
-            type="number"
-            id="bodyFat"
-            v-model="getUser.bodyFat"
-            disabled
-            style="text-align: right"
-          />
-          <span class="input-group-text">골격근량(kg)</span>
-          <input
-            type="number"
-            id="muscleMass"
-            v-model="getUser.muscleMass"
-            disabled
-            style="text-align: right"
-          /><br /><br />
+        <div v-if="modifyMode == 0">
+          <div class="input-group mb-3">
+            <span class="input-group-text">키(cm)</span>
+            <input
+              type="number"
+              id="height"
+              v-model="getUser.height"
+              disabled
+              style="text-align: right"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">몸무게(kg)</span>
+            <input
+              type="number"
+              id="weight"
+              v-model="getUser.weight"
+              disabled
+              style="text-align: right"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">체지방률(%)</span>
+            <input
+              type="number"
+              id="bodyFat"
+              v-model="getUser.bodyFat"
+              disabled
+              style="text-align: right"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">골격근량(kg)</span>
+            <input
+              type="number"
+              id="muscleMass"
+              v-model="getUser.muscleMass"
+              disabled
+              style="text-align: right"
+            />
+          </div>
           <b-button variant="dark" @click="activeModifyMode">수정</b-button>
         </div>
 
