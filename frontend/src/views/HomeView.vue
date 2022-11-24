@@ -1,28 +1,27 @@
 <template>
   <div class="home">
-    <h1>HomeView 페이지에용 ^.^</h1>
-    <img alt="Vue logo" src="../assets/logo.png" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import router from '../router';
-import {mapGetters} from "vuex";
+import router from "../router";
+import { mapGetters } from "vuex";
 
 export default {
   name: "HomeView",
-  components: {
-
-  },
+  components: {},
   computed: {
-    ...mapGetters(["getUser"])
+    ...mapGetters(["getUser"]),
   },
-  async created(){
-    if(!JSON.parse(window.sessionStorage.getItem("user"))){
+  async created() {
+    if (!JSON.parse(window.sessionStorage.getItem("user"))) {
       router.push("/login");
     }
-    await this.$store.dispatch("setUser", JSON.parse(window.sessionStorage.getItem("user")).email);
+    await this.$store.dispatch(
+      "setUser",
+      JSON.parse(window.sessionStorage.getItem("user")).email
+    );
     this.$store.dispatch("setRecords", this.getUser.email);
     this.$store.dispatch("setRecordDates", this.getUser.email);
     // 오늘 날짜 세팅
@@ -30,7 +29,7 @@ export default {
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
     const date = today.getDate();
-    this.$store.dispatch("setSelectedDate", year+'-'+month+'-'+date);
-  }
+    this.$store.dispatch("setSelectedDate", year + "-" + month + "-" + date);
+  },
 };
 </script>

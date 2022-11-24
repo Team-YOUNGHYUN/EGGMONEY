@@ -98,12 +98,14 @@ export default {
 
 <style>
 .eggmoney-shop {
-  background-color: #1a202c;
+  background-color: hsl(33, 97%, 87%);
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .shop-items {
   justify-content: space-around;
-  margin: 20px 100px;
+  margin: 25px 100px;
   display: flex;
 }
 
@@ -120,14 +122,14 @@ export default {
 .black-bg {
   width: 100%;
   height: 50%;
-  background: rgba(0, 0, 0, 0.6);
+  background: hsl(33, 97%, 87%);
   position: absolute;
 }
 
 .white-bg {
   width: 90%;
   margin: 80px auto;
-  background: #1a202c;
+  background: white;
   border-radius: 5px; /* 모서리 곡률..아마도? */
   padding: 20px 0;
 }
@@ -156,6 +158,6 @@ export default {
 
 .popup-text,
 .shop-title {
-  color: white;
+  color: black;
 }
 </style>
