@@ -2,9 +2,6 @@
   <div class="content-box">
     <br />
     <h2 class="mv-title">오늘의 운동 추천</h2>
-    <br />
-    <!-- 아래 코드는 randomVideo가 잘 동작하는지 확인하는 코드 -->
-    <!-- <p>{{ this.randomVideo }}</p> -->
     <div class="video-list">
       <!-- 상체 영상 랜덤 -->
       <div class="part-video">
@@ -83,10 +80,13 @@ export default {
 <style>
 .mv-title {
   text-align: left;
+  color: black;
 }
 
 .content-box {
-  background-color: #1a202c;
+  background-color: #fee0bc;
+  margin: auto 10%;
+  border-radius: 2%;
 }
 
 .video-list {
@@ -99,10 +99,12 @@ export default {
   flex: 1;
   width: 20%;
   box-sizing: border-box;
+  color: black;
 }
 
 .each-video {
-  width: 400px;
-  height: 260px;
+  width: auto;
+  height: auto;
+  border-radius: 5%;
 }
 </style>

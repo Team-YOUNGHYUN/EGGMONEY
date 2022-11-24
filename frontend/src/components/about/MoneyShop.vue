@@ -1,6 +1,6 @@
 <template>
   <div class="eggmoney-shop">
-    <h1 class="shop-title">EGGMONEY SHOP</h1>
+    <h1 class="shop-title" style="font-size: 2.5em">EGGMONEY 상점</h1>
     <!-- ========================= 모달창 ============================= -->
     <div class="black-bg" v-show="modalOpen">
       <div class="white-bg">
@@ -66,7 +66,7 @@
         />
       </div>
     </div>
-    <b-button variant="warning" @click="popItem">Buy</b-button>
+    <b-button variant="dark" @click="popItem">구매</b-button>
   </div>
 </template>
 
@@ -101,7 +101,7 @@ export default {
 }
 
 .item {
-  background-color: slategray;
+  background-color: beige;
   border: 1px solid white;
 }
 

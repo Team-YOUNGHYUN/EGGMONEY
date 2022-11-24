@@ -2,6 +2,20 @@
   <div class="diary">
     <div class="record-list">
       <h2 style="text-align: left">오늘 나는...</h2>
+      <!-- record list 받아올 수 있음 -->
+      <ul class="list-group">
+        <li v-for="(recordItem, index) in records" :key="index">
+          {{ recordItem }}
+          <span
+            class="removeBtn"
+            typeof="button"
+            @click="removeRecord(recordItem, index)"
+          >
+            <i class="bi bi-backspace"></i>
+            <!-- 삭제 아이콘 -->
+          </span>
+        </li>
+      </ul>
     </div>
 
     <div class="add-list">

@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// import MainCalendar from "../components/diary";
 import DiaryCalendar from "./diary/DiaryCalendar.vue";
 import DiaryDetail from "./diary/DiaryDetail.vue";
 
