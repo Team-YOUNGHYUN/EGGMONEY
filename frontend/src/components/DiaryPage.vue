@@ -1,9 +1,15 @@
 <template>
-  <div class="diary-container">
-    <h1 class="diary-title">EGG DIARY</h1>
-    <diary-calendar style="float: left; width: 40%; margin: 0px 5%" />
-    <diary-detail style="float: left; width: 40%; margin: 5% 5%" />
-  </div>
+  <b-container>
+    <b-row align-h="center">
+        <b-col>
+            <diary-calendar/>
+        </b-col>
+        <b-col cols="1"></b-col>
+        <b-col>
+            <diary-detail/>
+        </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -21,12 +27,15 @@ export default {
 };
 </script>
 
-<style>
-.diary-container {
-  background-color: hsl(33, 97%, 87%);
-  min-height: 800px;
-  margin: 20px 40px;
-  padding-top: 3%;
-  padding-bottom: 3%;
+<style scoped>
+.container {
+  background-color: #fee0bc;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+  height: auto;
 }
 </style>

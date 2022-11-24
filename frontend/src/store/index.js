@@ -529,6 +529,20 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    insertRecord(context, params){
+      const API_URL = `${REST_API}/record`;
+      return axios({
+        url: API_URL,
+        method: "POST",
+        params: params
+      })
+        .then(() => {
+          context.commit();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   },
   modules: {},
 });

@@ -20,11 +20,11 @@
 
     <div class="add-list">
       <h2 style="text-align: left">그리고...</h2>
-      <table class="table" style="background-color: #ffd95b">
+      <table class="table" style="background-color: white">
         <thead>
           <th>운동부위</th>
           <th>운동이름</th>
-          <th>운동횟수(시간)</th>
+          <th>운동횟수(분)</th>
         </thead>
         <tbody>
           <tr v-for="(record, index) in this.getDayRecords" :key="index">
@@ -75,20 +75,20 @@
         v-model="setCnt"
       />
       <input v-else type="number" v-model="timeCnt" />
-
-      <b-button variant="dark" @click="test">추가</b-button>
+      <button class="btn btn-dark" @click="registRecord">등록</button>
+      <!-- <button @click="test">confirm</button> -->
     </div>
 
     <div class="comment-box">
       <h2 style="text-align: left">하루 갈무리</h2>
       <div class="form-group">
-        <textarea
+        <textarea v-model="getComment.content"
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
         ></textarea>
         <br />
-        <b-button variant="dark">등록</b-button>
+        <b-button variant="dark" style="width:530px" @click="registComment">등록</b-button>
       </div>
     </div>
   </div>
@@ -117,21 +117,49 @@ export default {
       "getExerciseParts",
       "getExercises",
       "getSelectedDate",
+      "getComment"
     ]),
   },
   methods: {
-    test() {
-      console.log(this.exercisePart);
-      if (this.exerciseName !== "custom") {
-        console.log(this.exerciseName);
-      } else {
-        console.log(this.customExerciseName);
+    createComment(){
+        let params = {
+            id: 0,
+            content: "",
+            regDate: this.getSelectedDate,
+            userSeq: this.getUser.userSeq
+        }
+        this.$store.dispatch("createComment", params);
+    },
+    updateComment(){
+        let params = {
+            id: 0,
+            content: this.content,
+            regDate: this.getSelectedDate,
+            userSeq: this.getUser.userSeq
+        }
+        this.$store.dispatch("registComment", params);
+    },
+    async registRecord() {
+      if (this.exerciseName === "custom") {
+        this.exerciseName = this.customExerciseName;
       }
-      if (this.exercisePart !== "유산소") {
-        console.log(this.setCnt);
-      } else {
-        console.log(this.timeCnt);
+      let record = {
+        id: 0,
+        exerciseName: this.exerciseName,
+        exercisePart: this.exercisePart,
+        setCnt: this.setCnt,
+        timeCnt: this.timeCnt,
+        regDate: this.getSelectedDate,
+        userSeq: this.getUser.userSeq
       }
+      await this.$store.dispatch("insertRecord", record);
+      await this.$store.dispatch("setRecords", this.getUser.email);
+      await this.$store.dispatch("setRecordDates", this.getUser.email);
+      let params = {
+        records: this.getRecords,
+        date: this.getSelectedDate,
+      };
+      this.$store.dispatch("setDayRecords", params);
     },
     initExerciseName() {
       this.exerciseName = "";
