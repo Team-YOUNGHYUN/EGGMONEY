@@ -1,80 +1,78 @@
 <template>
   <b-container>
-    <h1>router: 여기부터 goalDetail 영역이다!</h1>
-
     <b-row>
+      <h1 class="quest-title" style="font-size: 2.5em">목표 관리</h1>
       <b-col>
-        <h1 class="quest-title">목표 관리</h1>
         <br />
         <!-- loginUser로부터 키, 몸무게, 체지방률, 골격근량을 받아와 show -->
         <h2 class="title">현재 신체 정보</h2>
 
-        <div v-if="modifyMode == 0">
-          <label for="height">키: </label>
+        <div class="input-group mb-3" v-if="modifyMode == 0">
+          <span class="input-group-text">키(cm)</span>
           <input
             type="number"
             id="height"
             v-model="getUser.height"
             disabled
             style="text-align: right"
-          />cm<br />
-          <label for="weight">몸무게: </label>
+          />
+          <span class="input-group-text">몸무게(kg)</span>
           <input
             type="number"
             id="weight"
             v-model="getUser.weight"
             disabled
             style="text-align: right"
-          />kg<br />
-          <label for="bodyFat">체지방률: </label>
+          />
+          <span class="input-group-text">체지방률(%)</span>
           <input
             type="number"
             id="bodyFat"
             v-model="getUser.bodyFat"
             disabled
             style="text-align: right"
-          />%<br />
-          <label for="muscleMass">골격근량: </label>
+          />
+          <span class="input-group-text">골격근량(kg)</span>
           <input
             type="number"
             id="muscleMass"
             v-model="getUser.muscleMass"
             disabled
             style="text-align: right"
-          />kg<br /><br /><br />
-          <button @click="activeModifyMode">신체 정보 갱신하기</button>
+          /><br /><br />
+          <b-button variant="dark" @click="activeModifyMode">수정</b-button>
         </div>
 
-        <div v-else-if="modifyMode == 1">
-          <label for="height">키: </label>
+        <div class="input-group mb-3" v-else-if="modifyMode == 1">
+          <span class="input-group-text">키(cm)</span>
           <input
             type="number"
             id="height"
             v-model="getUser.height"
             style="text-align: right"
-          />cm<br />
-          <label for="weight">몸무게: </label>
+          />
+          <span class="input-group-text">몸무게(kg)</span>
           <input
             type="number"
             id="weight"
             v-model="getUser.weight"
             style="text-align: right"
-          />kg<br />
-          <label for="bodyFat">체지방률: </label>
+          />
+          <span class="input-group-text">체지방률(%)</span>
           <input
             type="number"
             id="bodyFat"
             v-model="getUser.bodyFat"
             style="text-align: right"
-          />%<br />
-          <label for="muscleMass">골격근량: </label>
+          />
+          <span class="input-group-text">골격근량(kg)</span>
           <input
             type="number"
             id="muscleMass"
             v-model="getUser.muscleMass"
             style="text-align: right"
-          />kg<br /><br /><br />
-          <button @click="updateUser">갱신</button>
+          /><br /><br />
+          <b-button variant="dark" @click="updateUser">완료</b-button>
         </div>
       </b-col>
 
@@ -84,7 +82,7 @@
         <fieldset class="text-center">
           <div>
             <input type="radio" v-model="type" value="1" id="weight" />
-            <label for="weight">체중:</label>
+            <label for="weight">체중: &nbsp;</label>
             <input type="number" v-model="goal" v-if="type == 1" />
             <input
               type="number"
@@ -93,11 +91,11 @@
               disabled
             />
             <input type="number" v-else disabled />
-            kg
+            &nbsp;kg
             <br />
 
             <input type="radio" v-model="type" value="2" id="bodyFat" />
-            <label for="bodyFat">체지방률:</label>
+            <label for="bodyFat">체지방률: &nbsp;</label>
             <input type="number" v-model="goal" v-if="type == 2" />
             <input
               type="number"
@@ -106,11 +104,11 @@
               disabled
             />
             <input type="number" v-else disabled />
-            %
+            &nbsp;%
             <br />
 
             <input type="radio" v-model="type" value="3" id="muscleMass" />
-            <label for="muscleMass">골격근량:</label>
+            <label for="muscleMass">골격근량: &nbsp;</label>
             <input type="number" v-model="goal" v-if="type == 3" />
             <input
               type="number"
@@ -119,7 +117,7 @@
               disabled
             />
             <input type="number" v-else disabled />
-            kg
+            &nbsp;kg
             <br />
             <h3 v-if="this.type == 1">
               목표까지 {{ this.goal - this.getUser.weight }}kg!
@@ -143,15 +141,12 @@
               당신은 지금까지 목표를 {{ this.getQuest.modifyCnt }}번 수정했다..
             </div>
           </div>
-
           <br />
-
           <label form="dueDate">목표 날짜</label>
           <input type="date" id="dueDate" v-model="dueDate" class="view" />
         </fieldset>
         <br />
-        <!-- <button @click="test">테스트</button> -->
-        <b-button @click="updateQuest">등록</b-button>
+        <b-button variant="dark" @click="updateQuest">등록</b-button>
       </b-col>
     </b-row>
   </b-container>
@@ -210,12 +205,17 @@ export default {
 
 <style>
 .container {
-  /* margin-top: 70px;
-      padding-top: 100px;
-      padding-left: 100px;
-      padding-right: 100px;
-      padding-bottom: 100px; */
-  background: gray;
-  color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background: hsl(33, 97%, 87%);
+  color: black;
+}
+
+.input-group-text {
+  width: 115px;
 }
 </style>
