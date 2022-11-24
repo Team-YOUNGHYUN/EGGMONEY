@@ -1,26 +1,44 @@
 <template>
-  <div class="container">
-    <h1>router: 여기부터 LoginForm 영역이다!</h1>
-    <h2 class="title">로그인</h2>
-    <fieldset class="text-center">
-      <label for="id">이메일</label>
-      <input type="text" id="email" v-model="email" class="view" /><br />
-      <label for="password">비밀번호</label>
-      <input
+  <b-container  > 
+    <b-row align-h="center">
+    <h1 class="title">로그인</h1>
+    </b-row>   
+    <b-row align-h="center">
+      <b-col cols="5">
+        <div class="input-group mt-4 mb-3">
+          <span class="input-group-text" id="basic-addon1">이 메 일</span>
+          <input type="text" class="form-control" v-model="email" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">비밀번호</span>
+          <input  type="text" class="form-control" v-model="password" placeholder="password" aria-label="Username" aria-describedby="basic-addon1"
+          @keyup.enter="doLogin">
+        </div>
+        <!-- <input type="text" id="email" v-model="email" class="view" /><br /><br />
+        <input
         type="password"
         id="password"
         v-model="password"
         class="view"
         @keyup.enter="doLogin"
-      /><br />
-    </fieldset>
-    <div id="button">
-      <!-- <button class="btn btn-success" @click="doLogin">로그인</button> -->
-      <button class="btn btn-success" @click="doLogin">로그인</button> |  
-      <router-link to="/login/regist" tag="button" class="btn btn-success">회원가입</router-link> |
-      <router-link to="/login/findpw" tag="button" class="btn btn-success">비밀번호 찾기</router-link>
-    </div>
-  </div>
+      /> -->
+      </b-col>
+    </b-row>
+    <b-row align-h="center" style="margin-top: 5px">
+      <b-col>
+        <button class="btn btn-dark" @click="doLogin" style="width: 350px">로그인</button>
+      </b-col>
+    </b-row>
+    <b-row align-h="center">
+      <b-col style="margin-top: 13px">
+        <router-link to="/login/regist" tag="button" class="btn btn-dark"
+        style="width: 165px; margin-right: 20px">회원가입</router-link> 
+        <router-link to="/login/findpw" tag="button" class="btn btn-dark"
+        style="width: 165px">비밀번호 찾기</router-link>
+      </b-col>
+    </b-row>
+
+  </b-container>
 </template>
 
 <script>
@@ -74,12 +92,13 @@ export default {
 
 <style scoped>
 .container {
-  /* margin-top: 70px;
-    padding-top: 100px;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 100px; */
-  background: #1a202c;
-  color: white;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+    padding-bottom: 100px;
+  background: #fee0bc;
+  color: black;
+  width: 900px;
+  height: 390px;
 }
 </style>
