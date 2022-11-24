@@ -19,7 +19,7 @@
         <router-link to="/about/goal" class="index">목표</router-link>&nbsp;
         <router-link to="/about/shop" class="index">상점</router-link>&nbsp;
         <router-link to="/about/user" class="index">내 정보</router-link>&nbsp;
-        <a v-if="getUser" @click="logout" class="index" style="cursor: pointer"
+        <a v-if="getUser.email" @click="logout" class="index" style="cursor: pointer"
           >로그아웃</a
         >
       </div>

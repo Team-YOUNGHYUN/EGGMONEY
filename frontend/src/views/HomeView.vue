@@ -22,6 +22,7 @@ export default {
       "setUser",
       JSON.parse(window.sessionStorage.getItem("user")).email
     );
+    this.$store.dispatch("setQuest", this.getUser.userSeq);
     this.$store.dispatch("setRecords", this.getUser.email);
     this.$store.dispatch("setRecordDates", this.getUser.email);
     // 오늘 날짜 세팅
@@ -33,3 +34,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.home{
+  background-color: #fee0bc;
+  padding-bottom: 100px;
+  margin-bottom: 20px;
+  height: auto;
+}
+</style>

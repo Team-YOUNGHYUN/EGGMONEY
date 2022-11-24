@@ -24,6 +24,7 @@ export default new Vuex.Store({
     records: [],
     recordDates: [],
     dayRecords: [],
+    comment: "",
     // 유튜브 검색 =========================
     videos1: [],
     videos2: [],
@@ -179,6 +180,10 @@ export default new Vuex.Store({
     INIT_QUESTION(state) {
       state.question = "";
     },
+    SELECT_COMMENT(state, payload){
+      state.comment = payload;
+    }
+
     // =======================================================
   },
   actions: {
@@ -542,7 +547,49 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
-    }
+    },
+    createComment(context, params){
+      const API_URL = `${REST_API}/comment`;
+      return axios({
+        url: API_URL,
+        method: "POST",
+        params: params
+      })
+        .then(() => {
+          context.commit();
+        })
+        .catch((err) => {
+          console.log(err);
+        }); 
+    },
+  },
+  updateComment(context, params){
+    const API_URL = `${REST_API}/comment`;
+    return axios({
+      url: API_URL,
+      method: "PUT",
+      params: params
+    })
+      .then(() => {
+        context.commit();
+      })
+      .catch((err) => {
+        console.log(err);
+      }); 
+  },
+  selectComment(context, params){
+    const API_URL = `${REST_API}/comment`;
+    return axios({
+      url: API_URL,
+      method: "POST",
+      params: params
+    })
+      .then((res) => {
+        context.commit("SELECT_COMMENT", res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      }); 
   },
   modules: {},
 });

@@ -82,7 +82,7 @@
     <div class="comment-box">
       <h2 style="text-align: left">하루 갈무리</h2>
       <div class="form-group">
-        <textarea v-model="getComment.content"
+        <textarea v-model="content"
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="3"
@@ -106,6 +106,7 @@ export default {
       setCnt: 0,
       timeCnt: 0,
       activeExercises: [],
+      content:""
     };
   },
   computed: {
