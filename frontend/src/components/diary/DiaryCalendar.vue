@@ -27,6 +27,7 @@ export default {
       "getRecords",
       "getDayRecords",
       "getRecordDates",
+      "getUser"
     ]),
   },
   methods: {
@@ -37,6 +38,15 @@ export default {
         date: this.getSelectedDate,
       };
       this.$store.dispatch("setDayRecords", params);
+      this.selectComment();
+    },
+    selectComment(){
+        let params = {
+            email: this.getUser.email,
+            date: this.getSelectedDate
+        }
+        this.$store.dispatch("setComment", params);
+        this.getComment.comment;
     },
   },
   created() {
