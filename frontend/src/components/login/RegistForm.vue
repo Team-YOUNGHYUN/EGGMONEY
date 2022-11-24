@@ -431,9 +431,6 @@ export default {
   display: inline;
   margin-left: 13px;
 }
-/* .form-control{
-  width: 350px;
-} */
 #basic-addon1{
   width: 145px;
 }
