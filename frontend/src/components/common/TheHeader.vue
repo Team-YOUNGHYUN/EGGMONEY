@@ -75,14 +75,4 @@ export default {
   text-decoration: none;
   color: white;
 }
-
-/* #nav a {
-  font-weight: bold;
-  color: white;
-}
-
-#nav a.router-link-exact-active {
-  font-weight: bold;
-  color: #90a7d1;
-} */
 </style>

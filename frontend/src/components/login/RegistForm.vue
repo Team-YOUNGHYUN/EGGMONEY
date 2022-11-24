@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <h1>회원가입 페이지이다.</h1>
-    <b-row  style="margin-top: 50px">
+    <b-row style="margin-top: 50px">
       <h2>필수 입력사항</h2>
     </b-row>
 
@@ -9,8 +9,14 @@
       <b-col cols="6">
         <div class="input-group mt-4 mb-3">
           <span class="input-group-text" id="basic-addon1">이 메 일</span>
-          <input type="email" class="form-control" v-model="email"
-            placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="email"
+            class="form-control"
+            v-model="email"
+            placeholder="E-mail"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <!-- <label for="email">이메일</label>
           <input type="email" id="email" v-model="email" class="view" /> -->
           <button @click="checkEmail" class="btn btn-dark">중복확인</button>
@@ -22,8 +28,14 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">비밀번호</span>
-          <input type="password" class="form-control" v-model="password"
-            placeholder="password" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="password"
+            class="form-control"
+            v-model="password"
+            placeholder="password"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <!-- <label for="password">비밀번호</label>
           <input
             type="password"
@@ -39,13 +51,32 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">비밀번호 확인</span>
-          <input type="password" class="form-control" v-model="confirmPassword" 
-            placeholder="confirm password" aria-label="Username" aria-describedby="basic-addon1">
-          <span class="input-group-text" style="width: 35px" id="false" v-if="password === '' || confirmPassword === ''">!</span> 
-          <span class="input-group-text" id="true" style="width: 35px" 
-            v-else-if="password === confirmPassword">✓</span> 
-          <span class="input-group-text" style="width: 35px" id="false" v-else>!</span> 
-<!-- 
+          <input
+            type="password"
+            class="form-control"
+            v-model="confirmPassword"
+            placeholder="confirm password"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+          <span
+            class="input-group-text"
+            style="width: 35px"
+            id="false"
+            v-if="password === '' || confirmPassword === ''"
+            >!</span
+          >
+          <span
+            class="input-group-text"
+            id="true"
+            style="width: 35px"
+            v-else-if="password === confirmPassword"
+            >✓</span
+          >
+          <span class="input-group-text" style="width: 35px" id="false" v-else
+            >!</span
+          >
+          <!-- 
         <label for="confirmPassword">비밀번호확인</label>
       <input
         type="password"
@@ -54,7 +85,7 @@
         class="view"
       /> -->
 
-      <!-- <div
+          <!-- <div
         class="msg"
         id="none"
         v-if="password === '' || confirmPassword === ''"
@@ -71,27 +102,44 @@
       <b-col cols="6">
         <div class="input-group mt-5 mb-3">
           <span class="input-group-text" id="basic-addon1">이름</span>
-          <input type="text" class="form-control" v-model="name" 
-            placeholder="name" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="text"
+            class="form-control"
+            v-model="name"
+            placeholder="name"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
         </div>
         <!-- <label for="name">이름</label>
         <input type="text" id="name" v-model="name" class="view" /><br /> -->
       </b-col>
     </b-row>
 
-
     <b-row align-h="center">
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">성별</span>
           <div class="input-group-text" style="width: 280px">
-             <input class="form-check-input mt-0" type="radio"
-                id="male" v-model="gender" value="male"
-                style="margin-left:25px"/>
-             <label for="male" style="margin-left:15px; margin-right:70px">남자</label>
-             <input class="form-check-input mt-0" type="radio"
-                id="female" v-model="gender" value="female"/>
-             <label for="female" style="margin-left:15px">여자</label>
+            <input
+              class="form-check-input mt-0"
+              type="radio"
+              id="male"
+              v-model="gender"
+              value="male"
+              style="margin-left: 25px"
+            />
+            <label for="male" style="margin-left: 15px; margin-right: 70px"
+              >남자</label
+            >
+            <input
+              class="form-check-input mt-0"
+              type="radio"
+              id="female"
+              v-model="gender"
+              value="female"
+            />
+            <label for="female" style="margin-left: 15px">여자</label>
           </div>
         </div>
         <!-- 
@@ -117,14 +165,20 @@
               </div>
               <br /> -->
       </b-col>
-    </b-row>      
+    </b-row>
 
     <b-row align-h="center">
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">닉네임</span>
-          <input type="text" class="form-control" v-model="nickname" 
-            placeholder="nickname" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="text"
+            class="form-control"
+            v-model="nickname"
+            placeholder="nickname"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <button class="btn btn-dark" @click="checkNickname">중복확인</button>
           <!-- <label for="nickname">닉네임</label>
           <input type="text" id="nickname" v-model="nickname" class="view" /> -->
@@ -136,12 +190,20 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <label class="input-group-text" for="pwFindQuestionId"
-          >비밀번호 찾기 질문</label>
-          <select v-model="pwFindQuestionId" class="form-select"
-          id="pwFindQuestionId" style="width:275px">
+            >비밀번호 찾기 질문</label
+          >
+          <select
+            v-model="pwFindQuestionId"
+            class="form-select"
+            id="pwFindQuestionId"
+            style="width: 275px"
+          >
             <option value="" disabled>질문을 선택하세요.</option>
-            <option v-for="item in this.getQuestionList" 
-              :key="item.question" :value="item.id">
+            <option
+              v-for="item in this.getQuestionList"
+              :key="item.question"
+              :value="item.id"
+            >
               {{ item.question }}
             </option>
           </select>
@@ -164,9 +226,16 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1"
-            >비밀번호 찾기 답변</span>
-          <input type="text" class="form-control" v-model="pwFindAnswer" 
-            placeholder="answer" aria-label="Username" aria-describedby="basic-addon1">
+            >비밀번호 찾기 답변</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            v-model="pwFindAnswer"
+            placeholder="answer"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <!-- <label for="pwFindAnswer">비밀번호찾기답변</label>
           <input
             type="text"
@@ -177,7 +246,6 @@
         </div>
       </b-col>
     </b-row>
-
 
     <!-- <b-row align-h="center">
       <b-col cols="6">
@@ -197,8 +265,14 @@
       <b-col cols="6">
         <div class="input-group mt-4 mb-3">
           <span class="input-group-text" id="basic-addon1">키</span>
-          <input type="number" class="form-control" v-model="height" 
-            placeholder="height" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="number"
+            class="form-control"
+            v-model="height"
+            placeholder="height"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <span class="input-group-text" style="width: 45px">cm</span>
         </div>
       </b-col>
@@ -208,8 +282,14 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">몸무게</span>
-          <input type="number" class="form-control" v-model="weight" 
-            placeholder="weight" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="number"
+            class="form-control"
+            v-model="weight"
+            placeholder="weight"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <span class="input-group-text" style="width: 45px">kg</span>
         </div>
       </b-col>
@@ -219,8 +299,14 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">체지방률</span>
-          <input type="number" class="form-control" v-model="bodyFat" 
-            placeholder="body fat" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="number"
+            class="form-control"
+            v-model="bodyFat"
+            placeholder="body fat"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <span class="input-group-text" style="width: 45px">%</span>
         </div>
       </b-col>
@@ -230,13 +316,19 @@
       <b-col cols="6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">골격근량</span>
-          <input type="number" class="form-control" v-model="muscleMass" 
-            placeholder="muscle mass" aria-label="Username" aria-describedby="basic-addon1">
+          <input
+            type="number"
+            class="form-control"
+            v-model="muscleMass"
+            placeholder="muscle mass"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           <span class="input-group-text" style="width: 45px">kg</span>
         </div>
       </b-col>
     </b-row>
-<!-- 
+    <!-- 
     <fieldset class="optional">
       
       <label for="height">키</label>
@@ -253,13 +345,18 @@
         class="view"
       /><br />  -->
 
-      <b-row align-h="center">
-        <b-col>
-          <button id="button" class="btn btn-dark" @click="regist"
-          style="width: 200px">등록</button>
-        </b-col>
-      </b-row>
-
+    <b-row align-h="center">
+      <b-col>
+        <button
+          id="button"
+          class="btn btn-dark"
+          @click="regist"
+          style="width: 200px"
+        >
+          등록
+        </button>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
@@ -409,7 +506,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 50px;
   padding-top: 50px;
-    padding-bottom: 100px;
+  padding-bottom: 100px;
   background: #fee0bc;
   color: black;
   width: 900px;
@@ -431,7 +528,10 @@ export default {
   display: inline;
   margin-left: 13px;
 }
-#basic-addon1{
+/* .form-control{
+  width: 350px;
+} */
+#basic-addon1 {
   width: 145px;
 }
 </style>

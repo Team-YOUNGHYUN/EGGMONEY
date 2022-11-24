@@ -84,7 +84,7 @@ export default new Vuex.Store({
     },
     getCheckAnswer(state) {
       return state.checkAnswer;
-    }
+    },
   },
   mutations: {
     INIT_ISUNQ(state) {
@@ -165,20 +165,20 @@ export default new Vuex.Store({
     SET_KEYWORD4(state, keyword4) {
       state.keyword4 = keyword4;
     },
-    SELECT_QUESTION(state, payload){
+    SELECT_QUESTION(state, payload) {
       state.question = payload;
     },
-    CHECK_ANSWER(state, payload){
-      if(payload==1){
+    CHECK_ANSWER(state, payload) {
+      if (payload == 1) {
         state.checkAnswer = true;
         return;
       }
       state.checkAnswer = false;
       return;
     },
-    INIT_QUESTION(state){
+    INIT_QUESTION(state) {
       state.question = "";
-    }
+    },
     // =======================================================
   },
   actions: {
@@ -260,7 +260,7 @@ export default new Vuex.Store({
     },
     updateQuest({ commit }, quest) {
       const API_URL = `${REST_API}/quest`;
-      console.log(quest)
+      console.log(quest);
       axios({
         url: API_URL,
         method: "PUT",
@@ -488,7 +488,7 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    selectQuestion(context, userSeq){
+    selectQuestion(context, userSeq) {
       const API_URL = `${REST_API}/question/${userSeq}`;
       return axios({
         url: API_URL,
@@ -501,12 +501,12 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    checkAnswer(context, params){
+    checkAnswer(context, params) {
       const API_URL = `${REST_API}/check/findpw`;
       return axios({
         url: API_URL,
         method: "GET",
-        params: params
+        params: params,
       })
         .then((res) => {
           context.commit("CHECK_ANSWER", res.data);
@@ -515,12 +515,12 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    updatePassword(context, params){
+    updatePassword(context, params) {
       const API_URL = `${REST_API}/check/password`;
       return axios({
         url: API_URL,
         method: "PUT",
-        params: params
+        params: params,
       })
         .then(() => {
           context.commit();
@@ -528,7 +528,7 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
-    }
+    },
   },
   modules: {},
 });

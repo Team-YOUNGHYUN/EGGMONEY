@@ -1,6 +1,8 @@
 <template>
   <div class="calendar">
-    <h2 class="h2">EGG DIARY</h2>
+    <div class="diary-title">
+      <h2 class="h2">EGG DIARY</h2>
+    </div>
     <vc-calendar
       @dayclick="selectDate"
       color="blue"
@@ -58,6 +60,10 @@ export default {
 </script>
 
 <style>
+.diary-title {
+  margin-bottom: 8%;
+}
+
 .calendar {
   background-color: #fee0bc;
   height: 500px;
