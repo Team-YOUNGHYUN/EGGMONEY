@@ -5,13 +5,13 @@
     </b-row>   
     <b-row align-h="center">
       <b-col cols="5">
-        <div class="input-group mt-4 mb-3">
+          <div class="input-group mt-4 mb-3">
           <span class="input-group-text" id="basic-addon1">이 메 일</span>
           <input type="text" class="form-control" v-model="email" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">비밀번호</span>
-          <input  type="text" class="form-control" v-model="password" placeholder="password" aria-label="Username" aria-describedby="basic-addon1"
+          <input type="password" class="form-control" v-model="password" placeholder="password" aria-label="Username" aria-describedby="basic-addon1"
           @keyup.enter="doLogin">
         </div>
         <!-- <input type="text" id="email" v-model="email" class="view" /><br /><br />
@@ -95,10 +95,13 @@ export default {
   margin-top: 20px;
   margin-bottom: 50px;
   padding-top: 50px;
-    padding-bottom: 100px;
+  padding-bottom: 105px;
   background: #fee0bc;
   color: black;
   width: 900px;
-  height: 390px;
+  height: auto;
+}
+#basic-addon1{
+  width: 80px;
 }
 </style>
