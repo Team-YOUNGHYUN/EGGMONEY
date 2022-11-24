@@ -2,11 +2,25 @@
   <div class="diary">
     <div class="record-list">
       <h2 style="text-align: left">오늘 나는...</h2>
+      <!-- record list 받아올 수 있음 -->
+      <ul class="list-group">
+        <li v-for="(recordItem, index) in records" :key="index">
+          {{ recordItem }}
+          <span
+            class="removeBtn"
+            typeof="button"
+            @click="removeRecord(recordItem, index)"
+          >
+            <i class="bi bi-backspace"></i>
+            <!-- 삭제 아이콘 -->
+          </span>
+        </li>
+      </ul>
     </div>
 
     <div class="add-list">
       <h2 style="text-align: left">그리고...</h2>
-      <table class="table" style="background-color: palegreen">
+      <table class="table" style="background-color: #ffd95b">
         <thead>
           <th>운동부위</th>
           <th>운동이름</th>
@@ -62,7 +76,7 @@
       />
       <input v-else type="number" v-model="timeCnt" />
 
-      <button @click="test">confirm</button>
+      <b-button variant="dark" @click="test">추가</b-button>
     </div>
 
     <div class="comment-box">

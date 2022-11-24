@@ -27,8 +27,9 @@ export default {
 .main-goal {
   background-color: #fee0bc;
   color: black;
-  margin-left: 25em;
-  margin-right: 25em;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 2%;
 }
 
 .updateBtn {
