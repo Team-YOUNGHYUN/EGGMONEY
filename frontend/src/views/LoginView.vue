@@ -22,7 +22,7 @@ export default {
   margin-left: 6px;
 }
 #true {
-  color: palegreen;
+  color: green;
 }
 #false {
   color: crimson;
