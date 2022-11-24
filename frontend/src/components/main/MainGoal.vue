@@ -18,7 +18,6 @@
       <router-link to="/about/goal" class="updateBtn" style="color: black"> → 변경하러가기</router-link>
     </div>
     <br />
-    <p>오늘의 명언</p>
   </div>
 </template>
 
