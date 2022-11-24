@@ -176,6 +176,9 @@ export default new Vuex.Store({
       state.checkAnswer = false;
       return;
     },
+    INIT_QUESTION(state) {
+      state.question = "";
+    },
     // =======================================================
   },
   actions: {
